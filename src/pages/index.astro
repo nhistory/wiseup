@@ -22,44 +22,45 @@ import '../styles/global.css';
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="nav">
-      <div class="nav-content">
-        <div class="logo">Wise<span>Up</span></div>
-        <ul class="nav-links">
-          <li><a href="#packages">Packages</a></li>
-          <li><a href="#addons">Add-ons</a></li>
-          <li><a href="#maintenance">Support</a></li>
-          <li><a href="#contact">Contact</a></li>
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border py-4 px-8 z-[1000]">
+      <div class="max-w-[1200px] mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold text-text-dark">Wise<span class="text-primary">Up</span></div>
+        <ul class="hidden md:flex gap-8 list-none">
+          <li><a href="#packages" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Packages</a></li>
+          <li><a href="#addons" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Add-ons</a></li>
+          <li><a href="#maintenance" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Support</a></li>
+          <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Contact</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero">
-      <div class="hero-badge">Premium Services</div>
-      <h1>Professional <span>Website</span><br />Development Packages</h1>
-      <p class="hero-description">
-        전통적인 방식의 한계를 넘어 최신 기술 스택으로<br class="br-mobile" />
+    <header class="min-h-[70vh] flex flex-col justify-center items-center text-center pt-32 pb-16 px-8 md:px-8 bg-gradient-to-b from-bg-gray to-white relative overflow-hidden">
+      <div class="absolute -top-1/2 -right-[20%] w-[600px] h-[600px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-full pointer-events-none"></div>
+      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">Premium Services</div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 leading-tight">Professional <span class="text-primary">Website</span><br />Development Packages</h1>
+      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed">
+        전통적인 방식의 한계를 넘어 최신 기술 스택으로<span class="br-mobile"></span>
         비즈니스 경쟁력을 높여드립니다.<br />
-        효율적인 개발 프로세스를 통해<br class="br-mobile" />
+        효율적인 개발 프로세스를 통해<span class="br-mobile"></span>
         뛰어난 성능과 합리적인 비용의 솔루션을 제공합니다.
       </p>
-      <div class="hero-cta">
+      <div class="flex gap-4 flex-wrap justify-center">
         <a href="#packages" class="btn btn-primary">View Packages</a>
         <a href="#contact" class="btn btn-secondary">Contact Us</a>
       </div>
     </header>
 
     <!-- Pricing Packages -->
-    <section id="packages" class="section-alt">
-      <div class="container">
-        <div class="section-header">
+    <section id="packages" class="py-20 bg-bg-section">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
           <span class="section-badge">Service Packages</span>
-          <h2>Check Our Services!</h2>
-          <p>비즈니스 규모와 니즈에 맞는 최적의 패키지를 선택하세요</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Check Our Services!</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto">비즈니스 규모와 니즈에 맞는 최적의 패키지를 선택하세요</p>
         </div>
 
-        <div class="pricing-grid">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <!-- Essential Package -->
           <div class="pricing-card">
             <div class="card-icon">
@@ -388,15 +389,15 @@ import '../styles/global.css';
     </section>
 
     <!-- Add-ons Section -->
-    <section id="addons">
-      <div class="container">
-        <div class="section-header">
+    <section id="addons" class="py-20">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
           <span class="section-badge">Add-on Options</span>
-          <h2>Additional Services</h2>
-          <p>필요에 따라 추가 옵션을 선택하세요</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Additional Services</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto">필요에 따라 추가 옵션을 선택하세요</p>
         </div>
 
-        <div class="addons-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="addon-card">
             <div class="addon-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -479,19 +480,19 @@ import '../styles/global.css';
     </section>
 
     <!-- Maintenance Section -->
-    <section id="maintenance" class="section-alt">
-      <div class="container">
-        <div class="section-header">
+    <section id="maintenance" class="py-20 bg-bg-section">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
           <span class="section-badge">Maintenance & Support</span>
-          <h2>Ongoing Support Plans</h2>
-          <p>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Ongoing Support Plans</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto">
             장기적인 사이트 운영과 안정성을 위한 유지보수 플랜<br /><strong
               >연간 결제 시 약 15% 할인 혜택</strong
             >
           </p>
         </div>
 
-        <div class="maintenance-grid">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div class="maintenance-card">
             <div class="maintenance-header">
               <h3>Standard Care</h3>
@@ -608,14 +609,14 @@ import '../styles/global.css';
     </section>
 
     <!-- Terms Section -->
-    <section id="terms">
-      <div class="container">
-        <div class="section-header">
+    <section id="terms" class="py-20">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
           <span class="section-badge">Terms & Conditions</span>
-          <h2>Working Process</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Working Process</h2>
         </div>
 
-        <div class="terms-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="term-card">
             <h4>
               <svg
@@ -742,20 +743,20 @@ import '../styles/global.css';
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-      <div class="container">
-        <h2>
+    <section class="bg-gradient-to-br from-primary to-primary-dark py-16 px-8 text-center text-white" id="contact">
+      <div class="max-w-[1250px] mx-auto">
+        <h2 class="text-2xl md:text-4xl mb-4">
           Upgrade your business and start building<br />next-level websites
           today!
         </h2>
-        <p>
+        <p class="opacity-90 mb-8 max-w-[500px] mx-auto">
           Contact us today and discover how we can help your business thrive.
         </p>
-        <a href="mailto:contact@example.com" class="btn">Contact Us</a>
+        <a href="mailto:contact@example.com" class="btn inline-flex items-center justify-center bg-white text-primary hover:bg-bg-gray hover:-translate-y-0.5">Contact Us</a>
       </div>
     </section>
 
-    <footer>
+    <footer class="text-center py-8 border-t border-border text-text-muted text-sm bg-bg-gray">
       <p>© 2026 WiseUp. All rights reserved.</p>
     </footer>
   </body>
