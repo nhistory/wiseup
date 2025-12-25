@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Website Development Packages</title>
+    <meta
+      name="description"
+      content="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1565c0;
+        --primary-light: #1976d2;
+        --primary-dark: #0d47a1;
+        --accent: #f5a623;
+        --accent-light: #ffb74d;
+        --bg-light: #ffffff;
+        --bg-gray: #f8f9fa;
+        --bg-section: #fafbfc;
+        --text-dark: #1a1a2e;
+        --text-body: #4a4a68;
+        --text-muted: #8c8c9e;
+        --border: #e8e8ef;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 20px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg-light);
+        color: var(--text-body);
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      /* Header/Nav */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        z-index: 1000;
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+
+      .logo span {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-body);
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 8rem 2rem 4rem;
+        background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: linear-gradient(
+          135deg,
+          rgba(21, 101, 192, 0.05) 0%,
+          rgba(245, 166, 35, 0.05) 100%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-light) 100%
+        );
+        color: white;
+        padding: 0.5rem 2rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.25rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero h1 span {
+        color: var(--primary);
+      }
+
+      .hero-description {
+        max-width: 600px;
+        font-size: 1.1rem;
+        color: var(--text-body);
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+      }
+
+      .br-mobile {
+        display: none;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0.875rem 2rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: var(--text-dark);
+        border: 2px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 5rem 0;
+      }
+
+      .section-alt {
+        background: var(--bg-section);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-badge {
+        display: inline-block;
+        background: rgba(21, 101, 192, 0.1);
+        color: var(--primary);
+        padding: 0.375rem 2rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Pricing Cards */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2rem;
+      }
+
+      .pricing-card {
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2.5rem;
+        position: relative;
+        transition: all 0.4s ease;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .pricing-card.featured {
+        border: 2px solid var(--primary);
+        box-shadow: var(--shadow-md);
+      }
+
+      .card-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 0.375rem 2rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .card-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(21, 101, 192, 0.1);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .card-icon svg {
+        width: 28px;
+        height: 28px;
+        color: var(--primary);
+      }
+
+      .card-tier {
+        font-size: 0.8rem;
+        color: var(--primary);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .card-tagline {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .card-price {
+        display: flex;
+        align-items: baseline;
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-price .currency {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .card-price .amount {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .card-price .suffix {
+        font-size: 2rem;
+        color: var(--text-muted);
+      }
+
+      .card-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .card-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      .card-meta-item svg {
+        width: 16px;
+        height: 16px;
+        color: var(--primary);
+      }
+
+      .card-features {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+
+      .card-features li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.4rem;
+        padding: 0.2rem 0;
+        font-size: 0.9rem;
+        color: var(--text-body);
+      }
+
+      .card-features li svg {
+        width: 20px;
+        height: 20px;
+        color: var(--primary);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .card-features li strong {
+        color: var(--text-dark);
+      }
+
+      .card-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .pricing-card.featured .card-cta {
+        background: var(--primary);
+        border: none;
+        color: white;
+      }
+
+      .pricing-card.featured .card-cta:hover {
+        background: var(--primary-dark);
+      }
+
+      .pricing-card:not(.featured) .card-cta {
+        background: white;
+        border: 2px solid var(--border);
+        color: var(--text-dark);
+      }
+
+      .pricing-card:not(.featured) .card-cta:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* Add-ons Section */
+      .addons-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .addon-card {
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .addon-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .addon-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(21, 101, 192, 0.1);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .addon-icon svg {
+        width: 24px;
+        height: 24px;
+        color: var(--primary);
+      }
+
+      .addon-content h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.25rem;
+      }
+
+      .addon-content p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      .addon-price {
+        margin-left: auto;
+        font-weight: 600;
+        color: var(--primary);
+        white-space: nowrap;
+        font-size: 0.95rem;
+      }
+
+      /* Maintenance Section */
+      .maintenance-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2rem;
+      }
+
+      .maintenance-card {
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .maintenance-card:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .maintenance-card.recommended {
+        border: 2px solid var(--primary);
+        position: relative;
+      }
+
+      .maintenance-card.recommended::before {
+        content: "추천";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .maintenance-header {
+        text-align: center;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 1.5rem;
+      }
+
+      .maintenance-header h3 {
+        font-size: 1.25rem;
+        color: var(--text-dark);
+        margin-bottom: 0.1rem;
+      }
+
+      .maintenance-price {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .maintenance-price span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-muted);
+      }
+
+      .maintenance-annual {
+        font-size: 0.85rem;
+        color: var(--primary-light);
+        margin-top: 0.5rem;
+        font-weight: 500;
+      }
+
+      .maintenance-features {
+        list-style: none;
+      }
+
+      .maintenance-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+        color: var(--text-body);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .maintenance-features li:last-child {
+        border-bottom: none;
+      }
+
+      .maintenance-features li svg {
+        width: 18px;
+        height: 18px;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      /* Terms Section */
+      .terms-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .term-card {
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+      }
+
+      .term-card h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-dark);
+      }
+
+      .term-card h4 svg {
+        color: var(--primary);
+      }
+
+      .term-card p {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+      }
+
+      .cta-section h2 {
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        margin-bottom: 1rem;
+      }
+
+      .cta-section p {
+        opacity: 0.9;
+        margin-bottom: 2rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-section .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        color: var(--primary);
+      }
+
+      .cta-section .btn:hover {
+        background: var(--bg-gray);
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        background: var(--bg-gray);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          min-height: 60vh;
+          padding: 6rem 1.5rem 3rem;
+        }
+
+        .hero-description {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .br-mobile {
+          display: block;
+        }
+
+        section {
+          padding: 3rem 0;
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .maintenance-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .addon-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .addon-price {
+          margin-left: 0;
+          margin-top: 0.5rem;
+        }
+
+        .addons-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .terms-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card-meta {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .pricing-card {
+          padding: 1.5rem;
+        }
+
+        .card-price .amount {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-content">
+        <div class="logo">Wise<span>Up</span></div>
+        <ul class="nav-links">
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#addons">Add-ons</a></li>
+          <li><a href="#maintenance">Support</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-badge">Premium Services</div>
+      <h1>Professional <span>Website</span><br />Development Packages</h1>
+      <p class="hero-description">
+        전통적인 방식의 한계를 넘어 최신 기술 스택으로<br class="br-mobile" />
+        비즈니스 경쟁력을 높여드립니다.<br />
+        효율적인 개발 프로세스를 통해<br class="br-mobile" />
+        뛰어난 성능과 합리적인 비용의 솔루션을 제공합니다.
+      </p>
+      <div class="hero-cta">
+        <a href="#packages" class="btn btn-primary">View Packages</a>
+        <a href="#contact" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </header>
+
+    <!-- Pricing Packages -->
+    <section id="packages" class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Service Packages</span>
+          <h2>Check Our Services!</h2>
+          <p>비즈니스 규모와 니즈에 맞는 최적의 패키지를 선택하세요</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Essential Package -->
+          <div class="pricing-card">
+            <div class="card-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+            </div>
+            <span class="card-tier">01</span>
+            <h3 class="card-title">Essential</h3>
+            <p class="card-tagline">
+              High-Performance Landing Page for Small Businesses
+            </p>
+
+            <div class="card-price">
+              <span class="currency">$</span>
+              <span class="amount">1,000</span>
+              <span class="suffix">+</span>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span>1 - 2 weeks</span>
+              </div>
+            </div>
+
+            <ul class="card-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Static Site</strong> — 최상의 로딩 속도</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span
+                  ><strong>Responsive Design</strong> — 모든 기기 최적화</span
+                >
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Core Pages (Up to 2)</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Basic SEO Setup</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Contact Form + SSL</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Single Language</strong> — 한국어 OR 영어</span>
+              </li>
+            </ul>
+
+            <button class="card-cta">Get Started</button>
+          </div>
+
+          <!-- Professional Package -->
+          <div class="pricing-card featured">
+            <span class="card-badge">⭐ Best Value</span>
+            <div class="card-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <span class="card-tier">02</span>
+            <h3 class="card-title">Professional</h3>
+            <p class="card-tagline">
+              Comprehensive Digital Presence with Multi-language Support
+            </p>
+
+            <div class="card-price">
+              <span class="currency">$</span>
+              <span class="amount">2,500</span>
+              <span class="suffix">+</span>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span>3 - 4 weeks</span>
+              </div>
+            </div>
+
+            <ul class="card-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Essential 패키지 전체 포함</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Bilingual Support</strong> — 한/영 다국어</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>CMS Dashboard</strong> — 직접 콘텐츠 수정</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Flexible Pages (Up to 7)</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Local SEO Pro</strong> — Google Maps 연동</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Professional Animations</strong></span>
+              </li>
+            </ul>
+
+            <button class="card-cta">Get Started</button>
+          </div>
+
+          <!-- Ultimate Package -->
+          <div class="pricing-card">
+            <div class="card-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                ></path>
+              </svg>
+            </div>
+            <span class="card-tier">03</span>
+            <h3 class="card-title">Ultimate</h3>
+            <p class="card-tagline">
+              Full-Service Business Automation & Custom Solutions
+            </p>
+
+            <div class="card-price">
+              <span class="currency">$</span>
+              <span class="amount">5,500</span>
+              <span class="suffix">+</span>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span>6 - 8 weeks+</span>
+              </div>
+            </div>
+
+            <ul class="card-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Professional 패키지 전체 포함</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Custom Business Logic</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Booking & Payment</strong> — Stripe 연동</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Automated Workflow</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Advanced Database</strong> — 회원 관리</span>
+              </li>
+            </ul>
+
+            <button class="card-cta">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add-ons Section -->
+    <section id="addons">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Add-on Options</span>
+          <h2>Additional Services</h2>
+          <p>필요에 따라 추가 옵션을 선택하세요</p>
+        </div>
+
+        <div class="addons-grid">
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+                ></path>
+              </svg>
+            </div>
+            <div class="addon-content">
+              <h4>Additional Language</h4>
+              <p>French, Chinese 등 추가 언어 지원</p>
+            </div>
+            <span class="addon-price">$800+ / 언어</span>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <div class="addon-content">
+              <h4>Additional Page</h4>
+              <p>기본 페이지 초과 시 추가 페이지</p>
+            </div>
+            <span class="addon-price">$100 / 페이지</span>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                ></path>
+              </svg>
+            </div>
+            <div class="addon-content">
+              <h4>Logo & Branding Kit</h4>
+              <p>웹사이트 연계 로고 제작</p>
+            </div>
+            <span class="addon-price">$500 ~ $800</span>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                ></path>
+              </svg>
+            </div>
+            <div class="addon-content">
+              <h4>Custom Module</h4>
+              <p>복잡한 알고리즘, 외부 API 연동</p>
+            </div>
+            <span class="addon-price">별도 협의</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maintenance Section -->
+    <section id="maintenance" class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Maintenance & Support</span>
+          <h2>Ongoing Support Plans</h2>
+          <p>
+            장기적인 사이트 운영과 안정성을 위한 유지보수 플랜<br /><strong
+              >연간 결제 시 약 15% 할인 혜택</strong
+            >
+          </p>
+        </div>
+
+        <div class="maintenance-grid">
+          <div class="maintenance-card">
+            <div class="maintenance-header">
+              <h3>Standard Care</h3>
+              <div class="maintenance-price">$60<span> / month</span></div>
+              <div class="maintenance-annual">
+                연간 결제 시 $600/year (월 $50)
+              </div>
+            </div>
+            <ul class="maintenance-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                최신 보안 패치 주기적 적용
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                실시간 서버 상태 모니터링
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                콘텐츠 수정 월 1회 (간단 텍스트/이미지)
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                이메일 기술 지원
+              </li>
+            </ul>
+          </div>
+
+          <div class="maintenance-card recommended">
+            <div class="maintenance-header">
+              <h3>Professional Growth</h3>
+              <div class="maintenance-price">$150<span> / month</span></div>
+              <div class="maintenance-annual">
+                연간 결제 시 $1,500/year (월 $125)
+              </div>
+            </div>
+            <ul class="maintenance-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                최신 보안 패치 주기적 적용
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                실시간 서버 상태 모니터링
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                콘텐츠 수정 <strong>월간 무제한</strong>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <strong>24시간 내 우선 대응</strong> (Priority)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terms Section -->
+    <section id="terms">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Terms & Conditions</span>
+          <h2>Working Process</h2>
+        </div>
+
+        <div class="terms-grid">
+          <div class="term-card">
+            <h4>
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+              Intellectual Property
+            </h4>
+            <p>
+              모든 프로젝트 완료 및 잔금 지불 시, 제작된 소스 코드와 디자인
+              자산의 소유권은 고객에게 귀속됩니다.
+            </p>
+          </div>
+
+          <div class="term-card">
+            <h4>
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                ></path>
+              </svg>
+              Revisions
+            </h4>
+            <p>
+              각 단계별로 최대 3회의 수정이 포함됩니다. 범위를 벗어난 대규모
+              구조 변경은 별도 협의가 필요합니다.
+            </p>
+          </div>
+
+          <div class="term-card">
+            <h4>
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                ></path>
+              </svg>
+              Payment Terms
+            </h4>
+            <p>
+              <strong>Deposit:</strong> 계약 시 총액의 50%<br /><strong
+                >Balance:</strong
+              >
+              프로젝트 최종 승인 시 나머지 50%
+            </p>
+          </div>
+
+          <div class="term-card">
+            <h4>
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Project Timeline
+            </h4>
+            <p>
+              명시된 제작 기간은 표준 기준이며, 작업 범위 및 피드백 속도에 따라
+              조정될 수 있습니다.
+            </p>
+          </div>
+
+          <div class="term-card">
+            <h4>
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                ></path>
+              </svg>
+              Maintenance Billing
+            </h4>
+            <p>
+              안정적인 서비스 품질 유지를 위해, 유지보수 옵션은 최소 3개월
+              단위로 결제가 가능합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <h2>
+          Upgrade your business and start building<br />next-level websites
+          today!
+        </h2>
+        <p>
+          Contact us today and discover how we can help your business thrive.
+        </p>
+        <a href="mailto:contact@example.com" class="btn">Contact Us</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 WiseUp. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
