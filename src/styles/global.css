@@ -147,7 +147,7 @@
   }
 
   .card-features li strong {
-    @apply text-text-dark;
+    @apply text-text-dark font-medium;
   }
 
   .card-cta {
@@ -172,7 +172,7 @@
 
   /* Add-on Card */
   .addon-card {
-    @apply bg-bg-light border border-border rounded-xl p-6 flex items-center gap-4 transition-all duration-300;
+    @apply bg-bg-light border border-border rounded-xl p-6 flex items-start gap-4 transition-all duration-300;
   }
 
   .addon-card:hover {
@@ -187,6 +187,14 @@
     @apply w-6 h-6 text-primary;
   }
 
+  .addon-details {
+    @apply flex-1 flex flex-col md:flex-row md:items-center gap-2 md:gap-4;
+  }
+
+  .addon-content {
+    @apply flex-1;
+  }
+
   .addon-content h4 {
     @apply text-base font-semibold text-text-dark mb-1;
   }
@@ -196,7 +204,7 @@
   }
 
   .addon-price {
-    @apply ml-auto font-semibold text-primary whitespace-nowrap text-[0.95rem];
+    @apply font-semibold text-primary text-[0.95rem] md:ml-auto md:shrink-0;
   }
 
   /* Maintenance Card */
@@ -242,7 +250,7 @@
   }
 
   .maintenance-features li {
-    @apply flex items-center gap-2 py-2 text-sm text-text-body border-b border-border last:border-b-0;
+    @apply flex items-center gap-2 py-0.5 text-sm text-text-body;
   }
 
   .maintenance-features li svg {

@@ -45,9 +45,9 @@ import '../styles/global.css';
         효율적인 개발 프로세스를 통해<span class="br-mobile"></span>
         뛰어난 성능과 합리적인 비용의 솔루션을 제공합니다.
       </p>
-      <div class="flex gap-4 flex-wrap justify-center">
-        <a href="#packages" class="btn btn-primary">View Packages</a>
-        <a href="#contact" class="btn btn-secondary">Contact Us</a>
+      <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto justify-center px-4 md:px-0">
+        <a href="#packages" class="btn btn-primary w-full md:w-auto">View Packages</a>
+        <a href="#contact" class="btn btn-secondary w-full md:w-auto">Contact Us</a>
       </div>
     </header>
 
@@ -219,7 +219,7 @@ import '../styles/global.css';
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M5 13l4 4L19 7"
+                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
                   ></path>
                 </svg>
                 <span><strong>Essential 패키지 전체 포함</strong></span>
@@ -329,7 +329,7 @@ import '../styles/global.css';
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M5 13l4 4L19 7"
+                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
                   ></path>
                 </svg>
                 <span><strong>Professional 패키지 전체 포함</strong></span>
@@ -344,6 +344,17 @@ import '../styles/global.css';
                   ></path>
                 </svg>
                 <span><strong>Custom Business Logic</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span><strong>Extended Pages (Up to 15)</strong></span>
               </li>
               <li>
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -409,11 +420,13 @@ import '../styles/global.css';
                 ></path>
               </svg>
             </div>
-            <div class="addon-content">
-              <h4>Additional Language</h4>
-              <p>French, Chinese 등 추가 언어 지원</p>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4>Additional Language</h4>
+                <p>French, Chinese 등 추가 언어 지원</p>
+              </div>
+              <span class="addon-price">$800+ / 언어</span>
             </div>
-            <span class="addon-price">$800+ / 언어</span>
           </div>
 
           <div class="addon-card">
@@ -427,11 +440,13 @@ import '../styles/global.css';
                 ></path>
               </svg>
             </div>
-            <div class="addon-content">
-              <h4>Additional Page</h4>
-              <p>기본 페이지 초과 시 추가 페이지</p>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4>Additional Page</h4>
+                <p>기본 페이지 초과 시 추가 페이지</p>
+              </div>
+              <span class="addon-price">$100 / 페이지</span>
             </div>
-            <span class="addon-price">$100 / 페이지</span>
           </div>
 
           <div class="addon-card">
@@ -445,11 +460,13 @@ import '../styles/global.css';
                 ></path>
               </svg>
             </div>
-            <div class="addon-content">
-              <h4>Logo & Branding Kit</h4>
-              <p>웹사이트 연계 로고 제작</p>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4>Logo & Branding Kit</h4>
+                <p>웹사이트 연계 로고 제작</p>
+              </div>
+              <span class="addon-price">$500 ~ $800</span>
             </div>
-            <span class="addon-price">$500 ~ $800</span>
           </div>
 
           <div class="addon-card">
@@ -469,11 +486,13 @@ import '../styles/global.css';
                 ></path>
               </svg>
             </div>
-            <div class="addon-content">
-              <h4>Custom Module</h4>
-              <p>복잡한 알고리즘, 외부 API 연동</p>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4>Custom Module</h4>
+                <p>복잡한 알고리즘, 외부 API 연동</p>
+              </div>
+              <span class="addon-price">별도 협의</span>
             </div>
-            <span class="addon-price">별도 협의</span>
           </div>
         </div>
       </div>
