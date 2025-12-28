@@ -274,6 +274,25 @@
   }
 }
 
+/* Hero Text Animation */
+.hero-animate-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: charSlideUp 0.5s ease forwards;
+}
+
+@keyframes charSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate-line {
+  overflow: hidden;
+}
+
 /* Language Switcher */
 .lang-switcher {
   display: flex;
