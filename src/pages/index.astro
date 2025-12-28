@@ -1,17 +1,19 @@
 ---
-// src/pages/index.astro
+// src/pages/index.astro - Single page with language toggle
 import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang="en" id="html-root">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Professional Website Development Packages</title>
+    <title data-ko="전문 웹사이트 개발 패키지 | WiseUp" data-en="Professional Website Development | WiseUp">Professional Website Development | WiseUp</title>
     <meta
       name="description"
-      content="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
+      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
+      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
+      content="Professional website development services. High-performance websites built with modern technology at competitive prices."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,30 +26,39 @@ import '../styles/global.css';
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border py-4 px-8 z-[1000]">
       <div class="max-w-[1200px] mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold text-text-dark">Wise<span class="text-primary">Up</span></div>
-        <ul class="hidden md:flex gap-8 list-none">
-          <li><a href="#packages" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Packages</a></li>
-          <li><a href="#addons" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Add-ons</a></li>
-          <li><a href="#maintenance" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Support</a></li>
-          <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Contact</a></li>
-        </ul>
+        <a href="/wiseup/" class="text-2xl font-bold text-text-dark no-underline">Wise<span class="text-primary">Up</span></a>
+        <div class="flex items-center gap-6">
+          <ul class="hidden md:flex gap-8 list-none">
+            <li><a href="#packages" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="패키지" data-en="Packages">Packages</a></li>
+            <li><a href="#addons" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="추가옵션" data-en="Add-ons">Add-ons</a></li>
+            <li><a href="#maintenance" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="유지보수" data-en="Support">Support</a></li>
+            <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="문의하기" data-en="Contact">Contact</a></li>
+          </ul>
+          <!-- Language Switcher -->
+          <div class="lang-switcher" id="lang-switcher">
+            <div class="lang-slider" id="lang-slider"></div>
+            <button type="button" class="lang-btn" data-lang="ko" id="btn-ko">한</button>
+            <button type="button" class="lang-btn active" data-lang="en" id="btn-en">EN</button>
+          </div>
+        </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="min-h-[70vh] flex flex-col justify-center items-center text-center pt-32 pb-16 px-8 md:px-8 bg-gradient-to-b from-bg-gray to-white relative overflow-hidden">
       <div class="absolute -top-1/2 -right-[20%] w-[600px] h-[600px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-full pointer-events-none"></div>
-      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">Premium Services</div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 leading-tight">Professional <span class="text-primary">Website</span><br />Development Packages</h1>
-      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed">
-        전통적인 방식의 한계를 넘어 최신 기술 스택으로<span class="br-mobile"></span>
-        비즈니스 경쟁력을 높여드립니다.<br />
-        효율적인 개발 프로세스를 통해<span class="br-mobile"></span>
-        뛰어난 성능과 합리적인 비용의 솔루션을 제공합니다.
+      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6" data-ko="맞춤형 웹 솔루션" data-en="Premium Services">Premium Services</div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 leading-tight">
+        <span class="block" data-html-ko="성공하는 비즈니스의" data-html-en="Professional <span class='text-primary'>Website</span>">Professional <span class="text-primary">Website</span></span>
+        <span class="block" data-html-ko="<span class='text-primary'>웹사이트</span>는 다릅니다" data-html-en="Development Packages"><span class="text-primary">웹사이트</span>는 다릅니다</span>
+      </h1>
+      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed" data-ko="고객에게 신뢰를 주는 첫인상, 그 시작은 웹사이트입니다. 검색에 강하고, 관리가 쉬운 나만의 웹사이트를 합리적인 비용으로 만들어 드립니다." data-en="Fast, SEO-optimized websites that convert visitors into customers. Built with modern technology at a price that makes sense.">
+        Fast, SEO-optimized websites that convert visitors into customers.<br />
+        Built with modern technology at a price that makes sense.
       </p>
       <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto justify-center px-4 md:px-0">
-        <a href="#packages" class="btn btn-primary w-full md:w-auto">View Packages</a>
-        <a href="#contact" class="btn btn-secondary w-full md:w-auto">Contact Us</a>
+        <a href="#packages" class="btn btn-primary w-full md:w-auto" data-ko="패키지 보기" data-en="View Packages">View Packages</a>
+        <a href="#contact" class="btn btn-secondary w-full md:w-auto" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
       </div>
     </header>
 
@@ -55,9 +66,9 @@ import '../styles/global.css';
     <section id="packages" class="py-20 bg-bg-section">
       <div class="max-w-[1250px] mx-auto px-6">
         <div class="text-center mb-16">
-          <span class="section-badge">Service Packages</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Check Our Services!</h2>
-          <p class="text-text-muted max-w-[600px] mx-auto">비즈니스 규모와 니즈에 맞는 최적의 패키지를 선택하세요</p>
+          <span class="section-badge" data-ko="서비스 패키지" data-en="Service Packages">Service Packages</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="서비스를 확인하세요!" data-en="Check Our Services!">Check Our Services!</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="비즈니스 규모와 니즈에 맞는 최적의 패키지를 선택하세요" data-en="Choose the perfect package that fits your business size and needs">Choose the perfect package that fits your business size and needs</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -65,19 +76,12 @@ import '../styles/global.css';
           <div class="pricing-card">
             <div class="card-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
             <span class="card-tier">01</span>
             <h3 class="card-title">Essential</h3>
-            <p class="card-tagline">
-              High-Performance Landing Page for Small Businesses
-            </p>
+            <p class="card-tagline" data-ko="소규모 비즈니스를 위한 고성능 랜딩 페이지" data-en="High-Performance Landing Page for Small Businesses">High-Performance Landing Page for Small Businesses</p>
 
             <div class="card-price">
               <span class="currency">$</span>
@@ -88,109 +92,53 @@ import '../styles/global.css';
             <div class="card-meta">
               <div class="card-meta-item">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>1 - 2 weeks</span>
+                <span data-ko="1 - 2주" data-en="1 - 2 weeks">1 - 2 weeks</span>
               </div>
             </div>
 
             <ul class="card-features">
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Static Site</strong> — 최상의 로딩 속도</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="정적 사이트" data-en="Static Site">Static Site</strong> — <span data-ko="최상의 로딩 속도" data-en="Lightning-fast loading">Lightning-fast loading</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span
-                  ><strong>Responsive Design</strong> — 모든 기기 최적화</span
-                >
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="반응형 디자인" data-en="Responsive Design">Responsive Design</strong> — <span data-ko="모든 기기 최적화" data-en="Optimized for all devices">Optimized for all devices</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Core Pages (Up to 2)</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="기본 페이지 (최대 2개)" data-en="Core Pages (Up to 2)">Core Pages (Up to 2)</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Basic SEO Setup</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="기본 SEO 설정" data-en="Basic SEO Setup">Basic SEO Setup</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Contact Form + SSL</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="문의 양식 + SSL" data-en="Contact Form + SSL">Contact Form + SSL</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Single Language</strong> — 한국어 OR 영어</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="단일 언어" data-en="Single Language">Single Language</strong> — <span data-ko="한국어 또는 영어" data-en="Korean OR English">Korean OR English</span></span>
               </li>
             </ul>
 
-            <button class="card-cta">Get Started</button>
+            <button class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</button>
           </div>
 
           <!-- Professional Package -->
           <div class="pricing-card featured">
-            <span class="card-badge">⭐ Best Value</span>
+            <span class="card-badge" data-ko="⭐ 최고 가성비" data-en="⭐ Best Value">⭐ Best Value</span>
             <div class="card-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </div>
             <span class="card-tier">02</span>
             <h3 class="card-title">Professional</h3>
-            <p class="card-tagline">
-              Comprehensive Digital Presence with Multi-language Support
-            </p>
+            <p class="card-tagline" data-ko="다국어 지원을 갖춘 종합적인 디지털 프레즌스" data-en="Comprehensive Digital Presence with Multi-language Support">Comprehensive Digital Presence with Multi-language Support</p>
 
             <div class="card-price">
               <span class="currency">$</span>
@@ -201,106 +149,52 @@ import '../styles/global.css';
             <div class="card-meta">
               <div class="card-meta-item">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>3 - 4 weeks</span>
+                <span data-ko="3 - 4주" data-en="3 - 4 weeks">3 - 4 weeks</span>
               </div>
             </div>
 
             <ul class="card-features">
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                  ></path>
-                </svg>
-                <span><strong>Essential 패키지 전체 포함</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                <span><strong data-ko="Essential 패키지 전체 포함" data-en="Everything in Essential">Everything in Essential</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Bilingual Support</strong> — 한/영 다국어</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="이중 언어 지원" data-en="Bilingual Support">Bilingual Support</strong> — <span data-ko="한/영 다국어" data-en="Korean & English">Korean & English</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>CMS Dashboard</strong> — 직접 콘텐츠 수정</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="CMS 대시보드" data-en="CMS Dashboard">CMS Dashboard</strong> — <span data-ko="직접 콘텐츠 수정" data-en="Edit content yourself">Edit content yourself</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Flexible Pages (Up to 7)</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="유연한 페이지 (최대 7개)" data-en="Flexible Pages (Up to 7)">Flexible Pages (Up to 7)</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Local SEO Pro</strong> — Google Maps 연동</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="로컬 SEO 프로" data-en="Local SEO Pro">Local SEO Pro</strong> — <span data-ko="Google Maps 연동" data-en="Google Maps integration">Google Maps integration</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Professional Animations</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="프로페셔널 애니메이션" data-en="Professional Animations">Professional Animations</strong></span>
               </li>
             </ul>
 
-            <button class="card-cta">Get Started</button>
+            <button class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</button>
           </div>
 
           <!-- Ultimate Package -->
           <div class="pricing-card">
             <div class="card-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
               </svg>
             </div>
             <span class="card-tier">03</span>
             <h3 class="card-title">Ultimate</h3>
-            <p class="card-tagline">
-              Full-Service Business Automation & Custom Solutions
-            </p>
+            <p class="card-tagline" data-ko="풀서비스 비즈니스 자동화 & 맞춤 솔루션" data-en="Full-Service Business Automation & Custom Solutions">Full-Service Business Automation & Custom Solutions</p>
 
             <div class="card-price">
               <span class="currency">$</span>
@@ -311,89 +205,40 @@ import '../styles/global.css';
             <div class="card-meta">
               <div class="card-meta-item">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>6 - 8 weeks+</span>
+                <span data-ko="6 - 8주+" data-en="6 - 8 weeks+">6 - 8 weeks+</span>
               </div>
             </div>
 
             <ul class="card-features">
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                  ></path>
-                </svg>
-                <span><strong>Professional 패키지 전체 포함</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                <span><strong data-ko="Professional 패키지 전체 포함" data-en="Everything in Professional">Everything in Professional</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Custom Business Logic</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="맞춤 비즈니스 로직" data-en="Custom Business Logic">Custom Business Logic</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Extended Pages (Up to 15)</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="확장 페이지 (최대 15개)" data-en="Extended Pages (Up to 15)">Extended Pages (Up to 15)</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span
-                  ><strong>Booking & Payment</strong> — Stripe 연동</span
-                >
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="예약 & 결제" data-en="Booking & Payment">Booking & Payment</strong> — <span data-ko="Stripe 연동" data-en="Stripe integration">Stripe integration</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Automated Workflow</strong></span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="자동화 워크플로우" data-en="Automated Workflow">Automated Workflow</strong></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span><strong>Advanced Database</strong> — 회원 관리</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="고급 데이터베이스" data-en="Advanced Database">Advanced Database</strong> — <span data-ko="회원 관리" data-en="Member management">Member management</span></span>
               </li>
             </ul>
 
-            <button class="card-cta">Get Started</button>
+            <button class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</button>
           </div>
         </div>
       </div>
@@ -403,67 +248,52 @@ import '../styles/global.css';
     <section id="addons" class="py-20">
       <div class="max-w-[1250px] mx-auto px-6">
         <div class="text-center mb-16">
-          <span class="section-badge">Add-on Options</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Additional Services</h2>
-          <p class="text-text-muted max-w-[600px] mx-auto">필요에 따라 추가 옵션을 선택하세요</p>
+          <span class="section-badge" data-ko="추가 옵션" data-en="Add-on Options">Add-on Options</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="추가 서비스" data-en="Additional Services">Additional Services</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="필요에 따라 추가 옵션을 선택하세요" data-en="Choose additional options based on your needs">Choose additional options based on your needs</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="addon-card">
             <div class="addon-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
               </svg>
             </div>
             <div class="addon-details">
               <div class="addon-content">
-                <h4>Additional Language</h4>
-                <p>French, Chinese 등 추가 언어 지원</p>
+                <h4 data-ko="추가 언어" data-en="Additional Language">Additional Language</h4>
+                <p data-ko="프랑스어, 중국어 등 추가 언어 지원" data-en="French, Chinese, and more language support">French, Chinese, and more language support</p>
               </div>
-              <span class="addon-price">$800+ / 언어</span>
+              <span class="addon-price" data-ko="$800+ / 언어" data-en="$800+ / language">$800+ / language</span>
             </div>
           </div>
 
           <div class="addon-card">
             <div class="addon-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
             </div>
             <div class="addon-details">
               <div class="addon-content">
-                <h4>Additional Page</h4>
-                <p>기본 페이지 초과 시 추가 페이지</p>
+                <h4 data-ko="추가 페이지" data-en="Additional Page">Additional Page</h4>
+                <p data-ko="기본 페이지 초과 시 추가 페이지" data-en="Extra pages beyond the base package">Extra pages beyond the base package</p>
               </div>
-              <span class="addon-price">$100 / 페이지</span>
+              <span class="addon-price" data-ko="$100 / 페이지" data-en="$100 / page">$100 / page</span>
             </div>
           </div>
 
           <div class="addon-card">
             <div class="addon-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
               </svg>
             </div>
             <div class="addon-details">
               <div class="addon-content">
-                <h4>Logo & Branding Kit</h4>
-                <p>웹사이트 연계 로고 제작</p>
+                <h4 data-ko="로고 & 브랜딩 키트" data-en="Logo & Branding Kit">Logo & Branding Kit</h4>
+                <p data-ko="웹사이트 연계 로고 제작" data-en="Logo design integrated with website">Logo design integrated with website</p>
               </div>
               <span class="addon-price">$500 ~ $800</span>
             </div>
@@ -472,26 +302,16 @@ import '../styles/global.css';
           <div class="addon-card">
             <div class="addon-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
             </div>
             <div class="addon-details">
               <div class="addon-content">
-                <h4>Custom Module</h4>
-                <p>복잡한 알고리즘, 외부 API 연동</p>
+                <h4 data-ko="커스텀 모듈" data-en="Custom Module">Custom Module</h4>
+                <p data-ko="복잡한 알고리즘, 외부 API 연동" data-en="Complex algorithms, external API integration">Complex algorithms, external API integration</p>
               </div>
-              <span class="addon-price">별도 협의</span>
+              <span class="addon-price" data-ko="별도 협의" data-en="Contact for quote">Contact for quote</span>
             </div>
           </div>
         </div>
@@ -502,12 +322,11 @@ import '../styles/global.css';
     <section id="maintenance" class="py-20 bg-bg-section">
       <div class="max-w-[1250px] mx-auto px-6">
         <div class="text-center mb-16">
-          <span class="section-badge">Maintenance & Support</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Ongoing Support Plans</h2>
+          <span class="section-badge" data-ko="유지보수 & 지원" data-en="Maintenance & Support">Maintenance & Support</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="지속 지원 플랜" data-en="Ongoing Support Plans">Ongoing Support Plans</h2>
           <p class="text-text-muted max-w-[600px] mx-auto">
-            장기적인 사이트 운영과 안정성을 위한 유지보수 플랜<br /><strong
-              >연간 결제 시 약 15% 할인 혜택</strong
-            >
+            <span data-ko="장기적인 사이트 운영과 안정성을 위한 유지보수 플랜" data-en="Maintenance plans for long-term site operation and stability">Maintenance plans for long-term site operation and stability</span><br />
+            <strong data-ko="연간 결제 시 약 15% 할인 혜택" data-en="Save ~15% with annual billing">Save ~15% with annual billing</strong>
           </p>
         </div>
 
@@ -515,111 +334,52 @@ import '../styles/global.css';
           <div class="maintenance-card">
             <div class="maintenance-header">
               <h3>Standard Care</h3>
-              <div class="maintenance-price">$60<span> / month</span></div>
-              <div class="maintenance-annual">
-                연간 결제 시 $600/year (월 $50)
-              </div>
+              <div class="maintenance-price">$60<span data-ko=" / 월" data-en=" / month"> / month</span></div>
+              <div class="maintenance-annual" data-ko="연간 결제 시 $600/년 (월 $50)" data-en="$600/year with annual billing ($50/mo)">$600/year with annual billing ($50/mo)</div>
             </div>
             <ul class="maintenance-features">
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                최신 보안 패치 주기적 적용
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="최신 보안 패치 주기적 적용" data-en="Regular security patches">Regular security patches</span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                실시간 서버 상태 모니터링
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="실시간 서버 상태 모니터링" data-en="Real-time server monitoring">Real-time server monitoring</span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                콘텐츠 수정 월 1회 (간단 텍스트/이미지)
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="콘텐츠 수정 월 1회 (간단 텍스트/이미지)" data-en="1 content update per month (text/images)">1 content update per month (text/images)</span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                이메일 기술 지원
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="이메일 기술 지원" data-en="Email technical support">Email technical support</span>
               </li>
             </ul>
           </div>
 
           <div class="maintenance-card recommended">
+            <span class="maintenance-badge" data-ko="추천" data-en="Recommended">Recommended</span>
             <div class="maintenance-header">
               <h3>Professional Growth</h3>
-              <div class="maintenance-price">$150<span> / month</span></div>
-              <div class="maintenance-annual">
-                연간 결제 시 $1,500/year (월 $125)
-              </div>
+              <div class="maintenance-price">$150<span data-ko=" / 월" data-en=" / month"> / month</span></div>
+              <div class="maintenance-annual" data-ko="연간 결제 시 $1,500/년 (월 $125)" data-en="$1,500/year with annual billing ($125/mo)">$1,500/year with annual billing ($125/mo)</div>
             </div>
             <ul class="maintenance-features">
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                최신 보안 패치 주기적 적용
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="최신 보안 패치 주기적 적용" data-en="Regular security patches">Regular security patches</span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                실시간 서버 상태 모니터링
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="실시간 서버 상태 모니터링" data-en="Real-time server monitoring">Real-time server monitoring</span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                콘텐츠 수정 <strong>월간 무제한</strong>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="월간 무제한" data-en="Unlimited">Unlimited</strong> <span data-ko="콘텐츠 수정" data-en="monthly content updates">monthly content updates</span></span>
               </li>
               <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <strong>24시간 내 우선 대응</strong> (Priority)
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="24시간 내 우선 대응" data-en="Priority response within 24 hours">Priority response within 24 hours</strong></span>
               </li>
             </ul>
           </div>
@@ -631,131 +391,62 @@ import '../styles/global.css';
     <section id="terms" class="py-20">
       <div class="max-w-[1250px] mx-auto px-6">
         <div class="text-center mb-16">
-          <span class="section-badge">Terms & Conditions</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4">Working Process</h2>
+          <span class="section-badge" data-ko="이용약관" data-en="Terms & Conditions">Terms & Conditions</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="작업 프로세스" data-en="Working Process">Working Process</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="term-card">
             <h4>
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                ></path>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
               </svg>
-              Intellectual Property
+              <span data-ko="지적 재산권" data-en="Intellectual Property">Intellectual Property</span>
+            </h4>
+            <p data-ko="모든 프로젝트 완료 및 잔금 지불 시, 제작된 소스 코드와 디자인 자산의 소유권은 고객에게 귀속됩니다." data-en="Upon project completion and final payment, ownership of all source code and design assets transfers to the client.">Upon project completion and final payment, ownership of all source code and design assets transfers to the client.</p>
+          </div>
+
+          <div class="term-card">
+            <h4>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+              <span data-ko="수정 사항" data-en="Revisions">Revisions</span>
+            </h4>
+            <p data-ko="각 단계별로 최대 3회의 수정이 포함됩니다. 범위를 벗어난 대규모 구조 변경은 별도 협의가 필요합니다." data-en="Up to 3 revisions are included per phase. Major structural changes outside the scope require separate discussion.">Up to 3 revisions are included per phase. Major structural changes outside the scope require separate discussion.</p>
+          </div>
+
+          <div class="term-card">
+            <h4>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <span data-ko="결제 조건" data-en="Payment Terms">Payment Terms</span>
             </h4>
             <p>
-              모든 프로젝트 완료 및 잔금 지불 시, 제작된 소스 코드와 디자인
-              자산의 소유권은 고객에게 귀속됩니다.
+              <strong data-ko="계약금:" data-en="Deposit:">Deposit:</strong> <span data-ko="계약 시 총액의 50%" data-en="50% of total at contract signing">50% of total at contract signing</span><br />
+              <strong data-ko="잔금:" data-en="Balance:">Balance:</strong> <span data-ko="프로젝트 최종 승인 시 나머지 50%" data-en="Remaining 50% upon final project approval">Remaining 50% upon final project approval</span>
             </p>
           </div>
 
           <div class="term-card">
             <h4>
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                ></path>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              Revisions
+              <span data-ko="프로젝트 일정" data-en="Project Timeline">Project Timeline</span>
             </h4>
-            <p>
-              각 단계별로 최대 3회의 수정이 포함됩니다. 범위를 벗어난 대규모
-              구조 변경은 별도 협의가 필요합니다.
-            </p>
+            <p data-ko="명시된 제작 기간은 표준 기준이며, 작업 범위 및 피드백 속도에 따라 조정될 수 있습니다." data-en="Stated timelines are standard estimates and may vary based on project scope and feedback response time.">Stated timelines are standard estimates and may vary based on project scope and feedback response time.</p>
           </div>
 
           <div class="term-card">
             <h4>
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                ></path>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
               </svg>
-              Payment Terms
+              <span data-ko="유지보수 결제" data-en="Maintenance Billing">Maintenance Billing</span>
             </h4>
-            <p>
-              <strong>Deposit:</strong> 계약 시 총액의 50%<br /><strong
-                >Balance:</strong
-              >
-              프로젝트 최종 승인 시 나머지 50%
-            </p>
-          </div>
-
-          <div class="term-card">
-            <h4>
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                ></path>
-              </svg>
-              Project Timeline
-            </h4>
-            <p>
-              명시된 제작 기간은 표준 기준이며, 작업 범위 및 피드백 속도에 따라
-              조정될 수 있습니다.
-            </p>
-          </div>
-
-          <div class="term-card">
-            <h4>
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                ></path>
-              </svg>
-              Maintenance Billing
-            </h4>
-            <p>
-              안정적인 서비스 품질 유지를 위해, 유지보수 옵션은 최소 3개월
-              단위로 결제가 가능합니다.
-            </p>
+            <p data-ko="안정적인 서비스 품질 유지를 위해, 유지보수 옵션은 최소 3개월 단위로 결제가 가능합니다." data-en="To ensure consistent service quality, maintenance plans are billed in minimum 3-month terms.">To ensure consistent service quality, maintenance plans are billed in minimum 3-month terms.</p>
           </div>
         </div>
       </div>
@@ -765,18 +456,120 @@ import '../styles/global.css';
     <section class="bg-gradient-to-br from-primary to-primary-dark py-16 px-8 text-center text-white" id="contact">
       <div class="max-w-[1250px] mx-auto">
         <h2 class="text-2xl md:text-4xl mb-4">
-          Upgrade your business and start building<br />next-level websites
-          today!
+          <span data-ko="지금 시작하세요" data-en="Transform your vision into reality">Transform your vision into reality</span><br />
+          <span data-ko="웹사이트가 비즈니스를 바꿉니다" data-en="with a website that works for you">with a website that works for you</span>
         </h2>
-        <p class="opacity-90 mb-8 max-w-[500px] mx-auto">
-          Contact us today and discover how we can help your business thrive.
+        <p class="opacity-90 mb-8 max-w-[500px] mx-auto" data-ko="무료 상담으로 프로젝트 범위와 견적을 확인해 보세요." data-en="Let's build something remarkable together — reach out and take the first step.">
+          Let's build something remarkable together — reach out and take the first step.
         </p>
-        <a href="mailto:contact@example.com" class="btn inline-flex items-center justify-center bg-white text-primary hover:bg-bg-gray hover:-translate-y-0.5">Contact Us</a>
+        <a href="mailto:contact@example.com" class="btn inline-flex items-center justify-center bg-white text-primary hover:bg-bg-gray hover:-translate-y-0.5" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
       </div>
     </section>
 
     <footer class="text-center py-8 border-t border-border text-text-muted text-sm bg-bg-gray">
       <p>© 2026 WiseUp. All rights reserved.</p>
     </footer>
+
+    <script>
+      // Language toggle functionality
+      const STORAGE_KEY = 'wiseup-lang';
+      let currentLang = 'en';
+      
+      function setLanguage(lang, animate = true) {
+        if (lang === currentLang && animate) return;
+        
+        const textElements = document.querySelectorAll('[data-ko][data-en]');
+        const htmlElements = document.querySelectorAll('[data-html-ko][data-html-en]');
+        const allElements = [...textElements, ...htmlElements];
+        
+        if (animate && allElements.length > 0) {
+          // 페이드 아웃
+          allElements.forEach(el => {
+            el.style.transition = 'opacity 0.25s ease';
+            el.style.opacity = '0';
+          });
+          
+          // 텍스트 변경 및 페이드 인
+          setTimeout(() => {
+            // 일반 텍스트 요소
+            textElements.forEach(el => {
+              const text = el.getAttribute(`data-${lang}`);
+              if (text) {
+                el.textContent = text;
+              }
+            });
+            
+            // HTML 요소 (스타일 포함)
+            htmlElements.forEach(el => {
+              const html = el.getAttribute(`data-html-${lang}`);
+              if (html) {
+                el.innerHTML = html;
+              }
+            });
+            
+            // 페이드 인
+            setTimeout(() => {
+              allElements.forEach(el => {
+                el.style.opacity = '1';
+              });
+            }, 50);
+          }, 250);
+        } else {
+          // 애니메이션 없이 바로 변경 (초기 로드)
+          textElements.forEach(el => {
+            const text = el.getAttribute(`data-${lang}`);
+            if (text) {
+              el.textContent = text;
+            }
+          });
+          
+          htmlElements.forEach(el => {
+            const html = el.getAttribute(`data-html-${lang}`);
+            if (html) {
+              el.innerHTML = html;
+            }
+          });
+        }
+        
+        // Update HTML lang attribute
+        document.getElementById('html-root').setAttribute('lang', lang);
+        
+        // Update title and meta
+        const title = document.querySelector('title');
+        if (title) {
+          title.textContent = title.getAttribute(`data-${lang}`) || title.textContent;
+        }
+        
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content'));
+        }
+        
+        // Update slider position
+        const slider = document.getElementById('lang-slider');
+        if (slider) {
+          slider.style.transform = lang === 'en' ? 'translateX(36px)' : 'translateX(0)';
+        }
+        
+        // Update button active states
+        document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        
+        // Save preference
+        currentLang = lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+      
+      // Initialize on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
+        currentLang = savedLang;
+        setLanguage(savedLang, false); // 초기 로드 시 애니메이션 없이
+        
+        // Add click handlers
+        document.getElementById('btn-ko').addEventListener('click', () => setLanguage('ko', true));
+        document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
+      });
+    </script>
   </body>
 </html>
