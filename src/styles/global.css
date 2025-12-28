@@ -221,7 +221,7 @@
   }
 
   .maintenance-badge {
-    @apply absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white py-1 px-4 rounded-full text-xs font-semibold;
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white py-1 px-8 rounded-full text-xs font-semibold;
   }
 
   .maintenance-header {
