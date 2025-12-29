@@ -363,6 +363,49 @@
   -webkit-hyphens: none;
 }
 
+/* Hero Video Background */
+.hero-video-section {
+  background: #f8f9fa;
+}
+
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  animation: heroVideoFade 30s ease-in-out infinite;
+}
+
+@keyframes heroVideoFade {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  } /* fade-in 완료 (1.5초) */
+  95% {
+    opacity: 1;
+  } /* fade-out 시작 (28.5초) */
+  100% {
+    opacity: 0;
+  } /* fade-out 완료 (30초) */
+}
+
 /* Language Switcher */
 .lang-switcher {
   display: flex;
