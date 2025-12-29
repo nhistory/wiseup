@@ -350,6 +350,17 @@
 
 .hero-animate-line {
   overflow: hidden;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+#hero-title {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 /* Language Switcher */
