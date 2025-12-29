@@ -509,7 +509,7 @@
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.3);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -518,18 +518,19 @@
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
 }
 
 .portfolio-slider-arrow:hover {
-  background: white;
-  transform: translateY(-50%) scale(1.1);
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .portfolio-slider-arrow svg {
   width: 20px;
   height: 20px;
-  color: #333;
+  color: white;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .portfolio-slider-arrow.prev {
@@ -538,6 +539,27 @@
 
 .portfolio-slider-arrow.next {
   right: 16px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-slider-arrow {
+    background: transparent;
+    backdrop-filter: none;
+    width: 36px;
+    height: 36px;
+  }
+
+  .portfolio-slider-arrow:hover {
+    background: transparent;
+  }
+
+  .portfolio-slider-arrow.prev {
+    left: 8px;
+  }
+
+  .portfolio-slider-arrow.next {
+    right: 8px;
+  }
 }
 
 .portfolio-slider-dots {
@@ -576,7 +598,7 @@
   width: 40px;
   height: 40px;
   border: none;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -587,13 +609,13 @@
 }
 
 .portfolio-modal-close:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .portfolio-modal-close svg {
   width: 20px;
   height: 20px;
-  color: #333;
+  color: white;
 }
 
 .portfolio-modal-image {
