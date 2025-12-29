@@ -31,7 +31,7 @@ import '../styles/global.css';
           <ul class="hidden md:flex gap-8 list-none">
             <li><a href="#packages" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="패키지" data-en="Packages">Packages</a></li>
             <li><a href="#addons" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="추가옵션" data-en="Add-ons">Add-ons</a></li>
-            <li><a href="#maintenance" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="유지보수" data-en="Support">Support</a></li>
+            <li><a href="#portfolio" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="포트폴리오" data-en="Portfolio">Portfolio</a></li>
             <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="문의하기" data-en="Contact">Contact</a></li>
           </ul>
           <!-- Language Switcher -->
@@ -452,6 +452,456 @@ import '../styles/global.css';
       </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-bg-section">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="section-badge" data-ko="포트폴리오" data-en="Portfolio">Portfolio</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="작업 포트폴리오" data-en="Our Portfolio">Our Portfolio</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="최근 완료한 프로젝트들을 확인해보세요" data-en="Check out our recently completed projects">Check out our recently completed projects</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="portfolio-filters">
+          <button class="portfolio-filter-btn active" data-filter="all">All</button>
+          <button class="portfolio-filter-btn" data-filter="website" data-ko="웹사이트" data-en="Website">Website</button>
+          <button class="portfolio-filter-btn" data-filter="graphics" data-ko="그래픽 디자인" data-en="Graphic Design">Graphic Design</button>
+          <button class="portfolio-filter-btn" data-filter="seo" data-ko="SEO" data-en="SEO">SEO</button>
+          <button class="portfolio-filter-btn" data-filter="database" data-ko="데이터베이스" data-en="Database">Database</button>
+          <button class="portfolio-filter-btn" data-filter="datavis" data-ko="데이터 시각화" data-en="Data Visualization">Data Visualization</button>
+        </div>
+
+        <!-- Portfolio Grid (2 Columns) -->
+        <div class="portfolio-grid">
+          <!-- Project 1: Pacemaker (Clickable) -->
+          <div class="portfolio-card" data-category="website seo graphics" id="pacemaker-card" style="cursor: pointer;">
+            <div class="portfolio-image">
+              <img src="/wiseup/images/pacemaker-thumbnail.png" alt="Pacemaker" />
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Pacemaker</h3>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+                <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
+                <span class="portfolio-tag" data-ko="그래픽" data-en="Graphic">Graphic</span>
+                <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Seraphina's Music & Art School (Clickable) -->
+          <div class="portfolio-card" data-category="website seo" id="seraphina-card" style="cursor: pointer;">
+            <div class="portfolio-image">
+              <img src="/wiseup/images/seraphina-thumbnail.jpg" alt="Seraphina's Music & Art School" />
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Seraphina's Music & Art School</h3>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+                <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
+                <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: HannahHR (Clickable) -->
+          <div class="portfolio-card" data-category="website database" id="hannahhr-card" style="cursor: pointer;">
+            <div class="portfolio-image">
+              <img src="/wiseup/images/hannahhr-thumbnail.png" alt="HannahHR" />
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">HannahHR</h3>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+                <span class="portfolio-tag" data-ko="프론트엔드" data-en="Frontend">Frontend</span>
+                <span class="portfolio-tag" data-ko="백엔드" data-en="Backend">Backend</span>
+                <span class="portfolio-tag" data-ko="데이터베이스" data-en="Database">Database</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Helix (Clickable) -->
+          <div class="portfolio-card" data-category="graphics" id="helix-card" style="cursor: pointer;">
+            <div class="portfolio-image">
+              <img src="/wiseup/images/helix-thumbnail.png" alt="Helix Game Management Dashboard" />
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Helix Game Management Dashboard</h3>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Yeti (Clickable) -->
+          <div class="portfolio-card" data-category="website graphics datavis" id="yeti-card" style="cursor: pointer;">
+            <div class="portfolio-image">
+              <img src="/wiseup/images/yeti-thumbnail.png" alt="Yeti: Web3 Game Discovery Platform" />
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Yeti: Web3 Game Discovery Platform</h3>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+                <span class="portfolio-tag" data-ko="데이터 시각화" data-en="Data Visualization">Data Visualization</span>
+                <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pacemaker Modal -->
+    <div class="portfolio-modal" id="pacemaker-modal">
+      <div class="portfolio-modal-content">
+        <button class="portfolio-modal-close" id="pacemaker-modal-close">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <!-- Image Slider -->
+        <div class="portfolio-slider" id="pacemaker-slider">
+          <div class="portfolio-slider-track" id="pacemaker-slider-track">
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/pacemaker-thumbnail.png" alt="Pacemaker Homepage" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/pacemaker-slide-1.png" alt="Pacemaker Desktop & Tablet" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/pacemaker-slide-2.jpg" alt="Pacemaker Mobile" />
+            </div>
+          </div>
+          <button class="portfolio-slider-arrow prev" id="pacemaker-slider-prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button class="portfolio-slider-arrow next" id="pacemaker-slider-next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <div class="portfolio-slider-dots" id="pacemaker-slider-dots">
+            <button class="portfolio-slider-dot active" data-slide="0"></button>
+            <button class="portfolio-slider-dot" data-slide="1"></button>
+            <button class="portfolio-slider-dot" data-slide="2"></button>
+          </div>
+        </div>
+        <div class="portfolio-modal-body">
+          <h3 class="portfolio-modal-title">Pacemaker</h3>
+          <p class="portfolio-modal-description" data-ko="Pacemaker는 젊은 전문가와 커리어 전환자들이 명확성, 자신감, 그리고 앞으로 나아가는데 필요한 도구를 발견할 수 있도록 도와줍니다. 맞춤형 커리어 코칭과 지원을 통해 당신의 페이스를 찾고 미래를 만들어갑니다." data-en="Pacemaker empowers young professionals and career changers to discover clarity, confidence, and the tools they need to move forward. We help you find your pace and build your future through personalized career coaching and support.">
+            Pacemaker empowers young professionals and career changers to discover clarity, confidence, and the tools they need to move forward. We help you find your pace and build your future through personalized career coaching and support.
+          </p>
+          <div class="portfolio-modal-tags">
+            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+            <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
+            <span class="portfolio-tag" data-ko="그래픽" data-en="Graphic">Graphic</span>
+            <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
+          </div>
+          <div class="portfolio-modal-section">
+            <h4 data-ko="구현 기능" data-en="Implementation">Implementation</h4>
+            <ul>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="반응형 웹 디자인 (모바일/태블릿/데스크탑)" data-en="Responsive web design (Mobile/Tablet/Desktop)">Responsive web design (Mobile/Tablet/Desktop)</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="SEO 최적화 및 메타 태그 설정" data-en="SEO optimization & meta tag configuration">SEO optimization & meta tag configuration</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="CMS 기반 콘텐츠 관리 시스템" data-en="CMS-based content management system">CMS-based content management system</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="문의 폼 및 이메일 연동" data-en="Contact form & email integration">Contact form & email integration</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seraphina Modal -->
+    <div class="portfolio-modal" id="seraphina-modal">
+      <div class="portfolio-modal-content">
+        <button class="portfolio-modal-close" id="seraphina-modal-close">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <!-- Image Slider -->
+        <div class="portfolio-slider" id="seraphina-slider">
+          <div class="portfolio-slider-track" id="seraphina-slider-track">
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/seraphina-thumbnail.jpg" alt="Seraphina Homepage" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/seraphina-slide-1.png" alt="Seraphina Programs" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/seraphina-slide-2.png" alt="Seraphina Mobile" />
+            </div>
+          </div>
+          <button class="portfolio-slider-arrow prev" id="seraphina-slider-prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button class="portfolio-slider-arrow next" id="seraphina-slider-next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <div class="portfolio-slider-dots" id="seraphina-slider-dots">
+            <button class="portfolio-slider-dot active" data-slide="0"></button>
+            <button class="portfolio-slider-dot" data-slide="1"></button>
+            <button class="portfolio-slider-dot" data-slide="2"></button>
+          </div>
+        </div>
+        <div class="portfolio-modal-body">
+          <h3 class="portfolio-modal-title">Seraphina's Music & Art School</h3>
+          <p class="portfolio-modal-description" data-ko="세라피나는 음악, 미술, 그리고 책으로 세상을 소리와 이야기로 물들이는 뮤직 & 아트 스쿨입니다. 단순히 가르치는 것이 아니라 진심으로 감동을 전하는 교육을 추구합니다." data-en="Seraphina's Music & Art School colors the world with sound and story through music, art, and books. Not just teaching, but truly touching - we believe in education that inspires from the heart.">
+            Seraphina's Music & Art School colors the world with sound and story through music, art, and books. Not just teaching, but truly touching - we believe in education that inspires from the heart.
+          </p>
+          <div class="portfolio-modal-tags">
+            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+            <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
+            <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
+          </div>
+          <div class="portfolio-modal-section">
+            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
+            <ul>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="음악, 미술, 캠프, 방과후 프로그램 소개" data-en="Music, Art, Camp, and After School program showcase">Music, Art, Camp, and After School program showcase</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="반응형 모바일 최적화 디자인" data-en="Responsive mobile-optimized design">Responsive mobile-optimized design</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="SEO 최적화 및 콘텐츠 관리 시스템" data-en="SEO optimization & content management system">SEO optimization & content management system</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Yeti Modal -->
+    <div class="portfolio-modal" id="yeti-modal">
+      <div class="portfolio-modal-content">
+        <button class="portfolio-modal-close" id="yeti-modal-close">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <!-- Image Slider -->
+        <div class="portfolio-slider" id="yeti-slider">
+          <div class="portfolio-slider-track" id="yeti-slider-track">
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/yeti-thumbnail.png" alt="Yeti Overview" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/yeti-slide-1.jpg" alt="Yeti Homepage" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/yeti-slide-2.jpg" alt="Yeti About Page" />
+            </div>
+          </div>
+          <button class="portfolio-slider-arrow prev" id="yeti-slider-prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button class="portfolio-slider-arrow next" id="yeti-slider-next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <div class="portfolio-slider-dots" id="yeti-slider-dots">
+            <button class="portfolio-slider-dot active" data-slide="0"></button>
+            <button class="portfolio-slider-dot" data-slide="1"></button>
+            <button class="portfolio-slider-dot" data-slide="2"></button>
+          </div>
+        </div>
+        <div class="portfolio-modal-body">
+          <h3 class="portfolio-modal-title">Yeti: Web3 Game Discovery Platform</h3>
+          <p class="portfolio-modal-description" data-ko="Yeti는 Web3 게이머들을 위한 올인원 게임 탐색 플랫폼입니다. 수백 개의 블록체인 게임을 분석하고, 데이터 기반 인사이트를 제공하여 게이머들이 최적의 게임을 찾을 수 있도록 돕습니다." data-en="Yeti is an all-in-one game discovery platform for Web3 gamers. It analyzes hundreds of blockchain games and provides data-driven insights to help gamers find the perfect games.">
+            Yeti is an all-in-one game discovery platform for Web3 gamers. It analyzes hundreds of blockchain games and provides data-driven insights to help gamers find the perfect games.
+          </p>
+          <div class="portfolio-modal-tags">
+            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+            <span class="portfolio-tag" data-ko="데이터 시각화" data-en="Data Visualization">Data Visualization</span>
+            <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
+          </div>
+          <div class="portfolio-modal-section">
+            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
+            <ul>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="실시간 게임 데이터 분석 및 시각화" data-en="Real-time game data analysis & visualization">Real-time game data analysis & visualization</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="체인별 게임 필터링 및 검색" data-en="Game filtering & search by blockchain">Game filtering & search by blockchain</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="반응형 대시보드 UI/UX" data-en="Responsive dashboard UI/UX">Responsive dashboard UI/UX</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Helix Modal -->
+    <div class="portfolio-modal" id="helix-modal">
+      <div class="portfolio-modal-content">
+        <button class="portfolio-modal-close" id="helix-modal-close">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <!-- Image Slider -->
+        <div class="portfolio-slider" id="helix-slider">
+          <div class="portfolio-slider-track" id="helix-slider-track">
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/helix-thumbnail.png" alt="Helix Dashboard Overview" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/helix-slide-1.png" alt="Helix Games List" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/helix-slide-2.png" alt="Helix Welcome Page" />
+            </div>
+          </div>
+          <button class="portfolio-slider-arrow prev" id="helix-slider-prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button class="portfolio-slider-arrow next" id="helix-slider-next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <div class="portfolio-slider-dots" id="helix-slider-dots">
+            <button class="portfolio-slider-dot active" data-slide="0"></button>
+            <button class="portfolio-slider-dot" data-slide="1"></button>
+            <button class="portfolio-slider-dot" data-slide="2"></button>
+          </div>
+        </div>
+        <div class="portfolio-modal-body">
+          <h3 class="portfolio-modal-title">Helix Worlds</h3>
+          <p class="portfolio-modal-description" data-ko="Helix Worlds는 브랜드가 게임 내에서 제품을 선보이고 가상 참여를 실제 판매로 전환할 수 있는 혁신적인 인게임 커머스 플랫폼입니다. 특허 출원 중인 스캐닝 기술로 게임과 실제 세계를 연결합니다." data-en="Helix Worlds is a revolutionary in-game commerce platform that enables brands to showcase products within games, turning virtual engagement into real-world sales. Our patent-pending scanning technology bridges games and reality.">
+            Helix Worlds is a revolutionary in-game commerce platform that enables brands to showcase products within games, turning virtual engagement into real-world sales. Our patent-pending scanning technology bridges games and reality.
+          </p>
+          <div class="portfolio-modal-tags">
+            <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
+          </div>
+          <div class="portfolio-modal-section">
+            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
+            <ul>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="인게임 실시간 커머스 및 마케팅" data-en="Real-world commerce & marketing in games">Real-world commerce & marketing in games</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="게이밍 플랫폼을 위한 로열티 관리" data-en="Royalty management for gaming platforms">Royalty management for gaming platforms</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="한 번 빌드, 어디서나 배포" data-en="Build once, deploy everywhere">Build once, deploy everywhere</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="실시간 인사이트 및 분석" data-en="Unlock actionable insights in real time">Unlock actionable insights in real time</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HannahHR Modal -->
+    <div class="portfolio-modal" id="hannahhr-modal">
+      <div class="portfolio-modal-content">
+        <button class="portfolio-modal-close" id="hannahhr-modal-close">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <!-- Image Slider -->
+        <div class="portfolio-slider" id="hannahhr-slider">
+          <div class="portfolio-slider-track" id="hannahhr-slider-track">
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/hannahhr-slide-1.jpg" alt="HannahHR Dashboard" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/hannahhr-slide-2.jpg" alt="HannahHR Login" />
+            </div>
+            <div class="portfolio-slider-slide">
+              <img src="/wiseup/images/hannahhr-slide-3.jpg" alt="HannahHR Chatbot" />
+            </div>
+          </div>
+          <button class="portfolio-slider-arrow prev" id="hannahhr-slider-prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button class="portfolio-slider-arrow next" id="hannahhr-slider-next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <div class="portfolio-slider-dots" id="hannahhr-slider-dots">
+            <button class="portfolio-slider-dot active" data-slide="0"></button>
+            <button class="portfolio-slider-dot" data-slide="1"></button>
+            <button class="portfolio-slider-dot" data-slide="2"></button>
+          </div>
+        </div>
+        <div class="portfolio-modal-body">
+          <h3 class="portfolio-modal-title">HannahHR</h3>
+          <p class="portfolio-modal-description" data-ko="HannahHR은 직원 정보에 안전하고 실시간으로 접근할 수 있는 혁신적인 HR 관리 플랫폼입니다. 직관적인 대시보드와 AI 기반 챗봇을 통해 HR 업무를 간소화합니다." data-en="HannahHR is an innovative HR management platform providing secure, real-time access to employee information. It streamlines HR operations through an intuitive dashboard and AI-powered chatbot.">
+            HannahHR is an innovative HR management platform providing secure, real-time access to employee information. It streamlines HR operations through an intuitive dashboard and AI-powered chatbot.
+          </p>
+          <div class="portfolio-modal-tags">
+            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
+            <span class="portfolio-tag" data-ko="프론트엔드" data-en="Frontend">Frontend</span>
+            <span class="portfolio-tag" data-ko="백엔드" data-en="Backend">Backend</span>
+            <span class="portfolio-tag" data-ko="데이터베이스" data-en="Database">Database</span>
+          </div>
+          <div class="portfolio-modal-section">
+            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
+            <ul>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="직원 정보 관리 대시보드" data-en="Employee management dashboard">Employee management dashboard</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="AI 기반 HR 챗봇" data-en="AI-powered HR chatbot">AI-powered HR chatbot</span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span data-ko="안전한 실시간 데이터 접근" data-en="Secure, real-time data access">Secure, real-time data access</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- CTA Section -->
     <section class="bg-gradient-to-br from-primary to-primary-dark py-16 px-8 text-center text-white" id="contact">
       <div class="max-w-[1250px] mx-auto">
@@ -627,6 +1077,423 @@ import '../styles/global.css';
         // Add click handlers
         document.getElementById('btn-ko').addEventListener('click', () => setLanguage('ko', true));
         document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
+        
+        // Portfolio filter functionality
+        const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            
+            portfolioCards.forEach(card => {
+              const categories = card.getAttribute('data-category');
+              if (filter === 'all' || categories.includes(filter)) {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                  card.style.display = 'block';
+                  setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                  }, 50);
+                }, 200);
+              } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                  card.style.display = 'none';
+                }, 200);
+              }
+            });
+          });
+        });
+        
+        // Add transition styles to portfolio cards
+        portfolioCards.forEach(card => {
+          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        });
+        
+        // Yeti Modal functionality
+        const yetiCard = document.getElementById('yeti-card');
+        const yetiModal = document.getElementById('yeti-modal');
+        const yetiModalClose = document.getElementById('yeti-modal-close');
+        
+        if (yetiCard && yetiModal) {
+          // Open modal on card click
+          yetiCard.addEventListener('click', () => {
+            yetiModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+          
+          // Close modal on close button click
+          yetiModalClose.addEventListener('click', () => {
+            yetiModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+          
+          // Close modal on backdrop click
+          yetiModal.addEventListener('click', (e) => {
+            if (e.target === yetiModal) {
+              yetiModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+          
+          // Close modal on Escape key
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && yetiModal.classList.contains('active')) {
+              yetiModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        
+        // Yeti Slider functionality
+        const sliderTrack = document.getElementById('yeti-slider-track');
+        const sliderPrev = document.getElementById('yeti-slider-prev');
+        const sliderNext = document.getElementById('yeti-slider-next');
+        const sliderDots = document.querySelectorAll('#yeti-slider-dots .portfolio-slider-dot');
+        const totalSlides = 3;
+        let currentSlide = 0;
+        
+        function goToSlide(index) {
+          currentSlide = index;
+          if (currentSlide < 0) currentSlide = totalSlides - 1;
+          if (currentSlide >= totalSlides) currentSlide = 0;
+          
+          sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+          
+          // Update dots
+          sliderDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+          });
+        }
+        
+        if (sliderPrev && sliderNext) {
+          sliderPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
+          sliderNext.addEventListener('click', () => goToSlide(currentSlide + 1));
+          
+          sliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+              const slideIndex = parseInt(dot.getAttribute('data-slide'));
+              goToSlide(slideIndex);
+            });
+          });
+          
+          // Reset slider when modal closes
+          const yetiModalForReset = document.getElementById('yeti-modal');
+          if (yetiModalForReset) {
+            const observer = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !yetiModalForReset.classList.contains('active')) {
+                  setTimeout(() => goToSlide(0), 300);
+                }
+              });
+            });
+            observer.observe(yetiModalForReset, { attributes: true });
+          }
+        }
+        
+        // Helix Modal functionality
+        const helixCard = document.getElementById('helix-card');
+        const helixModal = document.getElementById('helix-modal');
+        const helixModalClose = document.getElementById('helix-modal-close');
+        
+        if (helixCard && helixModal) {
+          helixCard.addEventListener('click', () => {
+            helixModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+          
+          helixModalClose.addEventListener('click', () => {
+            helixModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+          
+          helixModal.addEventListener('click', (e) => {
+            if (e.target === helixModal) {
+              helixModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+          
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && helixModal.classList.contains('active')) {
+              helixModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        
+        // Helix Slider functionality
+        const helixSliderTrack = document.getElementById('helix-slider-track');
+        const helixSliderPrev = document.getElementById('helix-slider-prev');
+        const helixSliderNext = document.getElementById('helix-slider-next');
+        const helixSliderDots = document.querySelectorAll('#helix-slider-dots .portfolio-slider-dot');
+        let helixCurrentSlide = 0;
+        
+        function goToHelixSlide(index) {
+          helixCurrentSlide = index;
+          if (helixCurrentSlide < 0) helixCurrentSlide = 2;
+          if (helixCurrentSlide >= 3) helixCurrentSlide = 0;
+          
+          helixSliderTrack.style.transform = `translateX(-${helixCurrentSlide * 100}%)`;
+          
+          helixSliderDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === helixCurrentSlide);
+          });
+        }
+        
+        if (helixSliderPrev && helixSliderNext) {
+          helixSliderPrev.addEventListener('click', () => goToHelixSlide(helixCurrentSlide - 1));
+          helixSliderNext.addEventListener('click', () => goToHelixSlide(helixCurrentSlide + 1));
+          
+          helixSliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+              const slideIndex = parseInt(dot.getAttribute('data-slide'));
+              goToHelixSlide(slideIndex);
+            });
+          });
+          
+          // Reset slider when modal closes
+          if (helixModal) {
+            const helixObserver = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !helixModal.classList.contains('active')) {
+                  setTimeout(() => goToHelixSlide(0), 300);
+                }
+              });
+            });
+            helixObserver.observe(helixModal, { attributes: true });
+          }
+        }
+        
+        // HannahHR Modal functionality
+        const hannahhrCard = document.getElementById('hannahhr-card');
+        const hannahhrModal = document.getElementById('hannahhr-modal');
+        const hannahhrModalClose = document.getElementById('hannahhr-modal-close');
+        
+        if (hannahhrCard && hannahhrModal) {
+          hannahhrCard.addEventListener('click', () => {
+            hannahhrModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+          
+          hannahhrModalClose.addEventListener('click', () => {
+            hannahhrModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+          
+          hannahhrModal.addEventListener('click', (e) => {
+            if (e.target === hannahhrModal) {
+              hannahhrModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+          
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && hannahhrModal.classList.contains('active')) {
+              hannahhrModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        
+        // HannahHR Slider functionality
+        const hannahhrSliderTrack = document.getElementById('hannahhr-slider-track');
+        const hannahhrSliderPrev = document.getElementById('hannahhr-slider-prev');
+        const hannahhrSliderNext = document.getElementById('hannahhr-slider-next');
+        const hannahhrSliderDots = document.querySelectorAll('#hannahhr-slider-dots .portfolio-slider-dot');
+        let hannahhrCurrentSlide = 0;
+        
+        function goToHannahhrSlide(index) {
+          hannahhrCurrentSlide = index;
+          if (hannahhrCurrentSlide < 0) hannahhrCurrentSlide = 2;
+          if (hannahhrCurrentSlide >= 3) hannahhrCurrentSlide = 0;
+          
+          hannahhrSliderTrack.style.transform = `translateX(-${hannahhrCurrentSlide * 100}%)`;
+          
+          hannahhrSliderDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === hannahhrCurrentSlide);
+          });
+        }
+        
+        if (hannahhrSliderPrev && hannahhrSliderNext) {
+          hannahhrSliderPrev.addEventListener('click', () => goToHannahhrSlide(hannahhrCurrentSlide - 1));
+          hannahhrSliderNext.addEventListener('click', () => goToHannahhrSlide(hannahhrCurrentSlide + 1));
+          
+          hannahhrSliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+              const slideIndex = parseInt(dot.getAttribute('data-slide'));
+              goToHannahhrSlide(slideIndex);
+            });
+          });
+          
+          // Reset slider when modal closes
+          if (hannahhrModal) {
+            const hannahhrObserver = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !hannahhrModal.classList.contains('active')) {
+                  setTimeout(() => goToHannahhrSlide(0), 300);
+                }
+              });
+            });
+            hannahhrObserver.observe(hannahhrModal, { attributes: true });
+          }
+        }
+        
+        // Seraphina Modal functionality
+        const seraphinaCard = document.getElementById('seraphina-card');
+        const seraphinaModal = document.getElementById('seraphina-modal');
+        const seraphinaModalClose = document.getElementById('seraphina-modal-close');
+        
+        if (seraphinaCard && seraphinaModal) {
+          seraphinaCard.addEventListener('click', () => {
+            seraphinaModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+          
+          seraphinaModalClose.addEventListener('click', () => {
+            seraphinaModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+          
+          seraphinaModal.addEventListener('click', (e) => {
+            if (e.target === seraphinaModal) {
+              seraphinaModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+          
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && seraphinaModal.classList.contains('active')) {
+              seraphinaModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        
+        // Seraphina Slider functionality
+        const seraphinaSliderTrack = document.getElementById('seraphina-slider-track');
+        const seraphinaSliderPrev = document.getElementById('seraphina-slider-prev');
+        const seraphinaSliderNext = document.getElementById('seraphina-slider-next');
+        const seraphinaSliderDots = document.querySelectorAll('#seraphina-slider-dots .portfolio-slider-dot');
+        let seraphinaCurrentSlide = 0;
+        
+        function goToSeraphinaSlide(index) {
+          seraphinaCurrentSlide = index;
+          if (seraphinaCurrentSlide < 0) seraphinaCurrentSlide = 2;
+          if (seraphinaCurrentSlide >= 3) seraphinaCurrentSlide = 0;
+          
+          seraphinaSliderTrack.style.transform = `translateX(-${seraphinaCurrentSlide * 100}%)`;
+          
+          seraphinaSliderDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === seraphinaCurrentSlide);
+          });
+        }
+        
+        if (seraphinaSliderPrev && seraphinaSliderNext) {
+          seraphinaSliderPrev.addEventListener('click', () => goToSeraphinaSlide(seraphinaCurrentSlide - 1));
+          seraphinaSliderNext.addEventListener('click', () => goToSeraphinaSlide(seraphinaCurrentSlide + 1));
+          
+          seraphinaSliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+              const slideIndex = parseInt(dot.getAttribute('data-slide'));
+              goToSeraphinaSlide(slideIndex);
+            });
+          });
+          
+          // Reset slider when modal closes
+          if (seraphinaModal) {
+            const seraphinaObserver = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !seraphinaModal.classList.contains('active')) {
+                  setTimeout(() => goToSeraphinaSlide(0), 300);
+                }
+              });
+            });
+            seraphinaObserver.observe(seraphinaModal, { attributes: true });
+          }
+        }
+        
+        // Pacemaker Modal functionality
+        const pacemakerCard = document.getElementById('pacemaker-card');
+        const pacemakerModal = document.getElementById('pacemaker-modal');
+        const pacemakerModalClose = document.getElementById('pacemaker-modal-close');
+        
+        if (pacemakerCard && pacemakerModal) {
+          pacemakerCard.addEventListener('click', () => {
+            pacemakerModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          });
+          
+          pacemakerModalClose.addEventListener('click', () => {
+            pacemakerModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+          
+          pacemakerModal.addEventListener('click', (e) => {
+            if (e.target === pacemakerModal) {
+              pacemakerModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+          
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pacemakerModal.classList.contains('active')) {
+              pacemakerModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        
+        // Pacemaker Slider functionality
+        const pacemakerSliderTrack = document.getElementById('pacemaker-slider-track');
+        const pacemakerSliderPrev = document.getElementById('pacemaker-slider-prev');
+        const pacemakerSliderNext = document.getElementById('pacemaker-slider-next');
+        const pacemakerSliderDots = document.querySelectorAll('#pacemaker-slider-dots .portfolio-slider-dot');
+        let pacemakerCurrentSlide = 0;
+        
+        function goToPacemakerSlide(index) {
+          pacemakerCurrentSlide = index;
+          if (pacemakerCurrentSlide < 0) pacemakerCurrentSlide = 2;
+          if (pacemakerCurrentSlide >= 3) pacemakerCurrentSlide = 0;
+          
+          pacemakerSliderTrack.style.transform = `translateX(-${pacemakerCurrentSlide * 100}%)`;
+          
+          pacemakerSliderDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === pacemakerCurrentSlide);
+          });
+        }
+        
+        if (pacemakerSliderPrev && pacemakerSliderNext) {
+          pacemakerSliderPrev.addEventListener('click', () => goToPacemakerSlide(pacemakerCurrentSlide - 1));
+          pacemakerSliderNext.addEventListener('click', () => goToPacemakerSlide(pacemakerCurrentSlide + 1));
+          
+          pacemakerSliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+              const slideIndex = parseInt(dot.getAttribute('data-slide'));
+              goToPacemakerSlide(slideIndex);
+            });
+          });
+          
+          // Reset slider when modal closes
+          if (pacemakerModal) {
+            const pacemakerObserver = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !pacemakerModal.classList.contains('active')) {
+                  setTimeout(() => goToPacemakerSlide(0), 300);
+                }
+              });
+            });
+            pacemakerObserver.observe(pacemakerModal, { attributes: true });
+          }
+        }
       });
     </script>
   </body>
