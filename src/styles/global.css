@@ -272,6 +272,14 @@
   .term-card p {
     @apply text-sm text-text-muted leading-relaxed;
   }
+
+  .tax-note {
+    @apply text-[10px] text-text-muted font-normal block mt-2 mb-2;
+  }
+
+  .tax-note.text-right {
+    @apply text-right;
+  }
 }
 
 /* Portfolio Section */
