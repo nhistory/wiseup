@@ -5,8 +5,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://sehwanlee.github.io",
-  base: "/wiseup",
+  site: "https://wiseupsolution.ca",
+  base: "/",
   output: "static",
 
   vite: {
