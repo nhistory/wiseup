@@ -1,1560 +1,342 @@
 ---
-// src/pages/index.astro - Single page with language toggle
+// src/pages/index.astro - New Homepage
 import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en" id="html-root">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-ko="전문 웹사이트 개발 패키지 | WiseUp" data-en="Professional Website Development | WiseUp">Professional Website Development | WiseUp</title>
-    <meta
-      name="description"
-      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
-      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
-      content="Professional website development services. High-performance websites built with modern technology at competitive prices."
-    />
-    <!-- Favicon -->
+    <title>WiseUp | Empowering Your Vision, Enhancing Your Growth</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://wiseupsolution.ca/" />
-    <meta 
-      property="og:title" 
-      data-ko="전문 웹사이트 개발 패키지 | WiseUp" 
-      data-en="Professional Website Development | WiseUp"
-      content="Professional Website Development | WiseUp" 
-    />
-    <meta 
-      property="og:description" 
-      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
-      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
-      content="Professional website development services. High-performance websites built with modern technology at competitive prices." 
-    />
-    <meta property="og:image" content="https://wiseupsolution.ca/images/og-image.png" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://wiseupsolution.ca/" />
-    <meta 
-      name="twitter:title" 
-      data-ko="전문 웹사이트 개발 패키지 | WiseUp" 
-      data-en="Professional Website Development | WiseUp"
-      content="Professional Website Development | WiseUp" 
-    />
-    <meta 
-      name="twitter:description" 
-      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
-      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
-      content="Professional website development services. High-performance websites built with modern technology at competitive prices." 
-    />
-    <meta name="twitter:image" content="https://wiseupsolution.ca/images/og-image.png" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 750px;
+        display: flex;
+        align-items: flex-start;
+        color: white;
+        text-align: left;
+      }
+      .hero-accent {
+        color: #ffcc00;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1a1a2e;
+        margin-bottom: 1rem;
+      }
+      .section-label {
+        color: #1565c0;
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
+      .process-card {
+        background: white;
+        padding: 2.5rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        text-align: center;
+        transition: transform 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .process-icon-container {
+        width: 60px;
+        height: 60px;
+        background: #eef2f8;
+        color: #1565c0;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+      .process-card h4 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #1a1a2e;
+        margin-bottom: 1.5rem;
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+      }
+      .process-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .process-list li {
+        font-size: 0.85rem;
+        color: #4b5563;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        word-break: keep-all;
+      }
+      .client-logo {
+        max-width: 150px;
+        transition: all 0.3s ease;
+      }
+      .client-logo:hover {
+        transform: scale(1.05);
+      }
+      .contact-form-container {
+        background: #f8f9fa;
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border py-4 px-8 z-[1000]">
       <div class="max-w-[1200px] mx-auto flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold text-text-dark no-underline">Wise<span class="text-primary">Up</span></a>
-        <div class="flex items-center gap-6">
-          <ul class="hidden md:flex gap-8 list-none">
-            <li><a href="#packages" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="패키지" data-en="Packages">Packages</a></li>
-            <li><a href="#addons" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="추가옵션" data-en="Add-ons">Add-ons</a></li>
-            <li><a href="#portfolio" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="포트폴리오" data-en="Portfolio">Portfolio</a></li>
-            <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="문의하기" data-en="Contact">Contact</a></li>
+        <a href="/" class="flex items-center no-underline">
+          <img src="/images/logo.png" alt="WiseUp Logo" class="h-14 w-auto" />
+        </a>
+        <div class="flex items-center gap-8">
+          <ul class="hidden md:flex gap-8 list-none m-0 p-0">
+            <li><a href="#services" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Services</a></li>
+            <li><a href="#process" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Process</a></li>
+            <li><a href="/web-dev" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Web Development</a></li>
+            <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">Contact</a></li>
           </ul>
-          <!-- Language Switcher -->
-          <div class="lang-switcher" id="lang-switcher">
-            <div class="lang-slider" id="lang-slider"></div>
-            <button type="button" class="lang-btn" data-lang="ko" id="btn-ko">한</button>
-            <button type="button" class="lang-btn active" data-lang="en" id="btn-en">EN</button>
-          </div>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-video-section min-h-[70vh] flex flex-col justify-center items-center text-center pt-32 pb-16 px-8 md:px-8 relative overflow-hidden">
-      <!-- Video Background -->
-      <div class="hero-video-container" aria-hidden="true">
-        <video 
-          class="hero-video"
-          autoplay 
-          muted 
-          loop 
-          playsinline
-          poster="/images/hero-poster.jpg"
-        >
-          <source src="/videos/background.mp4" type="video/mp4" />
-        </video>
-      </div>
-      
-      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 relative z-10" data-ko="맞춤형 웹 솔루션" data-en="Premium Services">Premium Services</div>
-      <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 leading-tight relative z-10">
-        <span class="block hero-animate-line" data-html-ko="성공하는 비즈니스의" data-html-en="Professional <span class='text-primary' style='white-space: nowrap;'>Website</span>">Professional <span class="text-primary" style="white-space: nowrap;">Website</span></span>
-        <span class="block hero-animate-line" data-html-ko="<span class='text-primary'>웹사이트</span>는 다릅니다" data-html-en="<span style='white-space: nowrap;'>Development</span> <span style='white-space: nowrap;'>Packages</span>"><span class="text-primary">웹사이트</span>는 다릅니다</span>
-      </h1>
-      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed relative z-10" data-ko="고객에게 신뢰를 주는 첫인상, 그 시작은 웹사이트입니다. 검색에 강하고, 관리가 쉬운 나만의 웹사이트를 합리적인 비용으로 만들어 드립니다." data-en="Fast, SEO-optimized websites that convert visitors into customers. Built with modern technology at a price that makes sense.">
-        Fast, SEO-optimized websites that convert visitors into customers.<br />
-        Built with modern technology at a price that makes sense.
-      </p>
-      <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto justify-center px-4 md:px-0 relative z-10">
-        <a href="#packages" class="btn btn-primary w-full md:w-auto" data-ko="패키지 보기" data-en="View Packages">View Packages</a>
-        <a href="mailto:hans@wiseupsolution.ca?subject=Website%20Inquiry" class="btn btn-secondary w-full md:w-auto" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
+    <!-- Hero -->
+    <header class="hero-section pt-52">
+      <div class="max-w-[1250px] mx-auto w-full px-8">
+        <h1 class="text-4xl md:text-6xl font-bold mb-0 leading-tight">
+          Empowering <span class="hero-accent">Your Vision</span><br/>
+          Enhancing <span class="hero-accent">Your Growth</span>
+        </h1>
       </div>
     </header>
 
-    <!-- Pricing Packages -->
-    <section id="packages" class="py-20 bg-bg-section">
-      <div class="max-w-[1250px] mx-auto px-6">
-        <div class="text-center mb-16">
-          <span class="section-badge" data-ko="서비스 패키지" data-en="Service Packages">Service Packages</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="서비스를 확인하세요!" data-en="Check Our Services!">Check Our Services!</h2>
-          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="비즈니스 규모와 니즈에 맞는 최적의 패키지를 선택하세요" data-en="Choose the perfect package that fits your business size and needs">Choose the perfect package that fits your business size and needs</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- Essential Package -->
-          <div class="pricing-card">
-            <div class="card-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <span class="card-tier">01</span>
-            <h3 class="card-title">Essential</h3>
-            <p class="card-tagline" data-ko="소규모 비즈니스를 위한 고성능 랜딩 페이지" data-en="High-Performance Landing Page for Small Businesses">High-Performance Landing Page for Small Businesses</p>
-
-            <div class="card-price">
-              <span class="currency">$</span>
-              <span class="amount">1,790</span>
-              <span class="suffix">+</span>
-            </div>
-
-            <div class="card-meta">
-              <div class="card-meta-item">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span data-ko="1 - 2주" data-en="1 - 2 weeks">1 - 2 weeks</span>
-              </div>
-            </div>
-
-            <ul class="card-features">
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="정적 사이트" data-en="Static Site">Static Site</strong> — <span data-ko="최상의 로딩 속도" data-en="Lightning-fast loading">Lightning-fast loading</span></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="반응형 디자인" data-en="Responsive Design">Responsive Design</strong> — <span data-ko="모든 기기 최적화" data-en="Optimized for all devices">Optimized for all devices</span></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="기본 페이지 (최대 3개)" data-en="Core Pages (Up to 3)">Core Pages (Up to 3)</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="기본 SEO 설정" data-en="Basic SEO Setup">Basic SEO Setup</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="문의 양식 + SSL" data-en="Contact Form + SSL">Contact Form + SSL</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="이중 언어 지원" data-en="Bilingual Support">Bilingual Support</strong> — <span data-ko="한/영 다국어" data-en="Korean & English">Korean & English</span></span>
-              </li>
-            </ul>
-            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
-
-            <a href="mailto:hans@wiseupsolution.ca?subject=Package%20Inquiry" class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</a>
-          </div>
-
-          <!-- Professional Package -->
-          <div class="pricing-card featured">
-            <span class="card-badge" data-ko="⭐ 최고 가성비" data-en="⭐ Best Value">⭐ Best Value</span>
-            <div class="card-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <span class="card-tier">02</span>
-            <h3 class="card-title">Professional</h3>
-            <p class="card-tagline" data-ko="다국어 지원을 갖춘 종합적인 디지털 프레즌스" data-en="Comprehensive Digital Presence with Multi-language Support">Comprehensive Digital Presence with Multi-language Support</p>
-
-            <div class="card-price">
-              <span class="currency">$</span>
-              <span class="amount">2,950</span>
-              <span class="suffix">+</span>
-            </div>
-
-            <div class="card-meta">
-              <div class="card-meta-item">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span data-ko="3 - 4주" data-en="3 - 4 weeks">3 - 4 weeks</span>
-              </div>
-            </div>
-
-            <ul class="card-features">
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                <span><strong data-ko="Essential 패키지 전체 포함" data-en="Everything in Essential">Everything in Essential</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="CMS 대시보드" data-en="CMS Dashboard">CMS Dashboard</strong> — <span data-ko="직접 콘텐츠 수정" data-en="Edit content yourself">Edit content yourself</span></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="유연한 페이지 (최대 7개)" data-en="Flexible Pages (Up to 7)">Flexible Pages (Up to 7)</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="로컬 SEO 프로" data-en="Local SEO Pro">Local SEO Pro</strong> — <span data-ko="Google Maps 연동" data-en="Google Maps integration">Google Maps integration</span></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="프로페셔널 애니메이션" data-en="Professional Animations">Professional Animations</strong></span>
-              </li>
-            </ul>
-            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
-
-            <a href="mailto:hans@wiseupsolution.ca?subject=Package%20Inquiry" class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</a>
-          </div>
-
-          <!-- Ultimate Package -->
-          <div class="pricing-card">
-            <div class="card-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-              </svg>
-            </div>
-            <span class="card-tier">03</span>
-            <h3 class="card-title">Ultimate</h3>
-            <p class="card-tagline" data-ko="풀서비스 비즈니스 자동화 & 맞춤 솔루션" data-en="Full-Service Business Automation & Custom Solutions">Full-Service Business Automation & Custom Solutions</p>
-
-            <div class="card-price">
-              <span class="currency">$</span>
-              <span class="amount">6,500</span>
-              <span class="suffix">+</span>
-            </div>
-
-            <div class="card-meta">
-              <div class="card-meta-item">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span data-ko="6 - 8주+" data-en="6 - 8 weeks+">6 - 8 weeks+</span>
-              </div>
-            </div>
-
-            <ul class="card-features">
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                <span><strong data-ko="Professional 패키지 전체 포함" data-en="Everything in Professional">Everything in Professional</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="맞춤 비즈니스 로직" data-en="Custom Business Logic">Custom Business Logic</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="확장 페이지 (최대 15개)" data-en="Extended Pages (Up to 15)">Extended Pages (Up to 15)</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="예약 & 결제" data-en="Booking & Payment">Booking & Payment</strong> — <span data-ko="Stripe 연동" data-en="Stripe integration">Stripe integration</span></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="자동화 워크플로우" data-en="Automated Workflow">Automated Workflow</strong></span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><strong data-ko="고급 데이터베이스" data-en="Advanced Database">Advanced Database</strong> — <span data-ko="회원 관리" data-en="Member management">Member management</span></span>
-              </li>
-            </ul>
-            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
-
-            <a href="mailto:hans@wiseupsolution.ca?subject=Package%20Inquiry" class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</a>
-          </div>
-        </div>
-      </div>
+    <!-- Who We Are -->
+    <section class="py-24 px-6 max-w-[900px] mx-auto text-center">
+      <span class="section-label">Who We Are</span>
+      <h2 class="text-4xl font-extrabold text-text-dark mb-8">Empowering Your Businesses</h2>
+      <p class="text-lg text-text-muted leading-relaxed">
+        Our vision is to empower businesses with tailored solutions that drive innovation and sustainable growth. By delivering strategic expertise and unique global experiences, we help our clients achieve their goals, overcome challenges, and unlock new opportunities, fostering long-term success and excellence in a dynamic market.
+      </p>
     </section>
 
-    <!-- Add-ons Section -->
-    <section id="addons" class="py-20">
-      <div class="max-w-[1250px] mx-auto px-6">
-        <div class="text-center mb-16">
-          <span class="section-badge" data-ko="추가 옵션" data-en="Add-on Options">Add-on Options</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="추가 서비스" data-en="Additional Services">Additional Services</h2>
-          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="필요에 따라 추가 옵션을 선택하세요" data-en="Choose additional options based on your needs">Choose additional options based on your needs</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="addon-card">
-            <div class="addon-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
-              </svg>
-            </div>
-            <div class="addon-details">
-              <div class="addon-content">
-                <h4 data-ko="추가 언어" data-en="Additional Language">Additional Language</h4>
-                <p data-ko="프랑스어, 중국어 등 추가 언어 지원" data-en="French, Chinese, and more language support">French, Chinese, and more language support</p>
-              </div>
-              <span class="addon-price" data-ko="$500+ / 언어" data-en="$500+ / language">$500+ / language</span>
-            </div>
-          </div>
-
-          <div class="addon-card">
-            <div class="addon-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-            </div>
-            <div class="addon-details">
-              <div class="addon-content">
-                <h4 data-ko="추가 페이지" data-en="Additional Page">Additional Page</h4>
-                <p data-ko="기본 페이지 초과 시 추가 페이지" data-en="Extra pages beyond the base package">Extra pages beyond the base package</p>
-              </div>
-              <span class="addon-price" data-ko="$100 / 페이지" data-en="$100 / page">$100 / page</span>
-            </div>
-          </div>
-
-          <div class="addon-card">
-            <div class="addon-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-              </svg>
-            </div>
-            <div class="addon-details">
-              <div class="addon-content">
-                <h4 data-ko="디자인 리소스" data-en="Design Resources">Design Resources</h4>
-                <p data-ko="고급 스크롤 애니메이션, 프리미엄 UI 인터랙션 및 몰입형 비주얼 효과" data-en="Advanced scroll animations, premium UI interactions, and immersive visual effects">Advanced scroll animations, premium UI interactions, and immersive visual effects</p>
-              </div>
-              <span class="addon-price">$500 ~ $800</span>
-            </div>
-          </div>
-
-          <div class="addon-card">
-            <div class="addon-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </div>
-            <div class="addon-details">
-              <div class="addon-content">
-                <h4 data-ko="커스텀 모듈" data-en="Custom Module">Custom Module</h4>
-                <p data-ko="복잡한 알고리즘, 외부 API 연동" data-en="Complex algorithms, external API integration">Complex algorithms, external API integration</p>
-              </div>
-              <span class="addon-price" data-ko="별도 협의" data-en="Contact for quote">Contact for quote</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Maintenance Section -->
-    <section id="maintenance" class="py-20 bg-bg-section">
-      <div class="max-w-[1250px] mx-auto px-6">
-        <div class="text-center mb-16">
-          <span class="section-badge" data-ko="유지보수 & 지원" data-en="Maintenance & Support">Maintenance & Support</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="지속 지원 플랜" data-en="Ongoing Support Plans">Ongoing Support Plans</h2>
-          <p class="text-text-muted max-w-[600px] mx-auto">
-            <span data-ko="장기적인 사이트 운영과 안정성을 위한 유지보수 플랜" data-en="Maintenance plans for long-term site operation and stability">Maintenance plans for long-term site operation and stability</span><br />
-            <strong data-ko="연간 결제 시 약 15% 할인 혜택" data-en="Save ~15% with annual billing">Save ~15% with annual billing</strong>
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div class="maintenance-card">
-            <div class="maintenance-header">
-              <h3>Support (Basic)</h3>
-              <div class="maintenance-price">$200<span data-ko=" / 월" data-en=" / month"> / month</span></div>
-              <div class="maintenance-annual" data-ko="연간 결제 시 $2,000/년 (월 $166)" data-en="$2,000/year with annual billing ($166/mo)">$2,000/year with annual billing ($166/mo)</div>
-            </div>
-            <ul class="maintenance-features">
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="소프트웨어 업데이트" data-en="Software Updates">Software Updates</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="보안 및 모니터링" data-en="Security & Monitoring">Security & Monitoring</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="데이터 백업" data-en="Backups">Backups</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="콘텐츠 수정 지원 (월 5회)" data-en="Basic Content Edits (5/mo)">Basic Content Edits (5/mo)</span>
-              </li>
-            </ul>
-            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
-          </div>
-
-          <div class="maintenance-card recommended">
-            <span class="maintenance-badge" data-ko="추천" data-en="Recommended">Recommended</span>
-            <div class="maintenance-header">
-              <h3>Support (Pro)</h3>
-              <div class="maintenance-price">$350<span data-ko=" / 월" data-en=" / month"> / month</span></div>
-              <div class="maintenance-annual" data-ko="연간 결제 시 $3,500/년 (월 $291)" data-en="$3,500/year with annual billing ($291/mo)">$3,500/year with annual billing ($291/mo)</div>
-            </div>
-            <ul class="maintenance-features">
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="데이터베이스 관리" data-en="Database Optimization">Database Optimization</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="고성능 백업" data-en="Premium Backups">Premium Backups</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="보안 심화" data-en="Advanced Security">Advanced Security</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="우선 기술 지원" data-en="Priority Support">Priority Support</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="기능 점검 및 테스트" data-en="Testing">Testing</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="콘텐츠 수정 추가 지원 (월 10회)" data-en="Content Edits (10/mo)">Content Edits (10/mo)</span>
-              </li>
-            </ul>
-            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Terms Section -->
-    <section id="terms" class="py-20">
-      <div class="max-w-[1250px] mx-auto px-6">
-        <div class="text-center mb-16">
-          <span class="section-badge" data-ko="이용약관" data-en="Terms & Conditions">Terms & Conditions</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="작업 프로세스" data-en="Working Process">Working Process</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="term-card">
-            <h4>
-              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-              <span data-ko="지적 재산권" data-en="Intellectual Property">Intellectual Property</span>
-            </h4>
-            <p data-ko="모든 프로젝트 완료 및 잔금 지불 시, 제작된 소스 코드와 디자인 자산의 소유권은 고객에게 귀속됩니다." data-en="Upon project completion and final payment, ownership of all source code and design assets transfers to the client.">Upon project completion and final payment, ownership of all source code and design assets transfers to the client.</p>
-          </div>
-
-          <div class="term-card">
-            <h4>
-              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-              <span data-ko="수정 사항" data-en="Revisions">Revisions</span>
-            </h4>
-            <p data-ko="각 단계별로 최대 3회의 수정이 포함됩니다. 범위를 벗어난 대규모 구조 변경은 별도 협의가 필요합니다." data-en="Up to 3 revisions are included per phase. Major structural changes outside the scope require separate discussion.">Up to 3 revisions are included per phase. Major structural changes outside the scope require separate discussion.</p>
-          </div>
-
-          <div class="term-card">
-            <h4>
-              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-              <span data-ko="결제 조건" data-en="Payment Terms">Payment Terms</span>
-            </h4>
-            <p>
-              <strong data-ko="계약금:" data-en="Deposit:">Deposit:</strong> <span data-ko="계약 시 총액의 50%" data-en="50% of total at contract signing">50% of total at contract signing</span><br />
-              <strong data-ko="잔금:" data-en="Balance:">Balance:</strong> <span data-ko="프로젝트 최종 승인 시 나머지 50%" data-en="Remaining 50% upon final project approval">Remaining 50% upon final project approval</span>
-            </p>
-          </div>
-
-          <div class="term-card">
-            <h4>
-              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
-              <span data-ko="프로젝트 일정" data-en="Project Timeline">Project Timeline</span>
-            </h4>
-            <p data-ko="명시된 제작 기간은 표준 기준이며, 작업 범위 및 피드백 속도에 따라 조정될 수 있습니다." data-en="Stated timelines are standard estimates and may vary based on project scope and feedback response time.">Stated timelines are standard estimates and may vary based on project scope and feedback response time.</p>
-          </div>
-
-          <div class="term-card">
-            <h4>
-              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-              </svg>
-              <span data-ko="유지보수 결제" data-en="Maintenance Billing">Maintenance Billing</span>
-            </h4>
-            <p data-ko="안정적인 서비스 품질 유지를 위해, 유지보수 옵션은 최소 3개월 단위로 결제가 가능합니다." data-en="To ensure consistent service quality, maintenance plans are billed in minimum 3-month terms.">To ensure consistent service quality, maintenance plans are billed in minimum 3-month terms.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-bg-section">
-      <div class="max-w-[1250px] mx-auto px-6">
-        <div class="text-center mb-16">
-          <span class="section-badge" data-ko="포트폴리오" data-en="Portfolio">Portfolio</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="작업 포트폴리오" data-en="Our Portfolio">Our Portfolio</h2>
-          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="최근 완료한 프로젝트들을 확인해보세요" data-en="Check out our recently completed projects">Check out our recently completed projects</p>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="portfolio-filters">
-          <button class="portfolio-filter-btn active" data-filter="all">All</button>
-          <button class="portfolio-filter-btn" data-filter="website" data-ko="웹사이트" data-en="Website">Website</button>
-          <button class="portfolio-filter-btn" data-filter="graphics" data-ko="그래픽 디자인" data-en="Graphic Design">Graphic Design</button>
-          <button class="portfolio-filter-btn" data-filter="seo" data-ko="SEO" data-en="SEO">SEO</button>
-          <button class="portfolio-filter-btn" data-filter="database" data-ko="데이터베이스" data-en="Database">Database</button>
-          <button class="portfolio-filter-btn" data-filter="datavis" data-ko="데이터 시각화" data-en="Data Visualization">Data Visualization</button>
-        </div>
-
-        <!-- Portfolio Grid (2 Columns) -->
-        <div class="portfolio-grid">
-          <!-- Project 1: Pacemaker (Clickable) -->
-          <div class="portfolio-card" data-category="website seo graphics" id="pacemaker-card" style="cursor: pointer;">
-            <div class="portfolio-image">
-              <img src="/images/pacemaker-thumbnail.png" alt="Pacemaker" />
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Pacemaker</h3>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-                <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
-                <span class="portfolio-tag" data-ko="그래픽" data-en="Graphic">Graphic</span>
-                <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Seraphina's Music & Art School (Clickable) -->
-          <div class="portfolio-card" data-category="website seo" id="seraphina-card" style="cursor: pointer;">
-            <div class="portfolio-image">
-              <img src="/images/seraphina-thumbnail.jpg" alt="Seraphina's Music & Art School" />
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Seraphina's Music & Art School</h3>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-                <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
-                <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: HannahHR (Clickable) -->
-          <div class="portfolio-card" data-category="website database" id="hannahhr-card" style="cursor: pointer;">
-            <div class="portfolio-image">
-              <img src="/images/hannahhr-thumbnail.png" alt="HannahHR" />
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">HannahHR</h3>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-                <span class="portfolio-tag" data-ko="프론트엔드" data-en="Frontend">Frontend</span>
-                <span class="portfolio-tag" data-ko="백엔드" data-en="Backend">Backend</span>
-                <span class="portfolio-tag" data-ko="데이터베이스" data-en="Database">Database</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: Helix (Clickable) -->
-          <div class="portfolio-card" data-category="graphics" id="helix-card" style="cursor: pointer;">
-            <div class="portfolio-image">
-              <img src="/images/helix-thumbnail.png" alt="Helix Game Management Dashboard" />
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Helix Game Management Dashboard</h3>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: Yeti (Clickable) -->
-          <div class="portfolio-card" data-category="website graphics datavis" id="yeti-card" style="cursor: pointer;">
-            <div class="portfolio-image">
-              <img src="/images/yeti-thumbnail.png" alt="Yeti: Web3 Game Discovery Platform" />
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Yeti: Web3 Game Discovery Platform</h3>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-                <span class="portfolio-tag" data-ko="데이터 시각화" data-en="Data Visualization">Data Visualization</span>
-                <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pacemaker Modal -->
-    <div class="portfolio-modal" id="pacemaker-modal">
-      <div class="portfolio-modal-content">
-        <button class="portfolio-modal-close" id="pacemaker-modal-close">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <!-- Image Slider -->
-        <div class="portfolio-slider" id="pacemaker-slider">
-          <div class="portfolio-slider-track" id="pacemaker-slider-track">
-            <div class="portfolio-slider-slide">
-              <img src="/images/pacemaker-thumbnail.png" alt="Pacemaker Homepage" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/pacemaker-slide-1.png" alt="Pacemaker Desktop & Tablet" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/pacemaker-slide-2.jpg" alt="Pacemaker Mobile" />
-            </div>
-          </div>
-          <button class="portfolio-slider-arrow prev" id="pacemaker-slider-prev">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button class="portfolio-slider-arrow next" id="pacemaker-slider-next">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-          <div class="portfolio-slider-dots" id="pacemaker-slider-dots">
-            <button class="portfolio-slider-dot active" data-slide="0"></button>
-            <button class="portfolio-slider-dot" data-slide="1"></button>
-            <button class="portfolio-slider-dot" data-slide="2"></button>
-          </div>
-        </div>
-        <div class="portfolio-modal-body">
-          <h3 class="portfolio-modal-title">Pacemaker</h3>
-          <p class="portfolio-modal-description" data-ko="커리어 고민이 많은 청년과 이직을 준비하는 분들을 위한 맞춤형 커리어 코칭 서비스입니다. 나만의 속도로, 나만의 방향으로 미래를 설계할 수 있도록 돕습니다." data-en="Pacemaker empowers young professionals and career changers to discover clarity, confidence, and the tools they need to move forward. We help you find your pace and build your future through personalized career coaching and support.">
-            Pacemaker empowers young professionals and career changers to discover clarity, confidence, and the tools they need to move forward. We help you find your pace and build your future through personalized career coaching and support.
-          </p>
-          <div class="portfolio-modal-tags">
-            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-            <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
-            <span class="portfolio-tag" data-ko="그래픽" data-en="Graphic">Graphic</span>
-            <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
-          </div>
-          <div class="portfolio-modal-section">
-            <h4 data-ko="구현 기능" data-en="Implementation">Implementation</h4>
-            <ul>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="반응형 웹 디자인 (모바일/태블릿/데스크탑)" data-en="Responsive web design (Mobile/Tablet/Desktop)">Responsive web design (Mobile/Tablet/Desktop)</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="SEO 최적화 및 메타 태그 설정" data-en="SEO optimization & meta tag configuration">SEO optimization & meta tag configuration</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="CMS 기반 콘텐츠 관리 시스템" data-en="CMS-based content management system">CMS-based content management system</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="문의 폼 및 이메일 연동" data-en="Contact form & email integration">Contact form & email integration</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Seraphina Modal -->
-    <div class="portfolio-modal" id="seraphina-modal">
-      <div class="portfolio-modal-content">
-        <button class="portfolio-modal-close" id="seraphina-modal-close">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <!-- Image Slider -->
-        <div class="portfolio-slider" id="seraphina-slider">
-          <div class="portfolio-slider-track" id="seraphina-slider-track">
-            <div class="portfolio-slider-slide">
-              <img src="/images/seraphina-thumbnail.jpg" alt="Seraphina Homepage" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/seraphina-slide-1.png" alt="Seraphina Programs" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/seraphina-slide-2.png" alt="Seraphina Mobile" />
-            </div>
-          </div>
-          <button class="portfolio-slider-arrow prev" id="seraphina-slider-prev">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button class="portfolio-slider-arrow next" id="seraphina-slider-next">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-          <div class="portfolio-slider-dots" id="seraphina-slider-dots">
-            <button class="portfolio-slider-dot active" data-slide="0"></button>
-            <button class="portfolio-slider-dot" data-slide="1"></button>
-            <button class="portfolio-slider-dot" data-slide="2"></button>
-          </div>
-        </div>
-        <div class="portfolio-modal-body">
-          <h3 class="portfolio-modal-title">Seraphina's Music & Art School</h3>
-          <p class="portfolio-modal-description" data-ko="음악과 미술로 아이들의 감성을 키워주는 예술 학원입니다. 가르치는 것을 넘어, 마음에 울림을 주는 교육을 추구합니다." data-en="Seraphina's Music & Art School colors the world with sound and story through music, art, and books. Not just teaching, but truly touching - we believe in education that inspires from the heart.">
-            Seraphina's Music & Art School colors the world with sound and story through music, art, and books. Not just teaching, but truly touching - we believe in education that inspires from the heart.
-          </p>
-          <div class="portfolio-modal-tags">
-            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-            <span class="portfolio-tag" data-ko="SEO" data-en="SEO">SEO</span>
-            <span class="portfolio-tag" data-ko="CMS" data-en="CMS">CMS</span>
-          </div>
-          <div class="portfolio-modal-section">
-            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
-            <ul>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="음악, 미술, 캠프, 방과후 프로그램 소개" data-en="Music, Art, Camp, and After School program showcase">Music, Art, Camp, and After School program showcase</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="반응형 모바일 최적화 디자인" data-en="Responsive mobile-optimized design">Responsive mobile-optimized design</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="SEO 최적화 및 콘텐츠 관리 시스템" data-en="SEO optimization & content management system">SEO optimization & content management system</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Yeti Modal -->
-    <div class="portfolio-modal" id="yeti-modal">
-      <div class="portfolio-modal-content">
-        <button class="portfolio-modal-close" id="yeti-modal-close">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <!-- Image Slider -->
-        <div class="portfolio-slider" id="yeti-slider">
-          <div class="portfolio-slider-track" id="yeti-slider-track">
-            <div class="portfolio-slider-slide">
-              <img src="/images/yeti-thumbnail.png" alt="Yeti Overview" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/yeti-slide-1.jpg" alt="Yeti Homepage" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/yeti-slide-2.jpg" alt="Yeti About Page" />
-            </div>
-          </div>
-          <button class="portfolio-slider-arrow prev" id="yeti-slider-prev">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button class="portfolio-slider-arrow next" id="yeti-slider-next">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-          <div class="portfolio-slider-dots" id="yeti-slider-dots">
-            <button class="portfolio-slider-dot active" data-slide="0"></button>
-            <button class="portfolio-slider-dot" data-slide="1"></button>
-            <button class="portfolio-slider-dot" data-slide="2"></button>
-          </div>
-        </div>
-        <div class="portfolio-modal-body">
-          <h3 class="portfolio-modal-title">Yeti: Web3 Game Discovery Platform</h3>
-          <p class="portfolio-modal-description" data-ko="Web3 게이머를 위한 올인원 게임 탐색 플랫폼입니다. 수백 개의 블록체인 게임 데이터를 분석해 나에게 맞는 게임을 쉽게 찾을 수 있습니다." data-en="Yeti is an all-in-one game discovery platform for Web3 gamers. It analyzes hundreds of blockchain games and provides data-driven insights to help gamers find the perfect games.">
-            Yeti is an all-in-one game discovery platform for Web3 gamers. It analyzes hundreds of blockchain games and provides data-driven insights to help gamers find the perfect games.
-          </p>
-          <div class="portfolio-modal-tags">
-            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-            <span class="portfolio-tag" data-ko="데이터 시각화" data-en="Data Visualization">Data Visualization</span>
-            <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
-          </div>
-          <div class="portfolio-modal-section">
-            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
-            <ul>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="실시간 게임 데이터 분석 및 시각화" data-en="Real-time game data analysis & visualization">Real-time game data analysis & visualization</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="체인별 게임 필터링 및 검색" data-en="Game filtering & search by blockchain">Game filtering & search by blockchain</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="반응형 대시보드 UI/UX" data-en="Responsive dashboard UI/UX">Responsive dashboard UI/UX</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Helix Modal -->
-    <div class="portfolio-modal" id="helix-modal">
-      <div class="portfolio-modal-content">
-        <button class="portfolio-modal-close" id="helix-modal-close">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <!-- Image Slider -->
-        <div class="portfolio-slider" id="helix-slider">
-          <div class="portfolio-slider-track" id="helix-slider-track">
-            <div class="portfolio-slider-slide">
-              <img src="/images/helix-thumbnail.png" alt="Helix Dashboard Overview" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/helix-slide-1.png" alt="Helix Games List" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/helix-slide-2.png" alt="Helix Welcome Page" />
-            </div>
-          </div>
-          <button class="portfolio-slider-arrow prev" id="helix-slider-prev">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button class="portfolio-slider-arrow next" id="helix-slider-next">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-          <div class="portfolio-slider-dots" id="helix-slider-dots">
-            <button class="portfolio-slider-dot active" data-slide="0"></button>
-            <button class="portfolio-slider-dot" data-slide="1"></button>
-            <button class="portfolio-slider-dot" data-slide="2"></button>
-          </div>
-        </div>
-        <div class="portfolio-modal-body">
-          <h3 class="portfolio-modal-title">Helix Worlds</h3>
-          <p class="portfolio-modal-description" data-ko="게임 속에서 실제 브랜드 제품을 소개하고 판매까지 연결하는 인게임 커머스 플랫폼입니다. 특허 출원 중인 기술로 게임과 현실을 잇습니다." data-en="Helix Worlds is a revolutionary in-game commerce platform that enables brands to showcase products within games, turning virtual engagement into real-world sales. Our patent-pending scanning technology bridges games and reality.">
-            Helix Worlds is a revolutionary in-game commerce platform that enables brands to showcase products within games, turning virtual engagement into real-world sales. Our patent-pending scanning technology bridges games and reality.
-          </p>
-          <div class="portfolio-modal-tags">
-            <span class="portfolio-tag" data-ko="UI/UX 디자인" data-en="UI/UX Design">UI/UX Design</span>
-          </div>
-          <div class="portfolio-modal-section">
-            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
-            <ul>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="인게임 실시간 커머스 및 마케팅" data-en="Real-world commerce & marketing in games">Real-world commerce & marketing in games</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="게이밍 플랫폼을 위한 로열티 관리" data-en="Royalty management for gaming platforms">Royalty management for gaming platforms</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="한 번 빌드, 어디서나 배포" data-en="Build once, deploy everywhere">Build once, deploy everywhere</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="실시간 인사이트 및 분석" data-en="Unlock actionable insights in real time">Unlock actionable insights in real time</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HannahHR Modal -->
-    <div class="portfolio-modal" id="hannahhr-modal">
-      <div class="portfolio-modal-content">
-        <button class="portfolio-modal-close" id="hannahhr-modal-close">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <!-- Image Slider -->
-        <div class="portfolio-slider" id="hannahhr-slider">
-          <div class="portfolio-slider-track" id="hannahhr-slider-track">
-            <div class="portfolio-slider-slide">
-              <img src="/images/hannahhr-slide-1.jpg" alt="HannahHR Dashboard" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/hannahhr-slide-2.jpg" alt="HannahHR Login" />
-            </div>
-            <div class="portfolio-slider-slide">
-              <img src="/images/hannahhr-slide-3.jpg" alt="HannahHR Chatbot" />
-            </div>
-          </div>
-          <button class="portfolio-slider-arrow prev" id="hannahhr-slider-prev">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button class="portfolio-slider-arrow next" id="hannahhr-slider-next">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-          <div class="portfolio-slider-dots" id="hannahhr-slider-dots">
-            <button class="portfolio-slider-dot active" data-slide="0"></button>
-            <button class="portfolio-slider-dot" data-slide="1"></button>
-            <button class="portfolio-slider-dot" data-slide="2"></button>
-          </div>
-        </div>
-        <div class="portfolio-modal-body">
-          <h3 class="portfolio-modal-title">HannahHR</h3>
-          <p class="portfolio-modal-description" data-ko="직원 정보를 안전하게 관리하고 실시간으로 확인할 수 있는 HR 관리 플랫폼입니다. 직관적인 대시보드와 AI 챗봇으로 HR 업무를 더 쉽게 처리할 수 있습니다." data-en="HannahHR is an innovative HR management platform providing secure, real-time access to employee information. It streamlines HR operations through an intuitive dashboard and AI-powered chatbot.">
-            HannahHR is an innovative HR management platform providing secure, real-time access to employee information. It streamlines HR operations through an intuitive dashboard and AI-powered chatbot.
-          </p>
-          <div class="portfolio-modal-tags">
-            <span class="portfolio-tag" data-ko="웹사이트" data-en="Website">Website</span>
-            <span class="portfolio-tag" data-ko="프론트엔드" data-en="Frontend">Frontend</span>
-            <span class="portfolio-tag" data-ko="백엔드" data-en="Backend">Backend</span>
-            <span class="portfolio-tag" data-ko="데이터베이스" data-en="Database">Database</span>
-          </div>
-          <div class="portfolio-modal-section">
-            <h4 data-ko="주요 기능" data-en="Key Features">Key Features</h4>
-            <ul>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="직원 정보 관리 대시보드" data-en="Employee management dashboard">Employee management dashboard</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="AI 기반 HR 챗봇" data-en="AI-powered HR chatbot">AI-powered HR chatbot</span>
-              </li>
-              <li>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span data-ko="안전한 실시간 데이터 접근" data-en="Secure, real-time data access">Secure, real-time data access</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <section class="bg-gradient-to-br from-primary to-primary-dark py-16 px-8 text-center text-white" id="contact">
+    <!-- Services -->
+    <section id="services" class="py-24 px-6 bg-gray-50">
       <div class="max-w-[1250px] mx-auto">
-        <h2 class="text-2xl md:text-4xl mb-4" style="word-break: keep-all;">
-          <span data-ko="지금 시작하세요" data-en="Transform your vision into reality">Transform your vision into reality</span>
-          <br class="hidden md:block" />
-          <span data-ko="웹사이트가 비즈니스를 바꿉니다" data-en="with a website that works for you">with a website that works for you</span>
-        </h2>
-        <p class="opacity-90 mb-8 max-w-[500px] mx-auto" style="word-break: keep-all;" data-ko="무료 상담으로 프로젝트 범위와 견적을 확인해 보세요." data-en="Let's build something remarkable together — reach out and take the first step.">
-          Let's build something remarkable together — reach out and take the first step.
-        </p>
-        <a href="mailto:hans@wiseupsolution.ca?subject=Website%20Inquiry" class="btn inline-flex items-center justify-center bg-white text-primary hover:bg-bg-gray hover:-translate-y-0.5" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Business Expansion -->
+          <div class="service-card">
+            <h3 class="text-3xl font-bold mb-4">Business Solution & Expansion</h3>
+            <img src="/images/service-business.jpg" alt="Business Solution & Expansion" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/400x300?text=Business+Solution'" />
+            <p class="text-text-muted text-sm mb-6">We establish and execute the optimal business solutions for various areas of client requirements. Conducting operational and flexible approaches to service for new business and project.</p>
+            <ul class="text-left text-sm space-y-2 list-none p-0">
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Business Consultancy</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Local office launching</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Trade & KPI building</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Sales channel development</li>
+            </ul>
+          </div>
+
+          <!-- Recruiting -->
+          <div class="service-card">
+            <h3 class="text-3xl font-bold mb-4">Recruiting & BPO service</h3>
+             <img src="/images/service-recruiting.jpg" alt="Recruiting & BPO service" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/400x300?text=Recruiting'" />
+            <p class="text-text-muted text-sm mb-6">We offer comprehensive and optimized recruitment strategies and ensure the best candidates based on their speed and controls. We are fully committed to connect candidates with diverse backgrounds.</p>
+             <ul class="text-left text-sm space-y-2 list-none p-0">
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Recruiting service</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Job description Branding</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Screening & Interview facilitation</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> BPO(Business Process Operations)</li>
+            </ul>
+          </div>
+
+          <!-- Marketing -->
+          <div class="service-card">
+            <h3 class="text-3xl font-bold mb-4">Marketing & Event execution</h3>
+             <img src="/images/service-marketing.jpg" alt="Marketing & Event execution" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/400x300?text=Marketing'" />
+            <p class="text-text-muted text-sm mb-6">Accelerate your business growth with our tailored marketing solutions. We deliver efficiency and performance-driven strategies designed to maximize your impact and achieve sustainable success.</p>
+             <ul class="text-left text-sm space-y-2 list-none p-0">
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Marketing Strategy & Plan</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> Agency selection</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> MKT expense optimization</li>
+              <li class="flex items-center gap-2"><span class="text-primary">✔</span> VIP event management</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer class="text-center py-8 border-t border-border text-text-muted text-sm bg-bg-gray">
-      <p>© 2026 WiseUp. All rights reserved.</p>
-    </footer>
+    <!-- Process -->
+    <section id="process" class="py-24 px-6 bg-[#f5f7fa]">
+      <div class="max-w-[1250px] mx-auto">
+        <div class="section-title">
+          <span class="section-label">How It Works</span>
+          <h2 class="text-3xl font-bold text-center mb-16">Solution Process</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <!-- Step 1 -->
+          <div class="process-card">
+            <div class="process-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512">
+                <path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" fill="#134cb3"></path>
+              </svg>
+            </div>
+            <h4>Project Brief</h4>
+            <ul class="process-list">
+              <li>Client Initial project brief development</li>
+              <li>Define & align on scope, timelines, and resources</li>
+              <li>Goal and objectives discussion</li>
+            </ul>
+          </div>
+          <!-- Step 2 -->
+          <div class="process-card">
+            <div class="process-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512">
+                <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" fill="#134cb3"></path>
+              </svg>
+            </div>
+            <h4>Analysis</h4>
+            <ul class="process-list">
+              <li>Assess client's business status</li>
+              <li>Analysis data, resource & challenges</li>
+              <li>Identify root causes of the project</li>
+              <li>Project KPI & output image</li>
+            </ul>
+          </div>
+          <!-- Step 3 -->
+          <div class="process-card">
+            <div class="process-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 384 512">
+                <path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7c0 0 0 0 0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5L109 384c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8c0 0 0 0 0 0s0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4c0 0 0 0 0 0s0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5l-48.6 0c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8c0 0 0 0 0 0s0 0 0 0s0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80l0-16 160 0 0 16c0 44.2-35.8 80-80 80z" fill="#134cb3"></path>
+              </svg>
+            </div>
+            <h4>Solution Design & Planning</h4>
+            <ul class="process-list">
+              <li>Customized solution agenda</li>
+              <li>Execution plan and R&R</li>
+              <li>Consensus final deliverable</li>
+              <li>Budget confirm & documentation</li>
+            </ul>
+          </div>
+          <!-- Step 4 -->
+          <div class="process-card">
+            <div class="process-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512">
+                <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z" fill="#134cb3"></path>
+              </svg>
+            </div>
+            <h4>Execution</h4>
+            <ul class="process-list">
+              <li>Execute and align in the solution</li>
+              <li>Conduct & manage implementation</li>
+              <li>Monitoring the progress</li>
+              <li>Summary output</li>
+            </ul>
+          </div>
+          <!-- Step 5 -->
+          <div class="process-card">
+            <div class="process-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512">
+                <path d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7L336 192c-8.8 0-16-7.2-16-16l0-57.4c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z" fill="#134cb3"></path>
+              </svg>
+            </div>
+            <h4>Review & Report</h4>
+            <ul class="process-list">
+              <li>Project review & report</li>
+              <li>Client feedback & amendment</li>
+              <li>Finalize project & regular service discussion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-      // Language toggle functionality
-      const STORAGE_KEY = 'wiseup-lang';
-      let currentLang = 'en';
-      
-      function setLanguage(lang, animate = true) {
-        if (lang === currentLang && animate) return;
-        
-        const textElements = document.querySelectorAll('[data-ko][data-en]');
-        const htmlElements = document.querySelectorAll('[data-html-ko][data-html-en]');
-        const allElements = [...textElements, ...htmlElements];
-        
-        if (animate && allElements.length > 0) {
-          // 페이드 아웃
-          allElements.forEach(el => {
-            el.style.transition = 'opacity 0.25s ease';
-            el.style.opacity = '0';
-          });
-          
-          // 텍스트 변경 및 페이드 인
-          setTimeout(() => {
-            // 일반 텍스트 요소
-            textElements.forEach(el => {
-              const text = el.getAttribute(`data-${lang}`);
-              if (text) {
-                el.textContent = text;
-              }
-            });
-            
-            // HTML 요소 (스타일 포함)
-            htmlElements.forEach(el => {
-              const html = el.getAttribute(`data-html-${lang}`);
-              if (html) {
-                el.innerHTML = html;
-              }
-            });
-            
-            // 히어로 텍스트 애니메이션 재실행
-            animateHeroText();
-            
-            // 페이드 인
-            setTimeout(() => {
-              allElements.forEach(el => {
-                el.style.opacity = '1';
-              });
-            }, 50);
-          }, 250);
-        } else {
-          // 애니메이션 없이 바로 변경 (초기 로드)
-          textElements.forEach(el => {
-            const text = el.getAttribute(`data-${lang}`);
-            if (text) {
-              el.textContent = text;
-            }
-          });
-          
-          htmlElements.forEach(el => {
-            const html = el.getAttribute(`data-html-${lang}`);
-            if (html) {
-              el.innerHTML = html;
-            }
-          });
-        }
-        
-        // Update HTML lang attribute
-        document.getElementById('html-root').setAttribute('lang', lang);
-        
-        // Update title and meta
-        const title = document.querySelector('title');
-        if (title) {
-          title.textContent = title.getAttribute(`data-${lang}`) || title.textContent;
-        }
-        
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-          metaDesc.setAttribute('content', metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content'));
-        }
-        
-        // Update slider position
-        const slider = document.getElementById('lang-slider');
-        if (slider) {
-          slider.style.transform = lang === 'en' ? 'translateX(36px)' : 'translateX(0)';
-        }
-        
-        // Update button active states
-        document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-        
-        // Save preference
-        currentLang = lang;
-        localStorage.setItem(STORAGE_KEY, lang);
-      }
-      
-      // 히어로 텍스트 글자별 애니메이션
-      function animateHeroText() {
-        const lines = document.querySelectorAll('.hero-animate-line');
-        let totalDelay = 0;
-        
-        lines.forEach((line, lineIndex) => {
-          // 기존 내용을 임시로 저장
-          const originalHTML = line.innerHTML;
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = originalHTML;
-          
-          // 텍스트 노드와 요소를 분리하여 처리
-          let charIndex = 0;
-          const processNode = (node) => {
-            if (node.nodeType === Node.TEXT_NODE) {
-              const text = node.textContent;
-              const fragment = document.createDocumentFragment();
-              for (let i = 0; i < text.length; i++) {
-                const char = text[i];
-                const span = document.createElement('span');
-                span.className = 'hero-animate-char';
-                span.textContent = char === ' ' ? '\u00A0' : char;
-                span.style.animationDelay = `${totalDelay + charIndex * 0.03}s`;
-                fragment.appendChild(span);
-                charIndex++;
-              }
-              return fragment;
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-              const clone = node.cloneNode(false);
-              Array.from(node.childNodes).forEach(child => {
-                clone.appendChild(processNode(child));
-              });
-              return clone;
-            }
-            return node.cloneNode(true);
-          };
-          
-          const newContent = document.createDocumentFragment();
-          Array.from(tempDiv.childNodes).forEach(child => {
-            newContent.appendChild(processNode(child));
-          });
-          
-          line.innerHTML = '';
-          line.appendChild(newContent);
-          
-          // 다음 줄의 시작 딜레이 설정
-          totalDelay += charIndex * 0.03 + 0.2;
-        });
-      }
-      
-      // Initialize on page load
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
-        currentLang = savedLang;
-        setLanguage(savedLang, false); // 초기 로드 시 애니메이션 없이
-        
-        // 히어로 텍스트 애니메이션 실행
-        setTimeout(() => {
-          animateHeroText();
-        }, 100);
-        
-        // Add click handlers
-        document.getElementById('btn-ko').addEventListener('click', () => setLanguage('ko', true));
-        document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
-        
-        // Portfolio filter functionality
-        const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
-        const portfolioCards = document.querySelectorAll('.portfolio-card');
-        
-        filterBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const filter = btn.getAttribute('data-filter');
-            
-            portfolioCards.forEach(card => {
-              const categories = card.getAttribute('data-category');
-              if (filter === 'all' || categories.includes(filter)) {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                  card.style.display = 'block';
-                  setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                  }, 50);
-                }, 200);
-              } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                  card.style.display = 'none';
-                }, 200);
-              }
-            });
-          });
-        });
-        
-        // Add transition styles to portfolio cards
-        portfolioCards.forEach(card => {
-          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        });
-        
-        // Yeti Modal functionality
-        const yetiCard = document.getElementById('yeti-card');
-        const yetiModal = document.getElementById('yeti-modal');
-        const yetiModalClose = document.getElementById('yeti-modal-close');
-        
-        if (yetiCard && yetiModal) {
-          // Open modal on card click
-          yetiCard.addEventListener('click', () => {
-            yetiModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-          
-          // Close modal on close button click
-          yetiModalClose.addEventListener('click', () => {
-            yetiModal.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-          
-          // Close modal on backdrop click
-          yetiModal.addEventListener('click', (e) => {
-            if (e.target === yetiModal) {
-              yetiModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-          
-          // Close modal on Escape key
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && yetiModal.classList.contains('active')) {
-              yetiModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-        }
-        
-        // Yeti Slider functionality
-        const sliderTrack = document.getElementById('yeti-slider-track');
-        const sliderPrev = document.getElementById('yeti-slider-prev');
-        const sliderNext = document.getElementById('yeti-slider-next');
-        const sliderDots = document.querySelectorAll('#yeti-slider-dots .portfolio-slider-dot');
-        const totalSlides = 3;
-        let currentSlide = 0;
-        
-        function goToSlide(index) {
-          currentSlide = index;
-          if (currentSlide < 0) currentSlide = totalSlides - 1;
-          if (currentSlide >= totalSlides) currentSlide = 0;
-          
-          sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-          
-          // Update dots
-          sliderDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-          });
-        }
-        
-        if (sliderPrev && sliderNext) {
-          sliderPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
-          sliderNext.addEventListener('click', () => goToSlide(currentSlide + 1));
-          
-          sliderDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-              const slideIndex = parseInt(dot.getAttribute('data-slide'));
-              goToSlide(slideIndex);
-            });
-          });
-          
-          // Reset slider when modal closes
-          const yetiModalForReset = document.getElementById('yeti-modal');
-          if (yetiModalForReset) {
-            const observer = new MutationObserver((mutations) => {
-              mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && !yetiModalForReset.classList.contains('active')) {
-                  setTimeout(() => goToSlide(0), 300);
-                }
-              });
-            });
-            observer.observe(yetiModalForReset, { attributes: true });
-          }
-        }
-        
-        // Helix Modal functionality
-        const helixCard = document.getElementById('helix-card');
-        const helixModal = document.getElementById('helix-modal');
-        const helixModalClose = document.getElementById('helix-modal-close');
-        
-        if (helixCard && helixModal) {
-          helixCard.addEventListener('click', () => {
-            helixModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-          
-          helixModalClose.addEventListener('click', () => {
-            helixModal.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-          
-          helixModal.addEventListener('click', (e) => {
-            if (e.target === helixModal) {
-              helixModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-          
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && helixModal.classList.contains('active')) {
-              helixModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-        }
-        
-        // Helix Slider functionality
-        const helixSliderTrack = document.getElementById('helix-slider-track');
-        const helixSliderPrev = document.getElementById('helix-slider-prev');
-        const helixSliderNext = document.getElementById('helix-slider-next');
-        const helixSliderDots = document.querySelectorAll('#helix-slider-dots .portfolio-slider-dot');
-        let helixCurrentSlide = 0;
-        
-        function goToHelixSlide(index) {
-          helixCurrentSlide = index;
-          if (helixCurrentSlide < 0) helixCurrentSlide = 2;
-          if (helixCurrentSlide >= 3) helixCurrentSlide = 0;
-          
-          helixSliderTrack.style.transform = `translateX(-${helixCurrentSlide * 100}%)`;
-          
-          helixSliderDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === helixCurrentSlide);
-          });
-        }
-        
-        if (helixSliderPrev && helixSliderNext) {
-          helixSliderPrev.addEventListener('click', () => goToHelixSlide(helixCurrentSlide - 1));
-          helixSliderNext.addEventListener('click', () => goToHelixSlide(helixCurrentSlide + 1));
-          
-          helixSliderDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-              const slideIndex = parseInt(dot.getAttribute('data-slide'));
-              goToHelixSlide(slideIndex);
-            });
-          });
-          
-          // Reset slider when modal closes
-          if (helixModal) {
-            const helixObserver = new MutationObserver((mutations) => {
-              mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && !helixModal.classList.contains('active')) {
-                  setTimeout(() => goToHelixSlide(0), 300);
-                }
-              });
-            });
-            helixObserver.observe(helixModal, { attributes: true });
-          }
-        }
-        
-        // HannahHR Modal functionality
-        const hannahhrCard = document.getElementById('hannahhr-card');
-        const hannahhrModal = document.getElementById('hannahhr-modal');
-        const hannahhrModalClose = document.getElementById('hannahhr-modal-close');
-        
-        if (hannahhrCard && hannahhrModal) {
-          hannahhrCard.addEventListener('click', () => {
-            hannahhrModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-          
-          hannahhrModalClose.addEventListener('click', () => {
-            hannahhrModal.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-          
-          hannahhrModal.addEventListener('click', (e) => {
-            if (e.target === hannahhrModal) {
-              hannahhrModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-          
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && hannahhrModal.classList.contains('active')) {
-              hannahhrModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-        }
-        
-        // HannahHR Slider functionality
-        const hannahhrSliderTrack = document.getElementById('hannahhr-slider-track');
-        const hannahhrSliderPrev = document.getElementById('hannahhr-slider-prev');
-        const hannahhrSliderNext = document.getElementById('hannahhr-slider-next');
-        const hannahhrSliderDots = document.querySelectorAll('#hannahhr-slider-dots .portfolio-slider-dot');
-        let hannahhrCurrentSlide = 0;
-        
-        function goToHannahhrSlide(index) {
-          hannahhrCurrentSlide = index;
-          if (hannahhrCurrentSlide < 0) hannahhrCurrentSlide = 2;
-          if (hannahhrCurrentSlide >= 3) hannahhrCurrentSlide = 0;
-          
-          hannahhrSliderTrack.style.transform = `translateX(-${hannahhrCurrentSlide * 100}%)`;
-          
-          hannahhrSliderDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === hannahhrCurrentSlide);
-          });
-        }
-        
-        if (hannahhrSliderPrev && hannahhrSliderNext) {
-          hannahhrSliderPrev.addEventListener('click', () => goToHannahhrSlide(hannahhrCurrentSlide - 1));
-          hannahhrSliderNext.addEventListener('click', () => goToHannahhrSlide(hannahhrCurrentSlide + 1));
-          
-          hannahhrSliderDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-              const slideIndex = parseInt(dot.getAttribute('data-slide'));
-              goToHannahhrSlide(slideIndex);
-            });
-          });
-          
-          // Reset slider when modal closes
-          if (hannahhrModal) {
-            const hannahhrObserver = new MutationObserver((mutations) => {
-              mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && !hannahhrModal.classList.contains('active')) {
-                  setTimeout(() => goToHannahhrSlide(0), 300);
-                }
-              });
-            });
-            hannahhrObserver.observe(hannahhrModal, { attributes: true });
-          }
-        }
-        
-        // Seraphina Modal functionality
-        const seraphinaCard = document.getElementById('seraphina-card');
-        const seraphinaModal = document.getElementById('seraphina-modal');
-        const seraphinaModalClose = document.getElementById('seraphina-modal-close');
-        
-        if (seraphinaCard && seraphinaModal) {
-          seraphinaCard.addEventListener('click', () => {
-            seraphinaModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-          
-          seraphinaModalClose.addEventListener('click', () => {
-            seraphinaModal.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-          
-          seraphinaModal.addEventListener('click', (e) => {
-            if (e.target === seraphinaModal) {
-              seraphinaModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-          
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && seraphinaModal.classList.contains('active')) {
-              seraphinaModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-        }
-        
-        // Seraphina Slider functionality
-        const seraphinaSliderTrack = document.getElementById('seraphina-slider-track');
-        const seraphinaSliderPrev = document.getElementById('seraphina-slider-prev');
-        const seraphinaSliderNext = document.getElementById('seraphina-slider-next');
-        const seraphinaSliderDots = document.querySelectorAll('#seraphina-slider-dots .portfolio-slider-dot');
-        let seraphinaCurrentSlide = 0;
-        
-        function goToSeraphinaSlide(index) {
-          seraphinaCurrentSlide = index;
-          if (seraphinaCurrentSlide < 0) seraphinaCurrentSlide = 2;
-          if (seraphinaCurrentSlide >= 3) seraphinaCurrentSlide = 0;
-          
-          seraphinaSliderTrack.style.transform = `translateX(-${seraphinaCurrentSlide * 100}%)`;
-          
-          seraphinaSliderDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === seraphinaCurrentSlide);
-          });
-        }
-        
-        if (seraphinaSliderPrev && seraphinaSliderNext) {
-          seraphinaSliderPrev.addEventListener('click', () => goToSeraphinaSlide(seraphinaCurrentSlide - 1));
-          seraphinaSliderNext.addEventListener('click', () => goToSeraphinaSlide(seraphinaCurrentSlide + 1));
-          
-          seraphinaSliderDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-              const slideIndex = parseInt(dot.getAttribute('data-slide'));
-              goToSeraphinaSlide(slideIndex);
-            });
-          });
-          
-          // Reset slider when modal closes
-          if (seraphinaModal) {
-            const seraphinaObserver = new MutationObserver((mutations) => {
-              mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && !seraphinaModal.classList.contains('active')) {
-                  setTimeout(() => goToSeraphinaSlide(0), 300);
-                }
-              });
-            });
-            seraphinaObserver.observe(seraphinaModal, { attributes: true });
-          }
-        }
-        
-        // Pacemaker Modal functionality
-        const pacemakerCard = document.getElementById('pacemaker-card');
-        const pacemakerModal = document.getElementById('pacemaker-modal');
-        const pacemakerModalClose = document.getElementById('pacemaker-modal-close');
-        
-        if (pacemakerCard && pacemakerModal) {
-          pacemakerCard.addEventListener('click', () => {
-            pacemakerModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          });
-          
-          pacemakerModalClose.addEventListener('click', () => {
-            pacemakerModal.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-          
-          pacemakerModal.addEventListener('click', (e) => {
-            if (e.target === pacemakerModal) {
-              pacemakerModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-          
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && pacemakerModal.classList.contains('active')) {
-              pacemakerModal.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-        }
-        
-        // Pacemaker Slider functionality
-        const pacemakerSliderTrack = document.getElementById('pacemaker-slider-track');
-        const pacemakerSliderPrev = document.getElementById('pacemaker-slider-prev');
-        const pacemakerSliderNext = document.getElementById('pacemaker-slider-next');
-        const pacemakerSliderDots = document.querySelectorAll('#pacemaker-slider-dots .portfolio-slider-dot');
-        let pacemakerCurrentSlide = 0;
-        
-        function goToPacemakerSlide(index) {
-          pacemakerCurrentSlide = index;
-          if (pacemakerCurrentSlide < 0) pacemakerCurrentSlide = 2;
-          if (pacemakerCurrentSlide >= 3) pacemakerCurrentSlide = 0;
-          
-          pacemakerSliderTrack.style.transform = `translateX(-${pacemakerCurrentSlide * 100}%)`;
-          
-          pacemakerSliderDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === pacemakerCurrentSlide);
-          });
-        }
-        
-        if (pacemakerSliderPrev && pacemakerSliderNext) {
-          pacemakerSliderPrev.addEventListener('click', () => goToPacemakerSlide(pacemakerCurrentSlide - 1));
-          pacemakerSliderNext.addEventListener('click', () => goToPacemakerSlide(pacemakerCurrentSlide + 1));
-          
-          pacemakerSliderDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-              const slideIndex = parseInt(dot.getAttribute('data-slide'));
-              goToPacemakerSlide(slideIndex);
-            });
-          });
-          
-          // Reset slider when modal closes
-          if (pacemakerModal) {
-            const pacemakerObserver = new MutationObserver((mutations) => {
-              mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && !pacemakerModal.classList.contains('active')) {
-                  setTimeout(() => goToPacemakerSlide(0), 300);
-                }
-              });
-            });
-            pacemakerObserver.observe(pacemakerModal, { attributes: true });
-          }
-        }
-      });
-    </script>
+    <!-- Clients -->
+    <section class="py-24 px-6 bg-gray-50">
+      <div class="max-w-[1250px] mx-auto text-center">
+         <span class="section-label">Our Clients and Partners</span>
+        <h2 class="text-3xl font-bold mb-12">Clients & Partners</h2>
+        <div class="flex flex-wrap justify-center items-center gap-12">
+          <img src="/images/client-logo-01.png" alt="Pacemaker" class="client-logo" />
+          <img src="/images/client-logo-02.png" alt="PGT Group" class="client-logo" />
+          <img src="/images/client-logo-03.png" alt="Golfland" class="client-logo" />
+          <img src="/images/client-logo-04.png" alt="GNC Golf" class="client-logo" />
+          <img src="/images/client-logo-05.png" alt="Teeup Golf" class="client-logo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6">
+      <div class="max-w-[800px] mx-auto">
+        <div class="contact-form-container">
+          <div class="text-center mb-12">
+            <span class="section-label">Talk to Us</span>
+            <h2 class="text-4xl font-extrabold text-text-dark">Contact</h2>
+          </div>
+          <form action="https://formspree.io/sehwan.lee.dev@gmail.com" method="POST" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold mb-2">Name *</label>
+                <input type="text" name="name" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-2">Email *</label>
+                <input type="email" name="email" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-2">Message *</label>
+              <textarea name="message" class="w-full p-3 border border-gray-300 rounded-md h-32 focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-md font-bold hover:bg-primary-dark transition-colors">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-border mt-12">
+      <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <a href="/" class="flex items-center no-underline">
+          <img src="/images/logo.png" alt="WiseUp Logo" class="h-10 w-auto" />
+        </a>
+        <div class="text-sm text-text-muted">© 2026 WiseUp Solution. All rights reserved.</div>
+
+      </div>
+    </footer>
   </body>
 </html>
