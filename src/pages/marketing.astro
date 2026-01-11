@@ -1,0 +1,687 @@
+---
+// src/pages/marketing.astro - Marketing Solutions Landing Page
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en" id="html-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-ko="마케팅 솔루션 | WiseUp" data-en="Marketing Solutions | WiseUp">Marketing Solutions | WiseUp</title>
+    <meta
+      name="description"
+      data-ko="웹사이트 개발, 홍보영상 제작 등 비즈니스 성장을 위한 마케팅 솔루션을 제공합니다."
+      data-en="Marketing solutions for business growth including web development, video production, and more."
+      content="Marketing solutions for business growth including web development, video production, and more."
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wiseupsolution.ca/marketing" />
+    <meta 
+      property="og:title" 
+      data-ko="마케팅 솔루션 | WiseUp" 
+      data-en="Marketing Solutions | WiseUp"
+      content="Marketing Solutions | WiseUp" 
+    />
+    <meta 
+      property="og:description" 
+      data-ko="웹사이트 개발, 홍보영상 제작 등 비즈니스 성장을 위한 마케팅 솔루션을 제공합니다."
+      data-en="Marketing solutions for business growth including web development, video production, and more."
+      content="Marketing solutions for business growth including web development, video production, and more." 
+    />
+    <meta property="og:image" content="https://wiseupsolution.ca/images/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://wiseupsolution.ca/marketing" />
+    <meta 
+      name="twitter:title" 
+      data-ko="마케팅 솔루션 | WiseUp" 
+      data-en="Marketing Solutions | WiseUp"
+      content="Marketing Solutions | WiseUp" 
+    />
+    <meta 
+      name="twitter:description" 
+      data-ko="웹사이트 개발, 홍보영상 제작 등 비즈니스 성장을 위한 마케팅 솔루션을 제공합니다."
+      data-en="Marketing solutions for business growth including web development, video production, and more."
+      content="Marketing solutions for business growth including web development, video production, and more." 
+    />
+    <meta name="twitter:image" content="https://wiseupsolution.ca/images/og-image.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Mobile Menu styles */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 990;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        padding-top: 6rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      #mobile-menu.active {
+        transform: translateX(0);
+      }
+      .mobile-menu-open {
+        overflow: hidden;
+      }
+      
+      /* Dropdown Menu Styles */
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .nav-dropdown-toggle svg {
+        width: 12px;
+        height: 12px;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+      .nav-dropdown:hover .nav-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+      .nav-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        padding: 0.75rem 0;
+        min-width: 180px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        z-index: 100;
+        margin-top: 0.5rem;
+      }
+      .nav-dropdown:hover .nav-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-dropdown-menu a {
+        display: block;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        color: #4b5563;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+      .nav-dropdown-menu a:hover {
+        background: #f3f4f6;
+        color: #1565c0;
+      }
+      
+      /* Mobile Dropdown */
+      .mobile-dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .mobile-dropdown-toggle svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+      }
+      .mobile-dropdown.open .mobile-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+      .mobile-dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 1rem;
+        margin-top: 0;
+        opacity: 0;
+        transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+      }
+      .mobile-dropdown.open .mobile-dropdown-menu {
+        max-height: 200px;
+        opacity: 1;
+        margin-top: 0.75rem;
+      }
+      .mobile-dropdown-menu a {
+        display: block;
+        padding: 0.25rem 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #4b5563;
+      }
+      /* Solution Cards */
+      .solution-card {
+        background: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      
+      .solution-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      }
+      
+      .solution-card-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+      
+      .solution-card-content {
+        padding: 2rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .solution-card-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 0.35rem 0.75rem;
+        border-radius: 9999px;
+        margin-bottom: 1rem;
+        width: fit-content;
+      }
+      
+      .solution-card h3 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--color-text-dark);
+        margin-bottom: 0.75rem;
+      }
+      
+      .solution-card p {
+        color: var(--color-text-muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        flex: 1;
+      }
+      
+      .solution-card-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+      }
+      
+      .solution-card-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--color-text-body);
+        margin-bottom: 0.5rem;
+      }
+      
+      .solution-card-features li svg {
+        width: 16px;
+        height: 16px;
+        color: var(--color-primary);
+        flex-shrink: 0;
+      }
+      
+      .solution-card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: gap 0.3s ease;
+      }
+      
+      .solution-card-cta:hover {
+        gap: 0.75rem;
+      }
+      
+      .solution-card-cta svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      /* Coming Soon Card */
+      .solution-card.coming-soon {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        opacity: 0.85;
+      }
+      
+      .solution-card.coming-soon .solution-card-image {
+        filter: grayscale(100%);
+        opacity: 0.5;
+      }
+      
+      .solution-card.coming-soon .solution-card-badge {
+        background: linear-gradient(135deg, #6c757d, #adb5bd);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border py-4 px-6 md:px-8 z-[1000]">
+      <div class="max-w-[1200px] mx-auto flex justify-between items-center">
+        <a href="/" class="flex items-center no-underline">
+          <img src="/images/logo.png" alt="WiseUp Logo" class="h-10 md:h-14 w-auto" />
+        </a>
+        <div class="flex items-center gap-6">
+          <ul class="hidden md:flex gap-8 list-none m-0 p-0">
+            <li class="nav-dropdown">
+              <a href="/marketing" class="nav-dropdown-toggle no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">
+                <span data-ko="마케팅" data-en="Marketing">Marketing</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/marketing/web" class="no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
+                <a href="/marketing/video" class="no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
+              </div>
+            </li>
+            <li><a href="#solutions" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="솔루션" data-en="Solutions">Solutions</a></li>
+            <li><a href="#contact" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="문의하기" data-en="Contact">Contact</a></li>
+          </ul>
+          <!-- Language Switcher -->
+          <div class="lang-switcher" id="lang-switcher">
+            <div class="lang-slider" id="lang-slider"></div>
+            <button type="button" class="lang-btn" data-lang="ko" id="btn-ko">한</button>
+            <button type="button" class="lang-btn active" data-lang="en" id="btn-en">EN</button>
+          </div>
+
+          <!-- Hamburger Button -->
+          <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none z-[1001]">
+            <span class="w-6 h-0.5 bg-text-dark transition-all duration-300 origin-center"></span>
+            <span class="w-6 h-0.5 bg-text-dark transition-all duration-300"></span>
+            <span class="w-6 h-0.5 bg-text-dark transition-all duration-300 origin-center"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Drawer -->
+      <div id="mobile-menu" class="md:hidden">
+        <ul class="flex flex-col gap-6 list-none m-0 p-0">
+          <li class="mobile-dropdown" id="mobile-marketing-dropdown">
+            <div class="mobile-dropdown-toggle text-2xl font-bold text-text-dark">
+              <span data-ko="마케팅" data-en="Marketing">Marketing</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div class="mobile-dropdown-menu">
+              <a href="/marketing/web" class="mobile-link no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
+              <a href="/marketing/video" class="mobile-link no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
+            </div>
+          </li>
+          <li><a href="#solutions" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="솔루션" data-en="Solutions">Solutions</a></li>
+          <li><a href="#contact" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="문의하기" data-en="Contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-video-section min-h-[70vh] flex flex-col justify-center items-center text-center pt-32 pb-16 px-8 md:px-8 relative overflow-hidden">
+      <!-- Video Background -->
+      <div class="hero-video-container" aria-hidden="true">
+        <video 
+          class="hero-video"
+          autoplay 
+          muted 
+          loop 
+          playsinline
+          poster="/images/hero-poster.jpg"
+        >
+          <source src="/videos/background.mp4" type="video/mp4" />
+        </video>
+      </div>
+      
+      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 relative z-10" data-ko="마케팅 솔루션" data-en="Marketing Solutions">Marketing Solutions</div>
+      <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 leading-tight relative z-10">
+        <span class="block hero-animate-line" data-html-ko="<span class='text-primary'>스마트 마케팅</span>으로" data-html-en="Grow Your Business with">Grow Your Business with</span>
+        <span class="block hero-animate-line" data-html-ko="비즈니스를 성장시키세요" data-html-en="<span class='text-primary' style='white-space: nowrap;'>Smart Marketing</span>"><span class="text-primary" style="white-space: nowrap;">Smart Marketing</span></span>
+      </h1>
+      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed relative z-10" data-ko="검증된 데이터 기반 전략으로 비즈니스 성장을 가속화하세요." data-en="We turn data into action and help your business grow faster with marketing that actually delivers.">
+        We turn data into action and help your business grow faster with marketing that actually delivers.
+      </p>
+      <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto justify-center px-4 md:px-0 relative z-10">
+        <a href="#solutions" class="btn btn-primary w-full md:w-auto" data-ko="솔루션 보기" data-en="View Solutions">View Solutions</a>
+        <a href="mailto:hans@wiseupsolution.ca?subject=Marketing%20Inquiry" class="btn btn-secondary w-full md:w-auto" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
+      </div>
+    </header>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="py-24 bg-bg-section">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="section-badge" data-ko="마케팅 솔루션" data-en="Marketing Solutions">Marketing Solutions</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="비즈니스 성장을 위한 솔루션" data-en="Solutions for Business Growth">Solutions for Business Growth</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="웹사이트부터 영상까지, 비즈니스에 필요한 모든 마케팅 도구를 제공합니다" data-en="From websites to videos, we provide all the marketing tools your business needs">From websites to videos, we provide all the marketing tools your business needs</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Web Development Card -->
+          <div class="solution-card">
+            <img src="/images/service-marketing.jpg" alt="Web Development" class="solution-card-image" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'" />
+            <div class="solution-card-content">
+              <span class="solution-card-badge" data-ko="웹사이트" data-en="Website">Website</span>
+              <h3 data-ko="웹사이트 개발" data-en="Web Development">Web Development</h3>
+              <p data-ko="빠르고 반응형이며 SEO에 최적화된 웹사이트로 온라인 존재감을 높이세요." data-en="Build your online presence with fast, responsive, and SEO-optimized websites.">Build your online presence with fast, responsive, and SEO-optimized websites.</p>
+              <ul class="solution-card-features">
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span data-ko="반응형 디자인" data-en="Responsive Design">Responsive Design</span>
+                </li>
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span data-ko="SEO 최적화" data-en="SEO Optimized">SEO Optimized</span>
+                </li>
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span data-ko="다국어 지원" data-en="Multi-language Support">Multi-language Support</span>
+                </li>
+              </ul>
+              <a href="/marketing/web" class="solution-card-cta" data-ko="자세히 보기" data-en="Learn More">
+                <span data-ko="자세히 보기" data-en="Learn More">Learn More</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Video Production Card -->
+          <div class="solution-card">
+            <img src="/images/service-video.jpg" alt="Video Production" class="solution-card-image" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop'" />
+            <div class="solution-card-content">
+              <span class="solution-card-badge" data-ko="영상" data-en="Video">Video</span>
+              <h3 data-ko="홍보영상 제작" data-en="Video Production">Video Production</h3>
+              <p data-ko="소상공인과 리얼터를 위한 전문 홍보영상으로 브랜드 스토리를 전달하세요." data-en="Tell your brand story with professional promotional videos for businesses and realtors.">Tell your brand story with professional promotional videos for businesses and realtors.</p>
+              <ul class="solution-card-features">
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span data-ko="프로페셔널 촬영" data-en="Professional Filming">Professional Filming</span>
+                </li>
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span data-ko="드론 촬영" data-en="Drone Footage">Drone Footage</span>
+                </li>
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span data-ko="SNS 최적화" data-en="Social Media Ready">Social Media Ready</span>
+                </li>
+              </ul>
+              <a href="/marketing/video" class="solution-card-cta" data-ko="자세히 보기" data-en="Learn More">
+                <span data-ko="자세히 보기" data-en="Learn More">Learn More</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coming Soon Card -->
+          <div class="solution-card coming-soon">
+            <img src="/images/service-coming-soon.jpg" alt="Coming Soon" class="solution-card-image" onerror="this.src='https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop'" />
+            <div class="solution-card-content">
+              <span class="solution-card-badge" data-ko="준비중" data-en="Coming Soon">Coming Soon</span>
+              <h3 data-ko="더 많은 솔루션" data-en="More Solutions">More Solutions</h3>
+              <p data-ko="SNS 마케팅, 광고 캠페인, 브랜딩 등 더 많은 마케팅 솔루션이 곧 추가됩니다." data-en="Social media marketing, ad campaigns, branding, and more marketing solutions coming soon.">Social media marketing, ad campaigns, branding, and more marketing solutions coming soon.</p>
+              <ul class="solution-card-features">
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span data-ko="SNS 마케팅" data-en="Social Media Marketing">Social Media Marketing</span>
+                </li>
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span data-ko="광고 캠페인" data-en="Ad Campaigns">Ad Campaigns</span>
+                </li>
+                <li>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span data-ko="브랜딩" data-en="Branding">Branding</span>
+                </li>
+              </ul>
+              <span class="solution-card-cta" style="color: var(--color-text-muted); cursor: default;" data-ko="준비 중입니다" data-en="Stay Tuned">
+                <span data-ko="준비 중입니다" data-en="Stay Tuned">Stay Tuned</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-primary to-primary-dark py-16 px-8 text-center text-white" id="contact">
+      <div class="max-w-[1250px] mx-auto">
+        <h2 class="text-2xl md:text-4xl mb-4" style="word-break: keep-all;">
+          <span data-ko="어떤 솔루션이 필요하신가요?" data-en="Which solution do you need?">Which solution do you need?</span>
+        </h2>
+        <p class="opacity-90 mb-8 max-w-[500px] mx-auto" style="word-break: keep-all;" data-ko="무료 상담을 통해 비즈니스에 맞는 최적의 솔루션을 제안해 드립니다." data-en="Let's discuss the best solution for your business. Free consultation available.">
+          Let's discuss the best solution for your business. Free consultation available.
+        </p>
+        <a href="mailto:hans@wiseupsolution.ca?subject=Marketing%20Inquiry" class="btn inline-flex items-center justify-center bg-white text-primary hover:bg-bg-gray hover:-translate-y-0.5" data-ko="무료 상담 신청" data-en="Get Free Consultation">Get Free Consultation</a>
+      </div>
+    </section>
+
+    <footer class="py-12 border-t border-border bg-bg-gray">
+      <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <a href="/" class="flex items-center no-underline">
+          <img src="/images/logo.png" alt="WiseUp Logo" class="h-10 w-auto" />
+        </a>
+        <p class="text-text-muted text-sm">© 2026 WiseUp Solution. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-text-muted text-sm hover:text-primary transition-colors no-underline">Facebook</a>
+          <a href="#" class="text-text-muted text-sm hover:text-primary transition-colors no-underline">Instagram</a>
+          <a href="#" class="text-text-muted text-sm hover:text-primary transition-colors no-underline">Twitter</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Language toggle functionality
+      const STORAGE_KEY = 'wiseup-lang';
+      let currentLang = 'en';
+      
+      function setLanguage(lang, animate = true) {
+        if (lang === currentLang && animate) return;
+        
+        const textElements = document.querySelectorAll('[data-ko][data-en]');
+        const htmlElements = document.querySelectorAll('[data-html-ko][data-html-en]');
+        const allElements = [...textElements, ...htmlElements];
+        
+        if (animate && allElements.length > 0) {
+          allElements.forEach(el => {
+            el.style.transition = 'opacity 0.25s ease';
+            el.style.opacity = '0';
+          });
+          
+          setTimeout(() => {
+            textElements.forEach(el => {
+              const text = el.getAttribute(`data-${lang}`);
+              if (text) {
+                el.textContent = text;
+              }
+            });
+            
+            htmlElements.forEach(el => {
+              const html = el.getAttribute(`data-html-${lang}`);
+              if (html) {
+                el.innerHTML = html;
+              }
+            });
+            
+            animateHeroText();
+            
+            setTimeout(() => {
+              allElements.forEach(el => {
+                el.style.opacity = '1';
+              });
+            }, 50);
+          }, 250);
+        } else {
+          textElements.forEach(el => {
+            const text = el.getAttribute(`data-${lang}`);
+            if (text) {
+              el.textContent = text;
+            }
+          });
+          
+          htmlElements.forEach(el => {
+            const html = el.getAttribute(`data-html-${lang}`);
+            if (html) {
+              el.innerHTML = html;
+            }
+          });
+        }
+        
+        document.getElementById('html-root').setAttribute('lang', lang);
+        
+        const title = document.querySelector('title');
+        if (title) {
+          title.textContent = title.getAttribute(`data-${lang}`) || title.textContent;
+        }
+        
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content'));
+        }
+        
+        const slider = document.getElementById('lang-slider');
+        if (slider) {
+          slider.style.transform = lang === 'en' ? 'translateX(36px)' : 'translateX(0)';
+        }
+        
+        document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        
+        currentLang = lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+      
+      function animateHeroText() {
+        const lines = document.querySelectorAll('.hero-animate-line');
+        let totalDelay = 0;
+        
+        lines.forEach((line, lineIndex) => {
+          const originalHTML = line.innerHTML;
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = originalHTML;
+          
+          let charIndex = 0;
+          const processNode = (node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              const text = node.textContent;
+              const fragment = document.createDocumentFragment();
+              for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const span = document.createElement('span');
+                span.className = 'hero-animate-char';
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.animationDelay = `${totalDelay + charIndex * 0.03}s`;
+                fragment.appendChild(span);
+                charIndex++;
+              }
+              return fragment;
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              const clone = node.cloneNode(false);
+              Array.from(node.childNodes).forEach(child => {
+                clone.appendChild(processNode(child));
+              });
+              return clone;
+            }
+            return node.cloneNode(true);
+          };
+          
+          const newContent = document.createDocumentFragment();
+          Array.from(tempDiv.childNodes).forEach(child => {
+            newContent.appendChild(processNode(child));
+          });
+          
+          line.innerHTML = '';
+          line.appendChild(newContent);
+          
+          totalDelay += charIndex * 0.03 + 0.2;
+        });
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
+        currentLang = savedLang;
+        setLanguage(savedLang, false);
+        
+        setTimeout(() => {
+          animateHeroText();
+        }, 100);
+        
+        document.getElementById('btn-ko').addEventListener('click', () => setLanguage('ko', true));
+        document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const spans = menuToggle.querySelectorAll('span');
+
+        function toggleMenu() {
+          mobileMenu.classList.toggle('active');
+          document.body.classList.toggle('mobile-menu-open');
+          
+          if (mobileMenu.classList.contains('active')) {
+            spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('mobile-menu-open');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          });
+        });
+
+        // Mobile dropdown toggle
+        const mobileDropdown = document.getElementById('mobile-marketing-dropdown');
+        if (mobileDropdown) {
+          const mobileDropdownToggle = mobileDropdown.querySelector('.mobile-dropdown-toggle');
+          mobileDropdownToggle.addEventListener('click', () => {
+            mobileDropdown.classList.toggle('open');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

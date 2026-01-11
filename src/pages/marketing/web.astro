@@ -1,6 +1,6 @@
 ---
 // src/pages/index.astro - Single page with language toggle
-import '../styles/global.css';
+import '../../styles/global.css';
 ---
 
 <!doctype html>
@@ -8,12 +8,12 @@ import '../styles/global.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-ko="웹사이트 개발 서비스 | WiseUp" data-en="Website Development Services | WiseUp">Website Development Services | WiseUp</title>
+    <title data-ko="웹사이트 개발 | WiseUp" data-en="Web Development | WiseUp">Web Development | WiseUp</title>
     <meta
       name="description"
-      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
-      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
-      content="Professional website development services. High-performance websites built with modern technology at competitive prices."
+      data-ko="전문 웹 개발 서비스. 반응형 디자인과 SEO 최적화로 비즈니스 성장을 돕습니다."
+      data-en="Professional web development services. Responsive design and SEO optimization to help your business grow."
+      content="Professional web development services. Responsive design and SEO optimization to help your business grow."
     />
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -23,15 +23,15 @@ import '../styles/global.css';
     <meta property="og:url" content="https://wiseupsolution.ca/" />
     <meta 
       property="og:title" 
-      data-ko="전문 웹사이트 개발 패키지 | WiseUp" 
-      data-en="Professional Website Development | WiseUp"
-      content="Professional Website Development | WiseUp" 
+      data-ko="전문 마케팅 및 웹 서비스 | WiseUp" 
+      data-en="Professional Marketing & Web Services | WiseUp"
+      content="Professional Marketing & Web Services | WiseUp" 
     />
     <meta 
       property="og:description" 
-      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
-      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
-      content="Professional website development services. High-performance websites built with modern technology at competitive prices." 
+      data-ko="전문 마케팅 및 웹 개발 서비스. 최신 기술과 전략으로 비즈니스 성장을 돕습니다."
+      data-en="Professional marketing and web development services. Helping your business grow with modern technology and strategy."
+      content="Professional marketing and web development services. Helping your business grow with modern technology and strategy." 
     />
     <meta property="og:image" content="https://wiseupsolution.ca/images/og-image.png" />
     
@@ -40,15 +40,15 @@ import '../styles/global.css';
     <meta name="twitter:url" content="https://wiseupsolution.ca/" />
     <meta 
       name="twitter:title" 
-      data-ko="전문 웹사이트 개발 패키지 | WiseUp" 
-      data-en="Professional Website Development | WiseUp"
-      content="Professional Website Development | WiseUp" 
+      data-ko="전문 마케팅 및 웹 서비스 | WiseUp" 
+      data-en="Professional Marketing & Web Services | WiseUp"
+      content="Professional Marketing & Web Services | WiseUp" 
     />
     <meta 
       name="twitter:description" 
-      data-ko="전문 웹사이트 개발 서비스. 최신 기술 스택으로 고성능 웹사이트를 합리적인 가격에 제공합니다."
-      data-en="Professional website development services. High-performance websites built with modern technology at competitive prices."
-      content="Professional website development services. High-performance websites built with modern technology at competitive prices." 
+      data-ko="전문 마케팅 및 웹 개발 서비스. 최신 기술과 전략으로 비즈니스 성장을 돕습니다."
+      data-en="Professional marketing and web development services. Helping your business grow with modern technology and strategy."
+      content="Professional marketing and web development services. Helping your business grow with modern technology and strategy." 
     />
     <meta name="twitter:image" content="https://wiseupsolution.ca/images/og-image.png" />
     
@@ -84,6 +84,96 @@ import '../styles/global.css';
       .mobile-menu-open {
         overflow: hidden;
       }
+      
+      /* Dropdown Menu Styles */
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .nav-dropdown-toggle svg {
+        width: 12px;
+        height: 12px;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+      .nav-dropdown:hover .nav-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+      .nav-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        padding: 0.75rem 0;
+        min-width: 180px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        z-index: 100;
+        margin-top: 0.5rem;
+      }
+      .nav-dropdown:hover .nav-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-dropdown-menu a {
+        display: block;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        color: #4b5563;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+      .nav-dropdown-menu a:hover {
+        background: #f3f4f6;
+        color: #1565c0;
+      }
+      
+      /* Mobile Dropdown */
+      .mobile-dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .mobile-dropdown-toggle svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+      }
+      .mobile-dropdown.open .mobile-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+      .mobile-dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 1rem;
+        margin-top: 0;
+        opacity: 0;
+        transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+      }
+      .mobile-dropdown.open .mobile-dropdown-menu {
+        max-height: 200px;
+        opacity: 1;
+        margin-top: 0.75rem;
+      }
+      .mobile-dropdown-menu a {
+        display: block;
+        padding: 0.25rem 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #4b5563;
+      }
     </style>
   </head>
   <body>
@@ -95,6 +185,16 @@ import '../styles/global.css';
         </a>
         <div class="flex items-center gap-6">
           <ul class="hidden md:flex gap-8 list-none m-0 p-0">
+            <li class="nav-dropdown">
+              <a href="/marketing" class="nav-dropdown-toggle no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300">
+                <span data-ko="마케팅" data-en="Marketing">Marketing</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/marketing/web" class="no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
+                <a href="/marketing/video" class="no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
+              </div>
+            </li>
             <li><a href="#packages" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="패키지" data-en="Packages">Packages</a></li>
             <li><a href="#addons" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="추가옵션" data-en="Add-ons">Add-ons</a></li>
             <li><a href="#portfolio" class="no-underline text-text-body font-medium text-sm hover:text-primary transition-colors duration-300" data-ko="포트폴리오" data-en="Portfolio">Portfolio</a></li>
@@ -119,6 +219,16 @@ import '../styles/global.css';
       <!-- Mobile Menu Drawer -->
       <div id="mobile-menu" class="md:hidden">
         <ul class="flex flex-col gap-6 list-none m-0 p-0">
+          <li class="mobile-dropdown" id="mobile-marketing-dropdown">
+            <div class="mobile-dropdown-toggle text-2xl font-bold text-text-dark">
+              <span data-ko="마케팅" data-en="Marketing">Marketing</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div class="mobile-dropdown-menu">
+              <a href="/marketing/web" class="mobile-link no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
+              <a href="/marketing/video" class="mobile-link no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
+            </div>
+          </li>
           <li><a href="#packages" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="패키지" data-en="Packages">Packages</a></li>
           <li><a href="#addons" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="추가옵션" data-en="Add-ons">Add-ons</a></li>
           <li><a href="#portfolio" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="포트폴리오" data-en="Portfolio">Portfolio</a></li>
@@ -143,18 +253,17 @@ import '../styles/global.css';
         </video>
       </div>
       
-      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 relative z-10" data-ko="맞춤형 웹 솔루션" data-en="Premium Services">Premium Services</div>
+      <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 relative z-10" data-ko="웹사이트 개발" data-en="Web Development">Web Development</div>
       <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 leading-tight relative z-10">
-        <span class="block hero-animate-line" data-html-ko="성공하는 비즈니스의" data-html-en="Professional <span class='text-primary' style='white-space: nowrap;'>Website</span>">Professional <span class="text-primary" style="white-space: nowrap;">Website</span></span>
-        <span class="block hero-animate-line" data-html-ko="<span class='text-primary'>웹사이트</span>는 다릅니다" data-html-en="<span style='white-space: nowrap;'>Development</span> <span style='white-space: nowrap;'>Packages</span>"><span class="text-primary">웹사이트</span>는 다릅니다</span>
+        <span class="block hero-animate-line" data-html-ko="비즈니스를 위한" data-html-en="Professional <span class='text-primary'>Websites</span>">Professional <span class="text-primary">Websites</span></span>
+        <span class="block hero-animate-line" data-html-ko="<span class='text-primary'>프로페셔널 웹사이트</span>" data-html-en="Built for <span class='text-primary'>Growth</span>">Built for <span class="text-primary">Growth</span></span>
       </h1>
-      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed relative z-10" data-ko="고객에게 신뢰를 주는 첫인상, 그 시작은 웹사이트입니다. 검색에 강하고, 관리가 쉬운 나만의 웹사이트를 합리적인 비용으로 만들어 드립니다." data-en="Fast, SEO-optimized websites that convert visitors into customers. Built with modern technology at a price that makes sense.">
-        Fast, SEO-optimized websites that convert visitors into customers.<br />
-        Built with modern technology at a price that makes sense.
+      <p class="max-w-[600px] text-lg text-text-body mb-10 leading-relaxed relative z-10" data-ko="빠르고, 반응형이며, SEO에 최적화된 웹사이트를 제작합니다." data-en="Fast, responsive, and SEO-optimized websites that convert visitors into customers.">
+        Fast, responsive, and SEO-optimized websites that convert visitors into customers.
       </p>
       <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto justify-center px-4 md:px-0 relative z-10">
         <a href="#packages" class="btn btn-primary w-full md:w-auto" data-ko="패키지 보기" data-en="View Packages">View Packages</a>
-        <a href="mailto:hans@wiseupsolution.ca?subject=Website%20Inquiry" class="btn btn-secondary w-full md:w-auto" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
+        <a href="mailto:hans@wiseupsolution.ca?subject=Web%20Development%20Inquiry" class="btn btn-secondary w-full md:w-auto" data-ko="문의하기" data-en="Contact Us">Contact Us</a>
       </div>
     </header>
 
@@ -1643,6 +1752,15 @@ import '../styles/global.css';
             spans[2].style.transform = 'none';
           });
         });
+
+        // Mobile dropdown toggle
+        const mobileDropdown = document.getElementById('mobile-marketing-dropdown');
+        if (mobileDropdown) {
+          const mobileDropdownToggle = mobileDropdown.querySelector('.mobile-dropdown-toggle');
+          mobileDropdownToggle.addEventListener('click', () => {
+            mobileDropdown.classList.toggle('open');
+          });
+        }
       });
     </script>
   </body>

@@ -1,0 +1,769 @@
+---
+// src/pages/marketing/video.astro - Video Production Services
+import '../../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en" id="html-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-ko="홍보영상 제작 | WiseUp" data-en="Video Production | WiseUp">Video Production | WiseUp</title>
+    <meta
+      name="description"
+      data-ko="토론토 소상공인과 리얼터를 위한 전문 홍보영상 제작 서비스. 브랜드 스토리를 영상으로 전달하세요."
+      data-en="Professional video production for Toronto small businesses and realtors. Tell your brand story through video."
+      content="Professional video production for Toronto small businesses and realtors. Tell your brand story through video."
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wiseupsolution.ca/marketing/video" />
+    <meta 
+      property="og:title" 
+      data-ko="홍보영상 제작 | WiseUp" 
+      data-en="Video Production | WiseUp"
+      content="Video Production | WiseUp" 
+    />
+    <meta 
+      property="og:description" 
+      data-ko="토론토 소상공인과 리얼터를 위한 전문 홍보영상 제작 서비스."
+      data-en="Professional video production for Toronto small businesses and realtors."
+      content="Professional video production for Toronto small businesses and realtors." 
+    />
+    <meta property="og:image" content="https://wiseupsolution.ca/images/og-image.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Fullscreen Video Hero */
+      .video-hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      
+      .video-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+      
+      .video-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
+        z-index: 2;
+      }
+      
+      .video-hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: white;
+        max-width: 900px;
+        padding: 0 2rem;
+      }
+      
+      .video-hero-content h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+      }
+      
+      @media (min-width: 768px) {
+        .video-hero-content h1 {
+          font-size: 3rem;
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        .video-hero-content h1 {
+          font-size: 3.75rem;
+        }
+      }
+      
+      .video-hero-content p {
+        font-size: 1.25rem;
+        opacity: 0.95;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* Mobile Menu styles */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 990;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        padding-top: 6rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      #mobile-menu.active {
+        transform: translateX(0);
+      }
+      .mobile-menu-open {
+        overflow: hidden;
+      }
+      
+      /* Dropdown Menu Styles */
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .nav-dropdown-toggle svg {
+        width: 12px;
+        height: 12px;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+      .nav-dropdown:hover .nav-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+      .nav-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        padding: 0.75rem 0;
+        min-width: 180px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        z-index: 100;
+        margin-top: 0.5rem;
+      }
+      .nav-dropdown:hover .nav-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-dropdown-menu a {
+        display: block;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        color: #4b5563;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+      .nav-dropdown-menu a:hover {
+        background: #f3f4f6;
+        color: #1565c0;
+      }
+      
+      /* Mobile Dropdown */
+      .mobile-dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .mobile-dropdown-toggle svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+      }
+      .mobile-dropdown.open .mobile-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+      .mobile-dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 1rem;
+        margin-top: 0;
+        opacity: 0;
+        transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+      }
+      .mobile-dropdown.open .mobile-dropdown-menu {
+        max-height: 200px;
+        opacity: 1;
+        margin-top: 0.75rem;
+      }
+      .mobile-dropdown-menu a {
+        display: block;
+        padding: 0.25rem 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #4b5563;
+      }
+      
+      /* Scrolled Nav State */
+      nav.scrolled {
+        background: rgba(255, 255, 255, 0.95) !important;
+        border-bottom: 1px solid #e8e8ef;
+      }
+      nav.scrolled .nav-link {
+        color: #4a4a68 !important;
+      }
+      nav.scrolled .nav-link:hover {
+        color: #1565c0 !important;
+      }
+      nav.scrolled .hamburger-line {
+        background: #1a1a2e !important;
+      }
+      
+      /* Sample Video Section */
+      .sample-video-container {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        aspect-ratio: 9 / 16;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .sample-video-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      
+      .sample-video-container video {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/30 backdrop-blur-sm border-border py-4 px-6 md:px-8 z-[1000]">
+      <div class="max-w-[1200px] mx-auto flex justify-between items-center">
+        <a href="/" class="flex items-center no-underline">
+          <img src="/images/logo.png" alt="WiseUp Logo" class="h-10 md:h-14 w-auto" />
+        </a>
+        <div class="flex items-center gap-6">
+          <ul class="hidden md:flex gap-8 list-none m-0 p-0">
+            <li class="nav-dropdown">
+              <a href="/marketing" class="nav-dropdown-toggle nav-link no-underline text-white font-medium text-sm hover:text-white/70 transition-colors duration-300">
+                <span data-ko="마케팅" data-en="Marketing">Marketing</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/marketing/web" class="no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
+                <a href="/marketing/video" class="no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
+              </div>
+            </li>
+            <li><a href="#packages" class="nav-link no-underline text-white font-medium text-sm hover:text-white/70 transition-colors duration-300" data-ko="패키지" data-en="Packages">Packages</a></li>
+            <li><a href="#contact" class="nav-link no-underline text-white font-medium text-sm hover:text-white/70 transition-colors duration-300" data-ko="문의하기" data-en="Contact">Contact</a></li>
+          </ul>
+          <!-- Language Switcher -->
+          <div class="lang-switcher" id="lang-switcher">
+            <div class="lang-slider" id="lang-slider"></div>
+            <button type="button" class="lang-btn" data-lang="ko" id="btn-ko">한</button>
+            <button type="button" class="lang-btn active" data-lang="en" id="btn-en">EN</button>
+          </div>
+
+          <!-- Hamburger Button -->
+          <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none z-[1001]">
+            <span class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+            <span class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Drawer -->
+      <div id="mobile-menu" class="md:hidden">
+        <ul class="flex flex-col gap-6 list-none m-0 p-0">
+          <li class="mobile-dropdown" id="mobile-marketing-dropdown">
+            <div class="mobile-dropdown-toggle text-2xl font-bold text-text-dark">
+              <span data-ko="마케팅" data-en="Marketing">Marketing</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div class="mobile-dropdown-menu">
+              <a href="/marketing/web" class="mobile-link no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
+              <a href="/marketing/video" class="mobile-link no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
+            </div>
+          </li>
+          <li><a href="#packages" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="패키지" data-en="Packages">Packages</a></li>
+          <li><a href="#contact" class="mobile-link text-2xl font-bold text-text-dark no-underline" data-ko="문의하기" data-en="Contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Fullscreen Video Hero -->
+    <header class="video-hero">
+      <video class="video-hero-bg" autoplay muted loop playsinline poster="/images/video-hero-poster.jpg">
+        <source src="/videos/video-page-background.mp4" type="video/mp4" />
+      </video>
+      <div class="video-hero-overlay"></div>
+      <div class="video-hero-content">
+        <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6" data-ko="홍보영상 제작" data-en="Video Production">Video Production</div>
+        <h1>
+          <span data-html-ko="<span class='text-gold'>영상</span>으로 전하는" data-html-en="Tell Your Story Through">Tell Your Story Through</span><br />
+          <span data-html-ko="브랜드 스토리" data-html-en="Professional <span class='text-gold'>Video</span>">Professional <span class="text-gold">Video</span></span>
+        </h1>
+        <p data-ko="소상공인과 리얼터를 위한 맞춤형 홍보영상. 첫인상을 결정짓는 강력한 영상 콘텐츠를 제작해 드립니다." data-en="Custom promotional videos for small businesses and realtors. Create powerful video content that makes a lasting first impression.">
+          Custom promotional videos for small businesses and realtors. Create powerful video content that makes a lasting first impression.
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+          <a href="#packages" class="btn btn-primary" data-ko="패키지 보기" data-en="View Packages">View Packages</a>
+          <a href="#sample" class="btn btn-secondary bg-white/20 border-white text-white hover:bg-white hover:text-text-dark" data-ko="샘플 영상 보기" data-en="Watch Sample">Watch Sample</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sample Video Section -->
+    <section id="sample" class="py-20 bg-bg-section">
+      <div class="max-w-[900px] mx-auto px-6">
+        <div class="text-center mb-12">
+          <span class="section-badge" data-ko="샘플 영상" data-en="Sample Video">Sample Video</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="이런 영상을 만들어 드립니다" data-en="This Is What We Create">This Is What We Create</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="고객의 브랜드와 비즈니스를 돋보이게 하는 프로페셔널 영상" data-en="Professional videos that make your brand and business stand out">Professional videos that make your brand and business stand out</p>
+        </div>
+        
+        <div class="sample-video-container">
+          <video controls playsinline poster="/images/golfland-poster.jpg">
+            <source src="/videos/golfland.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Packages -->
+    <section id="packages" class="py-20">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="section-badge" data-ko="영상 패키지" data-en="Video Packages">Video Packages</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="비즈니스 목적에 맞는 패키지 선택" data-en="Choose the Right Package for Your Business">Choose the Right Package for Your Business</h2>
+          <p class="text-text-muted max-w-[600px] mx-auto" data-ko="소상공인, 리얼터, 레스토랑 등 다양한 비즈니스에 최적화된 영상 패키지" data-en="Video packages optimized for small businesses, realtors, restaurants, and more">Video packages optimized for small businesses, realtors, restaurants, and more</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Starter Package -->
+          <div class="pricing-card">
+            <div class="card-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <span class="card-tier">01</span>
+            <h3 class="card-title">Starter</h3>
+            <p class="card-tagline" data-ko="SNS 및 웹사이트용 숏폼 영상" data-en="Short-form video for social media & website">Short-form video for social media & website</p>
+
+            <div class="card-price">
+              <span class="currency">$</span>
+              <span class="amount">799</span>
+              <span class="suffix">+</span>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span data-ko="3 - 5일" data-en="3 - 5 days">3 - 5 days</span>
+              </div>
+            </div>
+
+            <ul class="card-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="30-60초 영상" data-en="30-60 sec video">30-60 sec video</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="1회 촬영" data-en="1 filming session">1 filming session</strong> — <span data-ko="최대 2시간" data-en="up to 2 hours">up to 2 hours</span></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="기본 편집" data-en="Basic editing">Basic editing</strong> — <span data-ko="컷편집, 자막, BGM" data-en="cuts, subtitles, BGM">cuts, subtitles, BGM</span></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="1회 수정" data-en="1 revision">1 revision</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="세로/가로 포맷" data-en="Vertical & Horizontal">Vertical & Horizontal</strong></span>
+              </li>
+            </ul>
+            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
+
+            <a href="mailto:hans@wiseupsolution.ca?subject=Video%20Starter%20Package%20Inquiry" class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</a>
+          </div>
+
+          <!-- Professional Package -->
+          <div class="pricing-card featured">
+            <span class="card-badge" data-ko="⭐ 가장 인기" data-en="⭐ Most Popular">⭐ Most Popular</span>
+            <div class="card-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
+              </svg>
+            </div>
+            <span class="card-tier">02</span>
+            <h3 class="card-title">Professional</h3>
+            <p class="card-tagline" data-ko="리얼터 & 소상공인을 위한 프로 영상" data-en="Pro video for realtors & small businesses">Pro video for realtors & small businesses</p>
+
+            <div class="card-price">
+              <span class="currency">$</span>
+              <span class="amount">1,499</span>
+              <span class="suffix">+</span>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span data-ko="5 - 7일" data-en="5 - 7 days">5 - 7 days</span>
+              </div>
+            </div>
+
+            <ul class="card-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                <span><strong data-ko="Starter 패키지 전체 포함" data-en="Everything in Starter">Everything in Starter</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="1-2분 영상" data-en="1-2 min video">1-2 min video</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="2회 촬영" data-en="2 filming sessions">2 filming sessions</strong> — <span data-ko="최대 4시간" data-en="up to 4 hours">up to 4 hours</span></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="드론 촬영 포함" data-en="Drone footage included">Drone footage included</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="2회 수정" data-en="2 revisions">2 revisions</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="인터뷰 촬영" data-en="Interview filming">Interview filming</strong></span>
+              </li>
+            </ul>
+            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
+
+            <a href="mailto:hans@wiseupsolution.ca?subject=Video%20Professional%20Package%20Inquiry" class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</a>
+          </div>
+
+          <!-- Premium Package -->
+          <div class="pricing-card">
+            <div class="card-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+              </svg>
+            </div>
+            <span class="card-tier">03</span>
+            <h3 class="card-title">Premium</h3>
+            <p class="card-tagline" data-ko="브랜드 스토리 다큐멘터리 스타일" data-en="Brand story documentary style">Brand story documentary style</p>
+
+            <div class="card-price">
+              <span class="currency">$</span>
+              <span class="amount">2,999</span>
+              <span class="suffix">+</span>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span data-ko="2 - 3주" data-en="2 - 3 weeks">2 - 3 weeks</span>
+              </div>
+            </div>
+
+            <ul class="card-features">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                <span><strong data-ko="Professional 패키지 전체 포함" data-en="Everything in Professional">Everything in Professional</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="3-5분 영상" data-en="3-5 min video">3-5 min video</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="무제한 촬영 세션" data-en="Unlimited filming">Unlimited filming</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="스크립트 작성" data-en="Script writing">Script writing</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="무제한 수정" data-en="Unlimited revisions">Unlimited revisions</strong></span>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong data-ko="SNS 숏폼 3개 포함" data-en="3 social clips included">3 social clips included</strong></span>
+              </li>
+            </ul>
+            <span class="tax-note text-right" data-ko="* HST 별도" data-en="* HST extra">* HST extra</span>
+
+            <a href="mailto:hans@wiseupsolution.ca?subject=Video%20Premium%20Package%20Inquiry" class="card-cta" data-ko="시작하기" data-en="Get Started">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-20 bg-bg-section">
+      <div class="max-w-[1250px] mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="section-badge" data-ko="활용 사례" data-en="Use Cases">Use Cases</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="이런 분들에게 추천합니다" data-en="Perfect For">Perfect For</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+            </div>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4 data-ko="리얼터" data-en="Realtors">Realtors</h4>
+                <p data-ko="매물 투어 영상, 인터뷰, 브랜드 소개 영상으로 차별화된 마케팅" data-en="Property tour videos, interviews, and brand videos for differentiated marketing">Property tour videos, interviews, and brand videos for differentiated marketing</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4 data-ko="레스토랑 & 카페" data-en="Restaurants & Cafes">Restaurants & Cafes</h4>
+                <p data-ko="음식 촬영, 분위기 영상으로 SNS와 Google에서 눈에 띄는 콘텐츠" data-en="Food shots and ambiance videos that stand out on social media and Google">Food shots and ambiance videos that stand out on social media and Google</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div class="addon-details">
+              <div class="addon-content">
+                <h4 data-ko="소상공인" data-en="Small Businesses">Small Businesses</h4>
+                <p data-ko="서비스 소개, 고객 후기, 브랜드 스토리로 신뢰도 향상" data-en="Service introductions, testimonials, and brand stories to build trust">Service introductions, testimonials, and brand stories to build trust</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-primary to-primary-dark py-16 px-8 text-center text-white" id="contact">
+      <div class="max-w-[1250px] mx-auto">
+        <h2 class="text-2xl md:text-4xl mb-4" style="word-break: keep-all;">
+          <span data-ko="지금 바로 상담 받으세요" data-en="Ready to Tell Your Story?">Ready to Tell Your Story?</span>
+        </h2>
+        <p class="opacity-90 mb-8 max-w-[500px] mx-auto" style="word-break: keep-all;" data-ko="무료 상담을 통해 비즈니스에 맞는 영상 솔루션을 제안해 드립니다." data-en="Let's discuss how video can transform your business. Free consultation available.">
+          Let's discuss how video can transform your business. Free consultation available.
+        </p>
+        <a href="mailto:hans@wiseupsolution.ca?subject=Video%20Production%20Inquiry" class="btn inline-flex items-center justify-center bg-white text-primary hover:bg-bg-gray hover:-translate-y-0.5" data-ko="문의하기" data-en="Get in Touch">Get in Touch</a>
+      </div>
+    </section>
+
+    <footer class="py-12 border-t border-border bg-bg-gray">
+      <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <a href="/" class="flex items-center no-underline">
+          <img src="/images/logo.png" alt="WiseUp Logo" class="h-10 w-auto" />
+        </a>
+        <p class="text-text-muted text-sm">© 2026 WiseUp Solution. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Language toggle functionality
+      const STORAGE_KEY = 'wiseup-lang';
+      let currentLang = 'en';
+      
+      function setLanguage(lang, animate = true) {
+        if (lang === currentLang && animate) return;
+        
+        const textElements = document.querySelectorAll('[data-ko][data-en]');
+        const htmlElements = document.querySelectorAll('[data-html-ko][data-html-en]');
+        const allElements = [...textElements, ...htmlElements];
+        
+        if (animate && allElements.length > 0) {
+          allElements.forEach(el => {
+            el.style.transition = 'opacity 0.25s ease';
+            el.style.opacity = '0';
+          });
+          
+          setTimeout(() => {
+            textElements.forEach(el => {
+              const text = el.getAttribute(`data-${lang}`);
+              if (text) {
+                el.textContent = text;
+              }
+            });
+            
+            htmlElements.forEach(el => {
+              const html = el.getAttribute(`data-html-${lang}`);
+              if (html) {
+                el.innerHTML = html;
+              }
+            });
+            
+            setTimeout(() => {
+              allElements.forEach(el => {
+                el.style.opacity = '1';
+              });
+            }, 50);
+          }, 250);
+        } else {
+          textElements.forEach(el => {
+            const text = el.getAttribute(`data-${lang}`);
+            if (text) {
+              el.textContent = text;
+            }
+          });
+          
+          htmlElements.forEach(el => {
+            const html = el.getAttribute(`data-html-${lang}`);
+            if (html) {
+              el.innerHTML = html;
+            }
+          });
+        }
+        
+        document.getElementById('html-root').setAttribute('lang', lang);
+        
+        const title = document.querySelector('title');
+        if (title) {
+          title.textContent = title.getAttribute(`data-${lang}`) || title.textContent;
+        }
+        
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content'));
+        }
+        
+        const slider = document.getElementById('lang-slider');
+        if (slider) {
+          slider.style.transform = lang === 'en' ? 'translateX(36px)' : 'translateX(0)';
+        }
+        
+        document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        
+        currentLang = lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
+        currentLang = savedLang;
+        setLanguage(savedLang, false);
+        
+        document.getElementById('btn-ko').addEventListener('click', () => setLanguage('ko', true));
+        document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const spans = menuToggle.querySelectorAll('span');
+
+        function toggleMenu() {
+          mobileMenu.classList.toggle('active');
+          document.body.classList.toggle('mobile-menu-open');
+          
+          if (mobileMenu.classList.contains('active')) {
+            spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('mobile-menu-open');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          });
+        });
+
+        // Mobile dropdown toggle
+        const mobileDropdown = document.getElementById('mobile-marketing-dropdown');
+        if (mobileDropdown) {
+          const mobileDropdownToggle = mobileDropdown.querySelector('.mobile-dropdown-toggle');
+          mobileDropdownToggle.addEventListener('click', () => {
+            mobileDropdown.classList.toggle('open');
+          });
+        }
+        
+        // Scroll-based header style
+        const nav = document.querySelector('nav');
+        const heroSection = document.querySelector('.video-hero');
+        
+        function handleScroll() {
+          const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+          if (window.scrollY > heroHeight - 100) {
+            nav.classList.add('scrolled');
+          } else {
+            nav.classList.remove('scrolled');
+          }
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Check initial state
+      });
+    </script>
+  </body>
+</html>
