@@ -54,6 +54,44 @@ import '../../styles/global.css';
         overflow: hidden;
       }
       
+      /* Terminal Typing Animation */
+      :global(.typing-text) {
+        display: inline;
+      }
+      
+      :global(.typing-cursor) {
+        display: inline-block;
+        width: 3px;
+        height: 0.85em;
+        background-color: #ffffff;
+        margin-left: 2px;
+        vertical-align: middle;
+        animation: cursorBlink 0.7s infinite;
+      }
+      
+      @keyframes cursorBlink {
+        0%, 50% {
+          opacity: 1;
+        }
+        51%, 100% {
+          opacity: 0;
+        }
+      }
+      
+      /* Hero fade-in elements */
+      .hero-fade {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s ease-out;
+      }
+      
+      .hero-fade.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      
       .video-hero-bg {
         position: absolute;
         top: 0;
@@ -62,6 +100,29 @@ import '../../styles/global.css';
         height: 100%;
         object-fit: cover;
         z-index: 1;
+      }
+
+      /* Premium Gradient Text */
+      :global(.video-gradient-text) {
+        display: inline-block;
+        color: #ffffff;
+        background: linear-gradient(135deg, #ffcc00 0%, #fff3ad 50%, #ffcc00 100%);
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        transition: color 1s ease-in-out, -webkit-text-fill-color 1s ease-in-out;
+      }
+
+      :global(.video-gradient-text.active) {
+        -webkit-text-fill-color: transparent;
+        animation: shine 3s linear infinite;
+        filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.3));
+      }
+
+      @keyframes shine {
+        to {
+          background-position: 200% center;
+        }
       }
       
       .video-hero-overlay {
@@ -329,15 +390,15 @@ import '../../styles/global.css';
       </video>
       <div class="video-hero-overlay"></div>
       <div class="video-hero-content">
-        <div class="inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6" data-ko="홍보영상 제작" data-en="Video Production">Video Production</div>
-        <h1>
-          <span data-html-ko="<span class='text-gold'>영상</span>으로 전하는" data-html-en="Tell Your Story Through">Tell Your Story Through</span><br />
-          <span data-html-ko="브랜드 스토리" data-html-en="Professional <span class='text-gold'>Video</span>">Professional <span class="text-gold">Video</span></span>
+        <div class="hero-fade inline-block bg-gradient-to-br from-primary to-primary-light text-white py-2 px-8 rounded-full text-xs font-semibold uppercase tracking-wider mb-6" data-ko="홍보영상 제작" data-en="Video Production" style="opacity: 0;">Video Production</div>
+        <h1 id="hero-title">
+          <span id="typing-line-1" class="typing-text" style="opacity: 0;"></span><span id="cursor-1" class="typing-cursor" style="display: none;"></span><br />
+          <span id="typing-line-2" class="typing-text" style="opacity: 0;"></span><span id="cursor-2" class="typing-cursor" style="display: none;"></span>
         </h1>
-        <p data-ko="소상공인과 리얼터를 위한 맞춤형 홍보영상. 첫인상을 결정짓는 강력한 영상 콘텐츠를 제작해 드립니다." data-en="Custom promotional videos for small businesses and realtors. Create powerful video content that makes a lasting first impression.">
+        <p class="hero-fade" data-ko="소상공인과 리얼터를 위한 맞춤형 홍보영상. 첫인상을 결정짓는 강력한 영상 콘텐츠를 제작해 드립니다." data-en="Custom promotional videos for small businesses and realtors. Create powerful video content that makes a lasting first impression." style="opacity: 0;">
           Custom promotional videos for small businesses and realtors. Create powerful video content that makes a lasting first impression.
         </p>
-        <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <div class="hero-fade flex flex-col md:flex-row gap-4 justify-center" style="opacity: 0;">
           <a href="#packages" class="btn btn-primary" data-ko="패키지 보기" data-en="View Packages">View Packages</a>
           <a href="#sample" class="btn btn-secondary bg-white/20 border-white text-white hover:bg-white hover:text-text-dark" data-ko="샘플 영상 보기" data-en="Watch Sample">Watch Sample</a>
         </div>
@@ -624,11 +685,11 @@ import '../../styles/global.css';
       const STORAGE_KEY = 'wiseup-lang';
       let currentLang = 'en';
       
-      function setLanguage(lang, animate = true) {
+      function setLanguage(lang: string, animate = true) {
         if (lang === currentLang && animate) return;
         
-        const textElements = document.querySelectorAll('[data-ko][data-en]');
-        const htmlElements = document.querySelectorAll('[data-html-ko][data-html-en]');
+        const textElements = document.querySelectorAll<HTMLElement>('[data-ko][data-en]');
+        const htmlElements = document.querySelectorAll<HTMLElement>('[data-html-ko][data-html-en]');
         const allElements = [...textElements, ...htmlElements];
         
         if (animate && allElements.length > 0) {
@@ -654,7 +715,9 @@ import '../../styles/global.css';
             
             setTimeout(() => {
               allElements.forEach(el => {
-                el.style.opacity = '1';
+                if (!el.classList.contains('hero-fade')) {
+                  el.style.opacity = '1';
+                }
               });
             }, 50);
           }, 250);
@@ -674,7 +737,7 @@ import '../../styles/global.css';
           });
         }
         
-        document.getElementById('html-root').setAttribute('lang', lang);
+        document.getElementById('html-root')?.setAttribute('lang', lang);
         
         const title = document.querySelector('title');
         if (title) {
@@ -683,16 +746,17 @@ import '../../styles/global.css';
         
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-          metaDesc.setAttribute('content', metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content'));
+          const content = metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content') || '';
+          metaDesc.setAttribute('content', content);
         }
         
-        const slider = document.getElementById('lang-slider');
+        const slider = document.getElementById('lang-slider') as HTMLElement | null;
         if (slider) {
           slider.style.transform = lang === 'en' ? 'translateX(36px)' : 'translateX(0)';
         }
         
-        document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-ko')?.classList.toggle('active', lang === 'ko');
+        document.getElementById('btn-en')?.classList.toggle('active', lang === 'en');
         
         currentLang = lang;
         localStorage.setItem(STORAGE_KEY, lang);
@@ -703,39 +767,41 @@ import '../../styles/global.css';
         currentLang = savedLang;
         setLanguage(savedLang, false);
         
-        document.getElementById('btn-ko').addEventListener('click', () => setLanguage('ko', true));
-        document.getElementById('btn-en').addEventListener('click', () => setLanguage('en', true));
+        document.getElementById('btn-ko')?.addEventListener('click', () => setLanguage('ko', true));
+        document.getElementById('btn-en')?.addEventListener('click', () => setLanguage('en', true));
         
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-        const spans = menuToggle.querySelectorAll('span');
+        const spans = menuToggle?.querySelectorAll<HTMLElement>('span');
 
         function toggleMenu() {
-          mobileMenu.classList.toggle('active');
+          mobileMenu?.classList.toggle('active');
           document.body.classList.toggle('mobile-menu-open');
           
-          if (mobileMenu.classList.contains('active')) {
+          if (mobileMenu?.classList.contains('active') && spans) {
             spans[0].style.transform = 'translateY(8px) rotate(45deg)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-          } else {
+          } else if (spans) {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
           }
         }
 
-        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle?.addEventListener('click', toggleMenu);
 
         mobileLinks.forEach(link => {
           link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
+            mobileMenu?.classList.remove('active');
             document.body.classList.remove('mobile-menu-open');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            if (spans) {
+              spans[0].style.transform = 'none';
+              spans[1].style.opacity = '1';
+              spans[2].style.transform = 'none';
+            }
           });
         });
 
@@ -743,26 +809,122 @@ import '../../styles/global.css';
         const mobileDropdown = document.getElementById('mobile-marketing-dropdown');
         if (mobileDropdown) {
           const mobileDropdownToggle = mobileDropdown.querySelector('.mobile-dropdown-toggle');
-          mobileDropdownToggle.addEventListener('click', () => {
+          mobileDropdownToggle?.addEventListener('click', () => {
             mobileDropdown.classList.toggle('open');
           });
         }
         
         // Scroll-based header style
         const nav = document.querySelector('nav');
-        const heroSection = document.querySelector('.video-hero');
+        const heroSection = document.querySelector('.video-hero') as HTMLElement | null;
         
         function handleScroll() {
           const heroHeight = heroSection ? heroSection.offsetHeight : 600;
           if (window.scrollY > heroHeight - 100) {
-            nav.classList.add('scrolled');
+            nav?.classList.add('scrolled');
           } else {
-            nav.classList.remove('scrolled');
+            nav?.classList.remove('scrolled');
           }
         }
         
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // Check initial state
+        
+        // Terminal typing animation
+        const typingTexts = {
+          en: [
+            { text: 'Tell Your Story Through', html: 'Tell Your Story Through' },
+            { text: 'Professional Video', html: 'Professional <span class="video-gradient-text">Video</span>' }
+          ],
+          ko: [
+            { text: '영상으로 전하는', html: '<span class="video-gradient-text">영상</span>으로 전하는' },
+            { text: '브랜드 스토리', html: '브랜드 스토리' }
+          ]
+        };
+        
+        let isTyping = false;
+        
+        async function typeText(element: HTMLElement, text: string, finalHtml: string, cursorId: string) {
+          const cursor = document.getElementById(cursorId);
+          if (cursor) cursor.style.display = 'inline-block';
+          element.innerHTML = '';
+          element.style.opacity = '1'; // Ensure title lines are visible
+          for (let i = 0; i <= text.length; i++) {
+            if (!isTyping) return;
+            element.textContent = text.substring(0, i);
+            
+            // Natural human-like timing: random base speed with extra pause for spaces
+            const char = text[i-1];
+            let delay = 40 + Math.random() * 80; // Random delay between 40ms and 120ms
+            
+            if (char === ' ') {
+              delay += 100; // Pause longer on spaces
+            }
+            
+            // Occasional "thoughtful" pause (slight hesitation)
+            if (Math.random() > 0.9) {
+              delay += 200;
+            }
+
+            await new Promise(resolve => setTimeout(resolve, delay));
+          }
+          element.innerHTML = finalHtml;
+          
+          // Trigger gradient transition
+          const gradientElement = element.querySelector('.video-gradient-text');
+          if (gradientElement) {
+            // Small delay to ensure browser paints the white text first
+            setTimeout(() => {
+              gradientElement.classList.add('active');
+            }, 50);
+          }
+          
+          if (cursor) cursor.style.display = 'none';
+        }
+        
+        async function runTypingAnimation() {
+          isTyping = true;
+          const lang = currentLang as 'en' | 'ko';
+          const texts = typingTexts[lang];
+          const line1 = document.getElementById('typing-line-1');
+          const line2 = document.getElementById('typing-line-2');
+          
+          if (line1 && line2) {
+            // Hide fade elements during typing and clear any inline opacity from setLanguage
+            document.querySelectorAll('.hero-fade').forEach(el => {
+              el.classList.remove('visible');
+              (el as HTMLElement).style.opacity = '0';
+            });
+            
+            line1.innerHTML = '';
+            line2.innerHTML = '';
+            await typeText(line1, texts[0].text, texts[0].html, 'cursor-1');
+            await new Promise(resolve => setTimeout(resolve, 200));
+            await typeText(line2, texts[1].text, texts[1].html, 'cursor-2');
+            
+            // Fade in other elements after typing completes
+            const fadeElements = document.querySelectorAll('.hero-fade');
+            fadeElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('visible');
+                (el as HTMLElement).style.opacity = '1';
+              }, index * 200);
+            });
+          }
+        }
+        
+        // Run on load
+        setTimeout(runTypingAnimation, 500);
+        
+        // Re-run on language switch
+        document.getElementById('btn-ko')?.addEventListener('click', () => {
+          isTyping = false;
+          setTimeout(runTypingAnimation, 400);
+        });
+        document.getElementById('btn-en')?.addEventListener('click', () => {
+          isTyping = false;
+          setTimeout(runTypingAnimation, 400);
+        });
       });
     </script>
   </body>

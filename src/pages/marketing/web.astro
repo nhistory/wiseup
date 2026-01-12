@@ -1153,8 +1153,8 @@ import '../../styles/global.css';
       function setLanguage(lang, animate = true) {
         if (lang === currentLang && animate) return;
         
-        const textElements = document.querySelectorAll('[data-ko][data-en]');
-        const htmlElements = document.querySelectorAll('[data-html-ko][data-html-en]');
+        const textElements = document.querySelectorAll<HTMLElement>('[data-ko][data-en]');
+        const htmlElements = document.querySelectorAll<HTMLElement>('[data-html-ko][data-html-en]');
         const allElements = [...textElements, ...htmlElements];
         
         if (animate && allElements.length > 0) {
@@ -1305,7 +1305,7 @@ import '../../styles/global.css';
         
         // Portfolio filter functionality
         const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
-        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        const portfolioCards = document.querySelectorAll<HTMLElement>('.portfolio-card');
         
         filterBtns.forEach(btn => {
           btn.addEventListener('click', () => {
