@@ -72,7 +72,7 @@
 
   /* Pricing Card */
   .pricing-card {
-    @apply bg-bg-light border border-border rounded-2xl p-10 relative transition-all duration-400;
+    @apply bg-bg-light border border-border rounded-2xl p-10 relative transition-all duration-400 flex flex-col h-full;
   }
 
   .pricing-card:hover {
@@ -152,7 +152,7 @@
   }
 
   .card-cta {
-    @apply flex items-center justify-center text-center w-full py-4 rounded-xl font-semibold text-base cursor-pointer transition-all duration-300;
+    @apply flex items-center justify-center text-center w-full py-4 rounded-xl font-semibold text-base cursor-pointer transition-all duration-300 mt-auto;
   }
 
   .pricing-card.featured .card-cta {
