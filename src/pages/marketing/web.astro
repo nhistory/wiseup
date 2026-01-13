@@ -15,6 +15,7 @@ import '../../styles/global.css';
       data-en="Professional web development services. Responsive design and SEO optimization to help your business grow."
       content="Professional web development services. Responsive design and SEO optimization to help your business grow."
     />
+    <link rel="canonical" href="https://wiseupsolution.ca/marketing/web" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     
@@ -225,6 +226,7 @@ import '../../styles/global.css';
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </div>
             <div class="mobile-dropdown-menu">
+              <a href="/marketing" class="mobile-link no-underline" data-ko="마케팅" data-en="Marketing">Marketing</a>
               <a href="/marketing/web" class="mobile-link no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
               <a href="/marketing/video" class="mobile-link no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
             </div>
@@ -1229,6 +1231,18 @@ import '../../styles/global.css';
         if (metaDesc) {
           metaDesc.setAttribute('content', metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content'));
         }
+
+        // Update Open Graph and Twitter tags
+        const metaTags = [
+          'og:title', 'og:description', 'twitter:title', 'twitter:description'
+        ];
+        metaTags.forEach(tag => {
+          const attr = tag.startsWith('og:') ? 'property' : 'name';
+          const el = document.querySelector(`meta[${attr}="${tag}"]`);
+          if (el) {
+            el.setAttribute('content', el.getAttribute(`data-${lang}`) || el.getAttribute('content'));
+          }
+        });
         
         // Update slider position
         const slider = document.getElementById('lang-slider');

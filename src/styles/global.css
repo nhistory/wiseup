@@ -360,9 +360,13 @@
 .hero-animate-line {
   overflow: hidden;
   word-break: keep-all;
-  overflow-wrap: normal;
+  overflow-wrap: break-word; /* Ensure it wraps but doesn't overflow */
   hyphens: none;
   -webkit-hyphens: none;
+}
+
+.hero-animate-line span {
+  display: inline-block;
 }
 
 #hero-title {

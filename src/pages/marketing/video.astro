@@ -15,6 +15,7 @@ import '../../styles/global.css';
       data-en="Professional video production for Toronto small businesses and realtors. Tell your brand story through video."
       content="Professional video production for Toronto small businesses and realtors. Tell your brand story through video."
     />
+    <link rel="canonical" href="https://wiseupsolution.ca/marketing/video" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     
@@ -34,6 +35,23 @@ import '../../styles/global.css';
       content="Professional video production for Toronto small businesses and realtors." 
     />
     <meta property="og:image" content="https://wiseupsolution.ca/images/og-video.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://wiseupsolution.ca/marketing/video" />
+    <meta 
+      name="twitter:title" 
+      data-ko="홍보영상 제작 | WiseUp" 
+      data-en="Video Production | WiseUp"
+      content="Video Production | WiseUp" 
+    />
+    <meta 
+      name="twitter:description" 
+      data-ko="토론토 소상공인과 리얼터를 위한 전문 홍보영상 제작 서비스."
+      data-en="Professional video production for Toronto small businesses and realtors."
+      content="Professional video production for Toronto small businesses and realtors." 
+    />
+    <meta name="twitter:image" content="https://wiseupsolution.ca/images/og-video.png" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -141,14 +159,20 @@ import '../../styles/global.css';
         text-align: center;
         color: white;
         max-width: 900px;
-        padding: 0 2rem;
+        padding: 80px 2rem 0;
+      }
+      
+      @media (min-width: 768px) {
+        .video-hero-content {
+          padding: 0 2rem;
+        }
       }
       
       .video-hero-content h1 {
-        font-size: 2.25rem;
+        font-size: 1.875rem;
         font-weight: 800;
         margin-bottom: 1.5rem;
-        line-height: 1.1;
+        line-height: 1.2;
       }
       
       @media (min-width: 768px) {
@@ -164,12 +188,13 @@ import '../../styles/global.css';
       }
       
       .video-hero-content p {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
         opacity: 0.95;
         margin-bottom: 2rem;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        line-height: 1.6;
       }
       
       /* Mobile Menu styles */
@@ -299,7 +324,8 @@ import '../../styles/global.css';
       nav.scrolled .nav-link:hover {
         color: #1565c0 !important;
       }
-      nav.scrolled .hamburger-line {
+      nav.scrolled .hamburger-line,
+      #menu-toggle.active .hamburger-line {
         background: #1a1a2e !important;
       }
       
@@ -373,6 +399,7 @@ import '../../styles/global.css';
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </div>
             <div class="mobile-dropdown-menu">
+              <a href="/marketing" class="mobile-link no-underline" data-ko="마케팅" data-en="Marketing">Marketing</a>
               <a href="/marketing/web" class="mobile-link no-underline" data-ko="웹 개발" data-en="Web Development">Web Development</a>
               <a href="/marketing/video" class="mobile-link no-underline" data-ko="영상 제작" data-en="Video Production">Video Production</a>
             </div>
@@ -725,6 +752,18 @@ import '../../styles/global.css';
           const content = metaDesc.getAttribute(`data-${lang}`) || metaDesc.getAttribute('content') || '';
           metaDesc.setAttribute('content', content);
         }
+
+        // Update Open Graph and Twitter tags
+        const metaTags = [
+          'og:title', 'og:description', 'twitter:title', 'twitter:description'
+        ];
+        metaTags.forEach(tag => {
+          const attr = tag.startsWith('og:') ? 'property' : 'name';
+          const el = document.querySelector(`meta[${attr}="${tag}"]`);
+          if (el) {
+            el.setAttribute('content', el.getAttribute(`data-${lang}`) || el.getAttribute('content'));
+          }
+        });
         
         const slider = document.getElementById('lang-slider') as HTMLElement | null;
         if (slider) {
@@ -754,6 +793,7 @@ import '../../styles/global.css';
 
         function toggleMenu() {
           mobileMenu?.classList.toggle('active');
+          menuToggle?.classList.toggle('active');
           document.body.classList.toggle('mobile-menu-open');
           
           if (mobileMenu?.classList.contains('active') && spans) {
@@ -772,6 +812,7 @@ import '../../styles/global.css';
         mobileLinks.forEach(link => {
           link.addEventListener('click', () => {
             mobileMenu?.classList.remove('active');
+            menuToggle?.classList.remove('active');
             document.body.classList.remove('mobile-menu-open');
             if (spans) {
               spans[0].style.transform = 'none';
