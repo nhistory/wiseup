@@ -336,7 +336,7 @@ import '../../styles/global.css';
         overflow: hidden;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         aspect-ratio: 9 / 16;
-        max-width: 400px;
+        max-width: 350px;
         margin: 0 auto;
       }
       
@@ -349,6 +349,13 @@ import '../../styles/global.css';
       .sample-video-container video {
         width: 100%;
         height: 100%;
+        object-fit: cover;
+      }
+      
+      /* Horizontal video container (16:9) */
+      .sample-video-container.horizontal {
+        aspect-ratio: 16 / 9;
+        max-width: 100%;
       }
     </style>
   </head>
@@ -434,18 +441,31 @@ import '../../styles/global.css';
 
     <!-- Sample Video Section -->
     <section id="sample" class="py-20 bg-bg-section">
-      <div class="max-w-[900px] mx-auto px-6">
+      <div class="max-w-[1200px] mx-auto px-6">
         <div class="text-center mb-12">
           <span class="section-badge" data-ko="샘플 영상" data-en="Sample Video">Sample Video</span>
           <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-4" data-ko="이런 영상을 만들어 드립니다" data-en="This Is What We Create">This Is What We Create</h2>
           <p class="text-text-muted max-w-[600px] mx-auto" data-ko="고객의 브랜드와 비즈니스를 돋보이게 하는 프로페셔널 영상" data-en="Professional videos that make your brand and business stand out">Professional videos that make your brand and business stand out</p>
         </div>
         
-        <div class="sample-video-container">
-          <video controls playsinline poster="/images/golfland-poster.jpg">
-            <source src="/videos/golfland.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <div class="grid grid-cols-1 md:grid-cols-10 gap-8 md:gap-16 items-center">
+          <div class="col-span-1 md:col-span-3">
+            <div class="sample-video-container">
+              <video controls playsinline poster="/images/golfland-poster.jpg">
+                <source src="/videos/golfland.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div class="col-span-1 md:col-span-7">
+            <div class="sample-video-container horizontal">
+              <video controls playsinline poster="/images/golfland-3-poster.jpg">
+                <source src="/videos/golfland-3-subtitles.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </section>
